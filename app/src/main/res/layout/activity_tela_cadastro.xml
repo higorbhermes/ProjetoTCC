@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fundo100"
+    android:orientation="vertical"
+    tools:context="higorhermes.tcc.projetotcc.View.TelaCadastro">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView1009"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="CADASTRO DE USUÁRIO"
+                android:textColor="@android:color/holo_blue_dark"
+                android:layout_marginTop="20px"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textStyle="bold"
+                android:typeface="sans" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                app:srcCompat="@drawable/user2" />
+
+            <EditText
+                android:id="@+id/et_nome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Nome Completo"
+                android:textColorHint="@android:color/background_light"
+                android:backgroundTint="@android:color/background_light"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/et_cpf"
+                android:layout_width="match_parent"
+                android:backgroundTint="@android:color/background_light"
+                android:layout_height="wrap_content"
+                android:textColorHint="@android:color/background_light"
+                android:ems="10"
+                android:hint="CPF"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/et_datanascimento"
+                android:layout_width="match_parent"
+                android:textColorHint="@android:color/background_light"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Data de Nascimento"
+                android:backgroundTint="@android:color/background_light"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/et_email"
+                android:backgroundTint="@android:color/background_light"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="E-mail"
+                android:textColorHint="@android:color/background_light"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/et_senha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Digite uma senha"
+                android:textColorHint="@android:color/background_light"
+                android:backgroundTint="@android:color/background_light"
+
+                android:inputType="textPassword" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button_limpar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:drawableTop="@drawable/limpar50px"
+                    android:textColor="@android:color/background_light"
+                    android:text="Limpar" />
+
+                <Button
+                    android:id="@+id/button_salvar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:drawableTop="@drawable/salvar50px"
+                    android:text="Salvar"
+                    android:textColor="@android:color/background_light" />
+
+                <Button
+                    android:id="@+id/button_cancelar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:drawableTop="@drawable/cancelar50px"
+                    android:textColor="@android:color/background_light"
+                    android:text="Cancelar" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView52"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -17,19 +17,17 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/textView59"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:layout_marginTop="40px"
                 android:text="QUALIF"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-                android:textColor="@android:color/background_light"
+                android:textColor="@android:color/holo_blue_dark"
+
                 android:textStyle="bold" />
 
             <TextView
@@ -38,18 +36,21 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Qualidade de Software"
-                android:textColor="@android:color/holo_blue_dark"
+                android:textColor="@android:color/background_light"
+
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
 
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
-                app:srcCompat="@drawable/slogan101" />
-
+                android:layout_height="200dp"
+                android:layout_marginTop="30px"
+                app:srcCompat="@drawable/qualidade5" />
 
             <EditText
                 android:id="@+id/et_usuario"
+                android:layout_marginTop="15px"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -57,6 +58,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="Usuário"
+                android:textColorHint="@android:color/background_light"
                 android:inputType="textEmailAddress" />
 
             <EditText
@@ -71,17 +73,6 @@
                 android:textColorHint="@android:color/background_light"
                 android:inputType="textPassword" />
 
-            <Button
-                android:id="@+id/button_entrar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_weight="1"
-                android:background="@android:color/holo_green_dark"
-                android:text="Entrar"
-                android:textColor="@android:color/background_light" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -93,11 +84,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginTop="40dp"
-                    android:drawableTop="@drawable/usuariopreto"
+                    android:layout_marginTop="10dp"
                     android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:text="CADASTRAR" />
+                    android:textColor="@android:color/background_light"
+                    android:background="@android:color/holo_blue_dark"
+                    android:text="entrar" />
 
                 <Button
                     android:id="@+id/button_esquecisenha"
@@ -105,14 +96,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginTop="40dp"
-                    android:drawableTop="@drawable/senhapreta"
+                    android:layout_marginTop="10dp"
                     android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:text="Esqueci a senha" />
+                    android:textColor="@android:color/background_light"
+                    android:background="@android:color/holo_blue_dark"
+                    android:text="Cadastrar" />
             </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
+
+
 
 </LinearLayout>

@@ -197,7 +197,7 @@
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
                     android:textColor="@android:color/background_light"
-                    android:drawableTop="@drawable/sobre80"
+                    android:drawableTop="@drawable/sobre80px2"
                     android:text="Sobre" />
 
                 <TextView
@@ -213,7 +213,7 @@
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
                     android:textColor="@android:color/background_light"
-                    android:drawableTop="@drawable/saircinza80"
+                    android:drawableTop="@drawable/sair80px10"
                     android:text="Sair" />
 
                 <TextView

@@ -23,7 +23,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:max="15"
-                android:progress="1"
+                android:progress="2"
+                android:backgroundTint="@android:color/background_light"
+                android:progressTint="@android:color/background_light"
                 android:visibility="visible"
                 tools:visibility="visible" />
 
@@ -174,13 +176,13 @@
                         android:layout_weight="1" />
 
                     <Button
-                        android:id="@+id/button_ajuda1"
+                        android:id="@+id/button_ajuda"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
-                        android:drawableTop="@drawable/eliminar40px"
-                        android:text="elIMANAR"
+                        android:drawableTop="@drawable/ajuda50px"
+                        android:text="AJUDAS"
                         android:textColor="@android:color/background_light" />
 
                     <TextView
@@ -190,13 +192,13 @@
                         android:layout_weight="1" />
 
                     <Button
-                        android:id="@+id/button_responder1"
+                        android:id="@+id/button_responder"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="RESPONDER"
                         android:background="@android:color/transparent"
-                        android:drawableTop="@drawable/certo40px"
+                        android:drawableTop="@drawable/responder50pxescuro"
+                        android:text="RESPONDER"
                         android:textColor="@android:color/background_light" />
 
                     <TextView
@@ -210,9 +212,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="PULAR"
                         android:background="@android:color/transparent"
-                        android:drawableTop="@drawable/pular40px"
+                        android:drawableTop="@drawable/sairquiz"
+                        android:text="PARAR"
                         android:textColor="@android:color/background_light" />
 
                     <TextView

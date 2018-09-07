@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#363636</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#191970</color>
+    <color name="fundo">#FFE7BA</color>
+    <color name="Toolbar">#DCDCDC</color>
+
+
 
 </resources>
