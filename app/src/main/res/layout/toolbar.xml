@@ -2,16 +2,18 @@
 <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/toolbar1"
     android:layout_width="match_parent"
-    android:layout_height="90px"
-    android:background="@drawable/fundotoolbar"
+    android:layout_height="80dp"
+    android:background="@drawable/fundo100"
     android:elevation="2dp">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="CARACTERÍSTICAS DE QUALIDADE"
-        android:textAppearance="@android:style/TextAppearance.Material.Medium"
+    <Button
+        android:id="@+id/button_pontuacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15px"
+        android:layout_marginRight="15px"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
         android:textColor="@android:color/background_light" />
 
 </android.support.v7.widget.Toolbar>

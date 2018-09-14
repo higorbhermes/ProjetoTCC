@@ -1,15 +1,18 @@
 package higorhermes.tcc.projetotcc.View;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -42,7 +45,7 @@ public class TelaJogoForca extends AppCompatActivity {
         final Button button_ajustes = (Button) findViewById(R.id.button_ajustes);
         final Button button_avaliacao = (Button) findViewById(R.id.button_avaliacao);
         button_pontuacao.setBackgroundResource(R.drawable.escudo50pxbranco);
-        button_menu.setBackgroundResource(R.drawable.menu_expandir_30px);
+        button_menu.setBackgroundResource(R.drawable.menu40px);
         button_sentimento.setBackgroundResource(R.drawable.neutro50px);
         button_eliminar.setBackgroundResource(R.drawable.lixeira50px);
         button_dica.setBackgroundResource(R.drawable.lampada50px);
@@ -669,7 +672,20 @@ public class TelaJogoForca extends AppCompatActivity {
         button_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                layout_menu.setVisibility(View.VISIBLE);
+                PopupMenu popupMenu = new PopupMenu(TelaJogoForca.this, button_menu);
+                popupMenu.getMenuInflater().inflate(R.menu.popup_menu, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        String s = item.getTitle().toString();
+                        if (s.equals("Desempenho")) {
+                            Intent intent = new Intent(TelaJogoForca.this, TelaDesempenho.class);
+                            startActivity(intent);
+                        }
+                        return true;
+                    }
+                });
+                popupMenu.show();
             }
         });
     }
@@ -740,10 +756,10 @@ public class TelaJogoForca extends AppCompatActivity {
                 pontos = pontos + 20;
             }
             calcularPontuação();
+            verSentimento(5);
             button_dica.setEnabled(false);
             button_eliminar.setEnabled(false);
             button_revelar.setEnabled(false);
-            verSentimento(2);
         }
     }
 
@@ -1068,5 +1084,28 @@ public class TelaJogoForca extends AppCompatActivity {
         if (num == 4){
             button_sentimento.setBackgroundResource(R.drawable.chorando50px);
         }
+        if (num == 5){
+            button_sentimento.setBackgroundResource(R.drawable.apaixonado50px);
+        }
+    }
+
+    public void finish(){
+        AlertDialog.Builder alerta = new AlertDialog.Builder(TelaJogoForca.this);
+        alerta.setMessage("Tem certeza que gostaria de abandonar o jogo?");
+        alerta.setCancelable(false);
+        alerta.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        alerta.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(TelaJogoForca.this, TelaMenu.class);
+                startActivity(intent);
+            }
+        });
+        alerta.show();
     }
 }

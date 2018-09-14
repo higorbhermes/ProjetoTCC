@@ -35,6 +35,8 @@
         <activity
             android:name=".Teste"
             android:label="@string/title_activity_teste" />
+        <activity android:name=".View.TelaOpcoes" />
+        <activity android:name=".View.TelaFiltro"></activity>
     </application>
 
 </manifest>

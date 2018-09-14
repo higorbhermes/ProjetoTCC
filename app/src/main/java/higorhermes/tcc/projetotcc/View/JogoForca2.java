@@ -26,6 +26,8 @@ public class JogoForca2 extends AppCompatActivity {
         final Button button_d =  (Button) findViewById(R.id.button_d);
         final Button button_x =  (Button) findViewById(R.id.button_x);
         final Button button_m  =  (Button) findViewById(R.id.button_m);
+        final Button button_pontuacao  =  (Button) findViewById(R.id.button_pontuacao);
+        button_pontuacao.setBackgroundResource(R.drawable.pontos80);
         final TextView tv_letra3 = (TextView) findViewById(R.id.letra3);
         button_revelar.setOnClickListener(new View.OnClickListener() {
             @Override

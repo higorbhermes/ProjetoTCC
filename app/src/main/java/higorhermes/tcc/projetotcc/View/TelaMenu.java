@@ -43,7 +43,7 @@ public class TelaMenu extends AppCompatActivity {
         button_dados.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TelaMenu.this, TelaJogoForca.class);
+                Intent intent = new Intent(TelaMenu.this, TelaFiltro.class);
                 startActivity(intent);
             }
         });
@@ -65,7 +65,7 @@ public class TelaMenu extends AppCompatActivity {
         button_sair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TelaMenu.this, TelaPrincipal.class);
+                Intent intent = new Intent(TelaMenu.this, JogoForca2.class);
                 startActivity(intent);
             }
         });

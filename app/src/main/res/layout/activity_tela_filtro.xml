@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fundo100"
+    android:orientation="vertical"
+    tools:context="higorhermes.tcc.projetotcc.View.TelaFiltro">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45px"
+                android:gravity="center"
+                android:text="FILTROS"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+                android:textColor="@android:color/holo_blue_dark" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="25px">
+
+                <RadioButton
+                    android:id="@+id/radioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15px"
+                    android:layout_weight="1"
+                    android:buttonTint="@android:color/holo_blue_dark"
+                    android:text="Sem Filtro"
+                    android:textColor="@android:color/background_light" />
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15px"
+                    android:layout_weight="1"
+                    android:buttonTint="@android:color/holo_blue_dark"
+                    android:text="Somente desafios não respondidos"
+
+                    android:textColor="@android:color/background_light" />
+
+                <RadioButton
+                    android:id="@+id/radioButton3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15px"
+                    android:layout_weight="1"
+                    android:buttonTint="@android:color/holo_blue_dark"
+                    android:text="Somenete desafios respondidos"
+                    android:textColor="@android:color/background_light" />
+
+                <RadioButton
+                    android:id="@+id/radioButton4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15px"
+                    android:layout_weight="1"
+                    android:buttonTint="@android:color/holo_blue_dark"
+                    android:text="Somente desafios que errei"
+                    android:textColor="@android:color/background_light" />
+
+                <RadioButton
+                    android:id="@+id/radioButton5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15px"
+                    android:layout_weight="1"
+                    android:buttonTint="@android:color/holo_blue_dark"
+                    android:text="Somente desafio que acertei"
+                    android:textColor="@android:color/background_light" />
+
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/button_play"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15px"
+                android:layout_marginRight="15px"
+                android:layout_marginTop="20px"
+                android:background="@android:color/holo_blue_dark"
+                android:text="COMEÇAR"
+                android:textColor="@android:color/background_light" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
