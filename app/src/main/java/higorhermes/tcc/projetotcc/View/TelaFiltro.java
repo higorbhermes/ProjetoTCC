@@ -45,14 +45,8 @@ public class TelaFiltro extends AppCompatActivity {
                             if (rb_nãoRespondidas.isChecked()==true){
                                 Realm realm = Realm.getDefaultInstance();
                                 jForca = realm.where(JogoForca.class)
-                                        .equalTo("id", 1).findFirst();
-                                realm.close();
-                                String msg = ""+jForca.getId();
-                                AlertDialog.Builder dlg = new AlertDialog.Builder(TelaFiltro.this);
-                                dlg.setMessage(msg);
-                                dlg.setNeutralButton("OK", null);
-                                dlg.show();
-                                /*if ((jForca.getAcerto() == 0)&&(jForca.getErro() == 0)){
+                                        .equalTo("id", 201).findFirst();
+                                if ((jForca.getAcerto() == 0)&&(jForca.getErro() == 0)){
                                     Intent intent = new Intent(TelaFiltro.this, TelaJogoForca.class);
                                     startActivity(intent);
                                 }
@@ -62,13 +56,12 @@ public class TelaFiltro extends AppCompatActivity {
                                     dlg.setMessage(msg);
                                     dlg.setNeutralButton("OK", null);
                                     dlg.show();
-                                }*/
+                                }
                             }
                             if (rb_Respondidas.isChecked()==true){
                                 Realm realm = Realm.getDefaultInstance();
                                 jForca = realm.where(JogoForca.class)
-                                        .equalTo("id", 1).findFirst();
-                                realm.close();
+                                        .equalTo("id", 201).findFirst();
                                 if ((jForca.getAcerto() == 1)||(jForca.getErro() == 1)){
                                     Intent intent = new Intent(TelaFiltro.this, TelaJogoForca.class);
                                     startActivity(intent);
@@ -84,7 +77,7 @@ public class TelaFiltro extends AppCompatActivity {
                             if (rb_Certas.isChecked()==true){
                                 Realm realm = Realm.getDefaultInstance();
                                 jForca = realm.where(JogoForca.class)
-                                        .equalTo("id", 1).findFirst();
+                                        .equalTo("id", 201).findFirst();
                                 realm.close();
                                 if (jForca.getAcerto() == 1){
                                     Intent intent = new Intent(TelaFiltro.this, TelaJogoForca.class);
@@ -101,7 +94,7 @@ public class TelaFiltro extends AppCompatActivity {
                             if (rb_Erradas.isChecked()==true){
                                 Realm realm = Realm.getDefaultInstance();
                                 jForca = realm.where(JogoForca.class)
-                                        .equalTo("id", 1).findFirst();
+                                        .equalTo("id", 201).findFirst();
                                 realm.close();
                                 if (jForca.getErro() == 1){
                                     Intent intent = new Intent(TelaFiltro.this, TelaJogoForca.class);
@@ -114,7 +107,7 @@ public class TelaFiltro extends AppCompatActivity {
                                     dlg.setNeutralButton("OK", null);
                                     dlg.show();
                                 }
-                        }
+                            }
                     }
                 }
             }
