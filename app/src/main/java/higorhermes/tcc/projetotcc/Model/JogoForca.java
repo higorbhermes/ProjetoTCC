@@ -1,5 +1,7 @@
 package higorhermes.tcc.projetotcc.Model;
 
+import java.io.Serializable;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -7,11 +9,18 @@ import io.realm.annotations.PrimaryKey;
  * Created by higor on 14/09/18.
  */
 
-public class JogoForca extends RealmObject {
+public class JogoForca extends RealmObject implements Serializable {
     @PrimaryKey
-    private int id, acerto, erro;
+    private int id;
+    private int acerto, erro;
     public JogoForca() {
 
+    }
+
+    public JogoForca(int id, int acerto, int erro) {
+        this.id = id;
+        this.acerto = acerto;
+        this.erro = erro;
     }
 
     public int getId() {
