@@ -23,6 +23,10 @@ public class JogoForca extends RealmObject implements Serializable {
         this.erro = erro;
     }
 
+    public JogoForca(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

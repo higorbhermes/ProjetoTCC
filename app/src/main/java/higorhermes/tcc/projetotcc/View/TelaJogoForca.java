@@ -15,24 +15,38 @@ import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.Random;
 
+import higorhermes.tcc.projetotcc.Model.JogoForca;
 import higorhermes.tcc.projetotcc.R;
+import io.realm.Realm;
 
-public class TelaJogoForca extends AppCompatActivity {
-    int pontos = 100;
+public class TelaJogoForca extends AppCompatActivity implements Serializable {
+    int pontos;
     int erro = 0;
     int acertos = 0;
     int numero_letras = 9;
     int eliminar_letra = 0;
     int revelar_letra = 0;
     int menu = 1;
+    int filtro;
+    int contador_partidas;
+    int id;
+    JogoForca[] partidas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final ImageView img_forca = (ImageView) findViewById(R.id.img_forca);
         setContentView(R.layout.activity_tela_jogo_forca);
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        pontos = bundle.getInt("pont");
+        filtro = bundle.getInt("filtro");
+        contador_partidas = bundle.getInt("contador_partidas");
+        id = bundle.getInt("id");
+        partidas = ( JogoForca[]) intent.getSerializableExtra("partidas");
         final String letracerta1 = "S", letracerta2 = "E", letracerta3 = "G", letracerta4 = "U", letracerta5 = "R", letracerta6 = "A", letracerta7 = "N", letracerta8 = "C", letracerta9 = "A";
         Button button_revelar = (Button) findViewById(R.id.button_revelar);
         Button button_eliminar = (Button) findViewById(R.id.button_eliminar);
@@ -80,6 +94,8 @@ public class TelaJogoForca extends AppCompatActivity {
         final Button button_y = (Button) findViewById(R.id.button_y);
         final Button button_z = (Button) findViewById(R.id.button_z);
         final Button button_ver_resposta = (Button) findViewById(R.id.button_ver_resposta);
+        Button button_proximo = (Button) findViewById(R.id.button_proximo);
+        Button button_proximo_respostaerrada = (Button) findViewById(R.id.button_proximo_respostaerrada);
         final TextView letra1 = (TextView) findViewById(R.id.letra1);
         final TextView letra2 = (TextView) findViewById(R.id.letra2);
         final TextView letra3 = (TextView) findViewById(R.id.letra3);
@@ -669,6 +685,44 @@ public class TelaJogoForca extends AppCompatActivity {
             }
         });
 
+        button_proximo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Realm realm = Realm.getDefaultInstance();
+                JogoForca jForca = realm.where(JogoForca.class)
+                        .equalTo("id", id).findFirst();
+                realm.beginTransaction();
+                jForca.setAcerto(1);
+                jForca.setErro(0);
+                realm.copyToRealm(jForca);
+                realm.commitTransaction();
+                String msg = "Sucesso";
+                AlertDialog.Builder dlg = new AlertDialog.Builder(TelaJogoForca.this);
+                dlg.setMessage(msg);
+                dlg.setNeutralButton("OK", null);
+                dlg.show();
+            }
+        });
+
+        button_proximo_respostaerrada.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Realm realm = Realm.getDefaultInstance();
+                JogoForca jForca = realm.where(JogoForca.class)
+                        .equalTo("id", id).findFirst();
+                realm.beginTransaction();
+                jForca.setErro(1);
+                jForca.setAcerto(0);
+                realm.copyToRealm(jForca);
+                realm.commitTransaction();
+                String msg = "Sucesso";
+                AlertDialog.Builder dlg = new AlertDialog.Builder(TelaJogoForca.this);
+                dlg.setMessage(msg);
+                dlg.setNeutralButton("OK", null);
+                dlg.show();
+            }
+        });
+
         button_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -730,6 +784,7 @@ public class TelaJogoForca extends AppCompatActivity {
             button_eliminar.setEnabled(false);
             button_revelar.setEnabled(false);
             verSentimento(4);
+
         }
     }
 

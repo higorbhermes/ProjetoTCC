@@ -8,11 +8,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 
+import java.io.Serializable;
+
 import higorhermes.tcc.projetotcc.Model.JogoForca;
 import higorhermes.tcc.projetotcc.R;
 import io.realm.Realm;
 
-public class TelaFiltro extends AppCompatActivity {
+public class TelaFiltro extends AppCompatActivity implements Serializable {
     final int tipo_jogo = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +40,17 @@ public class TelaFiltro extends AppCompatActivity {
                 }
                 else{
                     if (tipo_jogo == 1){
+                            JogoForca[] partidas = new JogoForca[50];
                             if (rb_semFiltro.isChecked()==true){
+                                partidas[0] = new JogoForca(201);
+                                Bundle bundle = new Bundle();
+                                bundle.putInt("pont", 100);
+                                bundle.putInt("id", 201);
+                                bundle.putInt("filtro", 1);
+                                bundle.putInt("contador_partidas", 1);
                                 Intent intent = new Intent(TelaFiltro.this, TelaJogoForca.class);
+                                intent.putExtra("partidas", partidas);
+                                intent.putExtras(bundle);
                                 startActivity(intent);
                             }
                             if (rb_nãoRespondidas.isChecked()==true){
@@ -47,7 +58,15 @@ public class TelaFiltro extends AppCompatActivity {
                                 jForca = realm.where(JogoForca.class)
                                         .equalTo("id", 201).findFirst();
                                 if ((jForca.getAcerto() == 0)&&(jForca.getErro() == 0)){
+                                    partidas[0] = new JogoForca(201);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putInt("pont", 100);
+                                    bundle.putInt("id", 201);
+                                    bundle.putInt("filtro", 1);
+                                    bundle.putInt("contador_partidas", 1);
                                     Intent intent = new Intent(TelaFiltro.this, TelaJogoForca.class);
+                                    intent.putExtra("partidas", partidas);
+                                    intent.putExtras(bundle);
                                     startActivity(intent);
                                 }
                                 else{
@@ -63,7 +82,15 @@ public class TelaFiltro extends AppCompatActivity {
                                 jForca = realm.where(JogoForca.class)
                                         .equalTo("id", 201).findFirst();
                                 if ((jForca.getAcerto() == 1)||(jForca.getErro() == 1)){
+                                    partidas[0] = new JogoForca(201);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putInt("pont", 100);
+                                    bundle.putInt("id", 201);
+                                    bundle.putInt("filtro", 1);
+                                    bundle.putInt("contador_partidas", 1);
                                     Intent intent = new Intent(TelaFiltro.this, TelaJogoForca.class);
+                                    intent.putExtra("partidas", partidas);
+                                    intent.putExtras(bundle);
                                     startActivity(intent);
                                 }
                                 else{
@@ -80,7 +107,15 @@ public class TelaFiltro extends AppCompatActivity {
                                         .equalTo("id", 201).findFirst();
                                 realm.close();
                                 if (jForca.getAcerto() == 1){
+                                    partidas[0] = new JogoForca(201);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putInt("pont", 100);
+                                    bundle.putInt("id", 201);
+                                    bundle.putInt("filtro", 1);
+                                    bundle.putInt("contador_partidas", 1);
                                     Intent intent = new Intent(TelaFiltro.this, TelaJogoForca.class);
+                                    intent.putExtra("partidas", partidas);
+                                    intent.putExtras(bundle);
                                     startActivity(intent);
                                 }
                                 else{
@@ -97,7 +132,15 @@ public class TelaFiltro extends AppCompatActivity {
                                         .equalTo("id", 201).findFirst();
                                 realm.close();
                                 if (jForca.getErro() == 1){
+                                    partidas[0] = new JogoForca(201);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putInt("pont", 100);
+                                    bundle.putInt("id", 201);
+                                    bundle.putInt("filtro", 1);
+                                    bundle.putInt("contador_partidas", 1);
                                     Intent intent = new Intent(TelaFiltro.this, TelaJogoForca.class);
+                                    intent.putExtra("partidas", partidas);
+                                    intent.putExtras(bundle);
                                     startActivity(intent);
                                 }
                                 else{
