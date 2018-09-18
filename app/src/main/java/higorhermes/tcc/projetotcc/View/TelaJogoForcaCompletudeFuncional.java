@@ -2,21 +2,17 @@ package higorhermes.tcc.projetotcc.View;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
-import java.io.Serializable;
 import java.util.Random;
 
 import higorhermes.tcc.projetotcc.Model.Ajustes;
@@ -24,11 +20,11 @@ import higorhermes.tcc.projetotcc.Model.JogoForca;
 import higorhermes.tcc.projetotcc.R;
 import io.realm.Realm;
 
-public class TelaJogoForca extends AppCompatActivity implements Serializable {
+public class TelaJogoForcaCompletudeFuncional extends AppCompatActivity {
     int pontos;
     int erro = 0;
     int acertos = 0;
-    int numero_letras = 9;
+    int numero_letras = 19;
     int eliminar_letra = 0;
     int revelar_letra = 0;
     int menu = 1;
@@ -41,8 +37,7 @@ public class TelaJogoForca extends AppCompatActivity implements Serializable {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        final ImageView img_forca = (ImageView) findViewById(R.id.img_forca);
-        setContentView(R.layout.activity_tela_jogo_forca);
+        setContentView(R.layout.activity_tela_jogo_forca_completude_funcional);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         pontos = bundle.getInt("pont");
@@ -51,7 +46,6 @@ public class TelaJogoForca extends AppCompatActivity implements Serializable {
         contador_partidas = bundle.getInt("contador_partidas");
         id = bundle.getInt("id");
         partidas = ( JogoForca[]) intent.getSerializableExtra("partidas");
-        final String letracerta1 = "S", letracerta2 = "E", letracerta3 = "G", letracerta4 = "U", letracerta5 = "R", letracerta6 = "A", letracerta7 = "N", letracerta8 = "C", letracerta9 = "A";
         Button button_revelar = (Button) findViewById(R.id.button_revelar);
         Button button_eliminar = (Button) findViewById(R.id.button_eliminar);
         Button button_dica = (Button) findViewById(R.id.button_dica);
@@ -109,6 +103,17 @@ public class TelaJogoForca extends AppCompatActivity implements Serializable {
         final TextView letra7 = (TextView) findViewById(R.id.letra7);
         final TextView letra8 = (TextView) findViewById(R.id.letra8);
         final TextView letra9 = (TextView) findViewById(R.id.letra9);
+        final TextView letra10 = (TextView) findViewById(R.id.letra10);
+        final TextView letra11 = (TextView) findViewById(R.id.letra11);
+        final TextView letra12 = (TextView) findViewById(R.id.letra12);
+        final TextView letra13 = (TextView) findViewById(R.id.letra13);
+        final TextView letra14 = (TextView) findViewById(R.id.letra14);
+        final TextView letra15 = (TextView) findViewById(R.id.letra15);
+        final TextView letra16 = (TextView) findViewById(R.id.letra16);
+        final TextView letra17 = (TextView) findViewById(R.id.letra17);
+        final TextView letra18 = (TextView) findViewById(R.id.letra18);
+        final TextView letra19 = (TextView) findViewById(R.id.letra19);
+
         final LinearLayout layout_0 = (LinearLayout) findViewById(R.id.layout_0);
         final LinearLayout layout_1 = (LinearLayout) findViewById(R.id.layout_1);
         final LinearLayout layout_2 = (LinearLayout) findViewById(R.id.layout_2);
@@ -128,14 +133,14 @@ public class TelaJogoForca extends AppCompatActivity implements Serializable {
             public void onClick(View view) {
                 if (pontos < 60) {
                     String msg = "É necessário possuir 60 pontos para utilizar esta ajuda!";
-                    AlertDialog.Builder dlg = new AlertDialog.Builder(TelaJogoForca.this);
+                    AlertDialog.Builder dlg = new AlertDialog.Builder(  TelaJogoForcaCompletudeFuncional.this);
                     dlg.setMessage(msg);
                     dlg.setNeutralButton("OK", null);
                     dlg.show();
                 } else {
                     if (revelar_letra >= 3) {
                         String msg = "Essa ajuda só pode ser utilizada três vezes em cada desafio!";
-                        AlertDialog.Builder dlg = new AlertDialog.Builder(TelaJogoForca.this);
+                        AlertDialog.Builder dlg = new AlertDialog.Builder(TelaJogoForcaCompletudeFuncional.this);
                         dlg.setMessage(msg);
                         dlg.setNeutralButton("OK", null);
                         dlg.show();
@@ -146,105 +151,144 @@ public class TelaJogoForca extends AppCompatActivity implements Serializable {
                         int i = 0;
                         Random gerador = new Random();
                         while (i == 0) {
-                            int num = gerador.nextInt(10);
+                            int num = gerador.nextInt(19);
                             if (num == 1) {
                                 if ((letra1.getText().toString()).equals("___")) {
-                                    letra1.setText("S");
+                                    letra1.setText("C");
+                                    letra14.setText("C");
                                     i = 1;
                                     revelar_letra = revelar_letra + 1;
-                                    button_s.setEnabled(false);
-                                    button_s.setText("");
-                                    acertos = acertos + 1;
+                                    button_c.setEnabled(false);
+                                    button_c.setText("");
+                                    acertos = acertos + 2;
                                     verificarAcertos();
                                 }
                             }
                             if (num == 2) {
                                 if ((letra2.getText().toString()).equals("___")) {
-                                    letra2.setText("E");
+                                    letra2.setText("O");
+                                    letra16.setText("O");
                                     i = 1;
                                     revelar_letra = revelar_letra + 1;
-                                    button_e.setEnabled(false);
-                                    button_e.setText("");
-                                    acertos = acertos + 1;
+                                    button_c.setEnabled(false);
+                                    button_c.setText("");
+                                    acertos = acertos + 2;
                                     verificarAcertos();
                                 }
                             }
                             if (num == 3) {
                                 if ((letra3.getText().toString()).equals("___")) {
-                                    letra3.setText("G");
+                                    letra3.setText("M");
                                     i = 1;
                                     revelar_letra = revelar_letra + 1;
-                                    button_g.setEnabled(false);
-                                    button_g.setText("");
+                                    button_m.setEnabled(false);
+                                    button_m.setText("");
                                     acertos = acertos + 1;
                                     verificarAcertos();
                                 }
                             }
                             if (num == 4) {
                                 if ((letra4.getText().toString()).equals("___")) {
-                                    letra4.setText("U");
+                                    letra4.setText("P");
                                     i = 1;
                                     revelar_letra = revelar_letra + 1;
-                                    button_u.setEnabled(false);
-                                    button_u.setText("");
+                                    button_p.setEnabled(false);
+                                    button_p.setText("");
                                     acertos = acertos + 1;
                                     verificarAcertos();
                                 }
                             }
                             if (num == 5) {
                                 if ((letra5.getText().toString()).equals("___")) {
-                                    letra5.setText("R");
+                                    letra5.setText("L");
+                                    letra19.setText("L");
                                     i = 1;
                                     revelar_letra = revelar_letra + 1;
-                                    button_r.setEnabled(false);
-                                    button_r.setText("");
-                                    acertos = acertos + 1;
+                                    button_l.setEnabled(false);
+                                    button_l.setText("");
+                                    acertos = acertos + 2;
                                     verificarAcertos();
                                 }
                             }
                             if (num == 6) {
                                 if ((letra6.getText().toString()).equals("___")) {
-                                    letra6.setText("A");
-                                    letra9.setText("A");
+                                    letra6.setText("E");
+                                    letra6.setText("E");
                                     i = 1;
                                     revelar_letra = revelar_letra + 1;
-                                    button_a.setEnabled(false);
-                                    button_a.setText("");
+                                    button_e.setEnabled(false);
+                                    button_e.setText("");
                                     acertos = acertos + 2;
                                     verificarAcertos();
                                 }
                             }
                             if (num == 7) {
                                 if ((letra7.getText().toString()).equals("___")) {
-                                    letra7.setText("N");
+                                    letra7.setText("T");
                                     i = 1;
                                     revelar_letra = revelar_letra + 1;
-                                    button_n.setEnabled(false);
-                                    button_n.setText("");
+                                    button_t.setEnabled(false);
+                                    button_t.setText("");
                                     acertos = acertos + 1;
                                     verificarAcertos();
                                 }
                             }
                             if (num == 8) {
                                 if ((letra8.getText().toString()).equals("___")) {
-                                    letra8.setText("Ç");
+                                    letra8.setText("U");
+                                    letra12.setText("U");
                                     i = 1;
                                     revelar_letra = revelar_letra + 1;
-                                    button_c.setEnabled(false);
-                                    button_c.setText("");
-                                    acertos = acertos + 1;
+                                    button_u.setEnabled(false);
+                                    button_u.setText("");
+                                    acertos = acertos + 2;
                                     verificarAcertos();
                                 }
                             }
                             if (num == 9) {
                                 if ((letra9.getText().toString()).equals("___")) {
-                                    letra6.setText("A");
-                                    letra9.setText("A");
+                                    letra9.setText("D");
                                     i = 1;
                                     revelar_letra = revelar_letra + 1;
-                                    button_a.setEnabled(false);
-                                    button_a.setText("");
+                                    button_d.setEnabled(false);
+                                    button_d.setText("");
+                                    acertos = acertos + 1;
+                                    verificarAcertos();
+                                }
+                            }
+                            if (num == 11) {
+                                if ((letra11.getText().toString()).equals("___")) {
+                                    letra11.setText("F");
+                                    i = 1;
+                                    revelar_letra = revelar_letra + 1;
+                                    button_f.setEnabled(false);
+                                    button_f.setText("");
+                                    acertos = acertos + 1;
+                                    verificarAcertos();
+                                }
+                            }
+
+                            if (num == 13) {
+                                if ((letra13.getText().toString()).equals("___")) {
+                                    letra12.setText("N");
+                                    letra16.setText("N");
+                                    i = 1;
+                                    revelar_letra = revelar_letra + 1;
+                                    button_n.setEnabled(false);
+                                    button_n.setText("");
                                     acertos = acertos + 2;
+                                    verificarAcertos();
+                                }
+                            }
+
+                            if (num == 15) {
+                                if ((letra15.getText().toString()).equals("___")) {
+                                    letra15.setText("I");
+                                    i = 1;
+                                    revelar_letra = revelar_letra + 1;
+                                    button_i.setEnabled(false);
+                                    button_i.setText("");
+                                    acertos = acertos + 1;
                                     verificarAcertos();
                                 }
                             }
@@ -259,7 +303,7 @@ public class TelaJogoForca extends AppCompatActivity implements Serializable {
             public void onClick(View view) {
                 if (pontos < 20) {
                     String msg = "É necessário possuir 20 pontos para utilizar esta ajuda!";
-                    AlertDialog.Builder dlg = new AlertDialog.Builder(TelaJogoForca.this);
+                    AlertDialog.Builder dlg = new AlertDialog.Builder(TelaJogoForcaCompletudeFuncional.this);
                     dlg.setMessage(msg);
                     dlg.setNeutralButton("OK", null);
                     dlg.show();
@@ -267,8 +311,8 @@ public class TelaJogoForca extends AppCompatActivity implements Serializable {
                     pontos = pontos - 20;
                     calcularPontuação();
                     verSentimento(1);
-                    String msg = "DICA: Essa característica é atingida quando o software protege as suas informações e dados de acordo com o nível de autorização.";
-                    AlertDialog.Builder dlg = new AlertDialog.Builder(TelaJogoForca.this);
+                    String msg = "DICA: Grau para o qual o conjunto de funções abrange todas as tarefas especificadas e objetivos do usuário.";
+                    AlertDialog.Builder dlg = new AlertDialog.Builder(TelaJogoForcaCompletudeFuncional.this);
                     dlg.setMessage(msg);
                     dlg.setNeutralButton("OK", null);
                     dlg.show();
@@ -281,14 +325,14 @@ public class TelaJogoForca extends AppCompatActivity implements Serializable {
             public void onClick(View view) {
                 if (pontos < 40) {
                     String msg = "É necessário possuir 40 pontos para utilizar esta ajuda!";
-                    AlertDialog.Builder dlg = new AlertDialog.Builder(TelaJogoForca.this);
+                    AlertDialog.Builder dlg = new AlertDialog.Builder(TelaJogoForcaCompletudeFuncional.this);
                     dlg.setMessage(msg);
                     dlg.setNeutralButton("OK", null);
                     dlg.show();
                 } else {
                     if (eliminar_letra >= 3) {
                         String msg = "Essa ajuda só pode ser utilizada três vezes em cada desafio!";
-                        AlertDialog.Builder dlg = new AlertDialog.Builder(TelaJogoForca.this);
+                        AlertDialog.Builder dlg = new AlertDialog.Builder(TelaJogoForcaCompletudeFuncional.this);
                         dlg.setMessage(msg);
                         dlg.setNeutralButton("OK", null);
                         dlg.show();
@@ -297,29 +341,29 @@ public class TelaJogoForca extends AppCompatActivity implements Serializable {
                         pontos = pontos - 40;
                         calcularPontuação();
                         if (eliminar_letra == 0) {
-                            button_t.setText("");
+                            button_w.setText("");
                             button_b.setText("");
                             button_z.setText("");
-                            button_t.setEnabled(false);
+                            button_w.setEnabled(false);
                             button_b.setEnabled(false);
                             button_z.setEnabled(false);
                         }
                         if (eliminar_letra == 1) {
-                            button_m.setText("");
-                            button_q.setText("");
+                            button_r.setText("");
                             button_v.setText("");
-                            button_m.setEnabled(false);
-                            button_q.setEnabled(false);
+                            button_j.setText("");
+                            button_r.setEnabled(false);
+                            button_j.setEnabled(false);
                             button_v.setEnabled(false);
 
                         }
                         if (eliminar_letra == 2) {
-                            button_d.setText("");
-                            button_f.setText("");
-                            button_j.setText("");
-                            button_d.setEnabled(false);
-                            button_j.setEnabled(false);
-                            button_f.setEnabled(false);
+                            button_h.setText("");
+                            button_k.setText("");
+                            button_s.setText("");
+                            button_h.setEnabled(false);
+                            button_k.setEnabled(false);
+                            button_s.setEnabled(false);
                         }
                         eliminar_letra = eliminar_letra + 1;
                     }
@@ -330,12 +374,11 @@ public class TelaJogoForca extends AppCompatActivity implements Serializable {
         button_a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                letra6.setText("A");
-                letra9.setText("A");
+                letra18.setText("A");
                 button_a.setText("");
                 button_a.setEnabled(false);
-                acertos = acertos + 2;
-                pontos = pontos + 20;
+                acertos = acertos + 1;
+                pontos = pontos + 10;
                 calcularPontuação();
                 verificarAcertos();
                 verSentimento(2);
@@ -358,11 +401,12 @@ public class TelaJogoForca extends AppCompatActivity implements Serializable {
         button_c.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                letra8.setText("Ç");
+                letra1.setText("C");
+                letra14.setText("C");
                 button_c.setText("");
                 button_c.setEnabled(false);
-                acertos = acertos + 1;
-                pontos = pontos + 10;
+                acertos = acertos + 2;
+                pontos = pontos + 20;
                 calcularPontuação();
                 verificarAcertos();
                 verSentimento(2);
@@ -372,23 +416,25 @@ public class TelaJogoForca extends AppCompatActivity implements Serializable {
         button_d.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                letra9.setText("D");
                 button_d.setText("");
                 button_d.setEnabled(false);
-                erro = erro + 1;
-                pontos = pontos - 10;
+                acertos = acertos + 1;
+                pontos = pontos + 10;
                 calcularPontuação();
-                mudarImagemForca();
-                verSentimento(3);
+                verificarAcertos();
+                verSentimento(2);
             }
         });
 
         button_e.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                letra2.setText("E");
+                letra6.setText("E");
+                letra10.setText("E");
                 button_e.setText("");
-                acertos = acertos + 1;
-                pontos = pontos + 10;
+                acertos = acertos + 2;
+                pontos = pontos + 20;
                 calcularPontuação();
                 button_e.setEnabled(false);
                 verificarAcertos();
@@ -399,27 +445,28 @@ public class TelaJogoForca extends AppCompatActivity implements Serializable {
         button_f.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                letra11.setText("F");
                 button_f.setText("");
                 button_f.setEnabled(false);
-                erro = erro + 1;
-                pontos = pontos - 10;
+                acertos = acertos + 1;
+                pontos = pontos + 10;
                 calcularPontuação();
-                verSentimento(3);
-                mudarImagemForca();
+                button_f.setEnabled(false);
+                verificarAcertos();
+                verSentimento(2);
             }
         });
 
         button_g.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                letra3.setText("G");
                 button_g.setText("");
                 button_g.setEnabled(false);
-                acertos = acertos + 1;
-                pontos = pontos + 10;
+                erro = erro + 1;
+                pontos = pontos - 10;
                 calcularPontuação();
-                verificarAcertos();
-                verSentimento(2);
+                mudarImagemForca();
+                verSentimento(3);
             }
         });
 
@@ -439,13 +486,15 @@ public class TelaJogoForca extends AppCompatActivity implements Serializable {
         button_i.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                letra15.setText("I");
                 button_i.setText("");
                 button_i.setEnabled(false);
-                erro = erro + 1;
-                pontos = pontos - 10;
+                acertos = acertos + 1;
+                pontos = pontos + 10;
                 calcularPontuação();
-                mudarImagemForca();
-                verSentimento(3);
+                button_i.setEnabled(false);
+                verificarAcertos();
+                verSentimento(2);
             }
         });
 
@@ -478,37 +527,41 @@ public class TelaJogoForca extends AppCompatActivity implements Serializable {
         button_l.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                letra19.setText("L");
+                letra5.setText("L");
                 button_l.setText("");
                 button_l.setEnabled(false);
-                erro = erro + 1;
-                pontos = pontos - 10;
+                acertos = acertos + 2;
+                pontos = pontos + 20;
                 calcularPontuação();
-                mudarImagemForca();
-                verSentimento(3);
+                verificarAcertos();
+                verSentimento(2);
             }
         });
 
         button_m.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                letra3.setText("M");
                 button_m.setText("");
                 button_m.setEnabled(false);
-                erro = erro + 1;
-                pontos = pontos - 10;
+                acertos = acertos + 1;
+                pontos = pontos + 10;
                 calcularPontuação();
-                mudarImagemForca();
-                verSentimento(3);
+                verificarAcertos();
+                verSentimento(2);
             }
         });
 
         button_n.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                letra7.setText("N");
+                letra14.setText("N");
+                letra17.setText("N");
                 button_n.setText("");
                 button_n.setEnabled(false);
-                acertos = acertos + 1;
-                pontos = pontos + 10;
+                acertos = acertos + 2;
+                pontos = pontos + 20;
                 calcularPontuação();
                 verificarAcertos();
                 verSentimento(2);
@@ -518,26 +571,29 @@ public class TelaJogoForca extends AppCompatActivity implements Serializable {
         button_o.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                letra2.setText("O");
+                letra16.setText("O");
                 button_o.setText("");
                 button_o.setEnabled(false);
-                erro = erro + 1;
-                pontos = pontos - 10;
+                acertos = acertos + 2;
+                pontos = pontos + 20;
                 calcularPontuação();
-                mudarImagemForca();
-                verSentimento(3);
+                verificarAcertos();
+                verSentimento(2);
             }
         });
 
         button_p.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                letra2.setText("P");
                 button_p.setText("");
                 button_p.setEnabled(false);
-                erro = erro + 1;
-                pontos = pontos - 10;
+                acertos = acertos + 1;
+                pontos = pontos + 10;
                 calcularPontuação();
-                mudarImagemForca();
-                verSentimento(3);
+                verificarAcertos();
+                verSentimento(2);
             }
         });
 
@@ -548,8 +604,9 @@ public class TelaJogoForca extends AppCompatActivity implements Serializable {
                 button_q.setEnabled(false);
                 erro = erro + 1;
                 pontos = pontos - 10;
-                calcularPontuação();
                 mudarImagemForca();
+                button_r.setEnabled(false);
+                calcularPontuação();
                 verSentimento(3);
             }
         });
@@ -558,51 +615,50 @@ public class TelaJogoForca extends AppCompatActivity implements Serializable {
         button_r.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                letra5.setText("R");
                 button_r.setText("");
+                erro = erro + 1;
+                pontos = pontos - 10;
+                mudarImagemForca();
                 button_r.setEnabled(false);
-                acertos = acertos + 1;
-                pontos = pontos + 10;
                 calcularPontuação();
-                verificarAcertos();
-                verSentimento(2);
+                verSentimento(3);
             }
         });
         button_s.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                letra1.setText("S");
                 button_s.setText("");
-                acertos = acertos + 1;
-                pontos = pontos + 10;
+                erro = erro + 1;
+                pontos = pontos - 10;
+                mudarImagemForca();
                 button_s.setEnabled(false);
                 calcularPontuação();
-                verificarAcertos();
-                verSentimento(2);
+                verSentimento(3);
             }
         });
 
         button_t.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                letra7.setText("T");
                 button_t.setText("");
-                erro = erro + 1;
-                pontos = pontos - 10;
-                mudarImagemForca();
-                button_t.setEnabled(false);
+                acertos = acertos + 1;
+                pontos = pontos + 10;
                 calcularPontuação();
-                verSentimento(3);
+                verificarAcertos();
+                verSentimento(2);
             }
         });
 
         button_u.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                letra4.setText("U");
+                letra8.setText("U");
+                letra12.setText("U");
                 button_u.setText("");
                 button_u.setEnabled(false);
-                acertos = acertos + 1;
-                pontos = pontos + 10;
+                acertos = acertos + 2;
+                pontos = pontos + 20;
                 calcularPontuação();
                 verificarAcertos();
                 verSentimento(2);
@@ -677,15 +733,26 @@ public class TelaJogoForca extends AppCompatActivity implements Serializable {
         button_ver_resposta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                letra1.setText(letracerta1);
-                letra2.setText(letracerta2);
-                letra3.setText(letracerta3);
-                letra4.setText(letracerta4);
-                letra5.setText(letracerta5);
-                letra6.setText(letracerta6);
-                letra7.setText(letracerta7);
-                letra8.setText("Ç");
-                letra9.setText(letracerta9);
+                letra1.setText("C");
+                letra2.setText("O");
+                letra3.setText("M");
+                letra4.setText("P");
+                letra5.setText("L");
+                letra6.setText("E");
+                letra7.setText("T");
+                letra8.setText("U");
+                letra9.setText("D");
+                letra10.setText("E");
+                letra11.setText("F");
+                letra12.setText("U");
+                letra13.setText("N");
+                letra14.setText("C");
+                letra15.setText("I");
+                letra16.setText("O");
+                letra17.setText("N");
+                letra18.setText("A");
+                letra19.setText("L");
+
             }
         });
 
@@ -722,26 +789,26 @@ public class TelaJogoForca extends AppCompatActivity implements Serializable {
         button_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PopupMenu popupMenu = new PopupMenu(TelaJogoForca.this, button_menu);
+                PopupMenu popupMenu = new PopupMenu(TelaJogoForcaCompletudeFuncional.this, button_menu);
                 popupMenu.getMenuInflater().inflate(R.menu.popup_menu, popupMenu.getMenu());
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
                         String s = item.getTitle().toString();
                         if (s.equals("Caderno")) {
-                            Intent intent = new Intent(TelaJogoForca.this, TelaCadernoCaracteristicasQualidade.class);
+                            Intent intent = new Intent(TelaJogoForcaCompletudeFuncional.this, TelaCadernoCaracteristicasQualidade.class);
                             startActivity(intent);
                         }
                         if (s.equals("Desempenho")) {
-                            Intent intent = new Intent(TelaJogoForca.this, TelaDesempenho.class);
+                            Intent intent = new Intent(TelaJogoForcaCompletudeFuncional.this, TelaDesempenho.class);
                             startActivity(intent);
                         }
                         if (s.equals("Ajustes")) {
-                            Intent intent = new Intent(TelaJogoForca.this, TelaAjustes.class);
+                            Intent intent = new Intent(TelaJogoForcaCompletudeFuncional.this, TelaAjustes.class);
                             startActivity(intent);
                         }
                         if (s.equals("Avaliar")) {
-                            Intent intent = new Intent(TelaJogoForca.this, TelaAvaliacao.class);
+                            Intent intent = new Intent(TelaJogoForcaCompletudeFuncional.this, TelaAvaliacao.class);
                             startActivity(intent);
                         }
                         return true;
@@ -1182,7 +1249,7 @@ public class TelaJogoForca extends AppCompatActivity implements Serializable {
 
 
     public void finish(){
-        AlertDialog.Builder alerta = new AlertDialog.Builder(TelaJogoForca.this);
+        AlertDialog.Builder alerta = new AlertDialog.Builder(TelaJogoForcaCompletudeFuncional.this);
         alerta.setMessage("Tem certeza que gostaria de abandonar o jogo?");
         alerta.setCancelable(false);
         alerta.setNegativeButton("Não", new DialogInterface.OnClickListener() {
@@ -1194,7 +1261,7 @@ public class TelaJogoForca extends AppCompatActivity implements Serializable {
         alerta.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(TelaJogoForca.this, TelaMenu.class);
+                Intent intent = new Intent(TelaJogoForcaCompletudeFuncional.this, TelaMenu.class);
                 startActivity(intent);
             }
         });

@@ -40,7 +40,9 @@
         <activity android:name=".View.TelaFiltro" />
         <activity android:name=".View.TelaCadernoCaracteristicasQualidade" />
         <activity android:name=".View.TelaAjustes" />
-        <activity android:name=".View.TelaAvaliacao"></activity>
+        <activity android:name=".View.TelaAvaliacao" />
+        <activity android:name=".View.TelaJogoForcaAdequacaoFuncional" />
+        <activity android:name=".View.TelaJogoForcaCompletudeFuncional"></activity>
     </application>
 
 </manifest>
