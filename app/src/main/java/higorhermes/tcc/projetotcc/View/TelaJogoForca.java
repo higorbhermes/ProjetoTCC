@@ -3,6 +3,7 @@ package higorhermes.tcc.projetotcc.View;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import java.io.Serializable;
 import java.util.Random;
 
+import higorhermes.tcc.projetotcc.Model.Ajustes;
 import higorhermes.tcc.projetotcc.Model.JogoForca;
 import higorhermes.tcc.projetotcc.R;
 import io.realm.Realm;
@@ -696,11 +698,7 @@ public class TelaJogoForca extends AppCompatActivity implements Serializable {
                 jForca.setErro(0);
                 realm.copyToRealm(jForca);
                 realm.commitTransaction();
-                String msg = "Sucesso";
-                AlertDialog.Builder dlg = new AlertDialog.Builder(TelaJogoForca.this);
-                dlg.setMessage(msg);
-                dlg.setNeutralButton("OK", null);
-                dlg.show();
+                NovaTela();
             }
         });
 
@@ -715,11 +713,7 @@ public class TelaJogoForca extends AppCompatActivity implements Serializable {
                 jForca.setAcerto(0);
                 realm.copyToRealm(jForca);
                 realm.commitTransaction();
-                String msg = "Sucesso";
-                AlertDialog.Builder dlg = new AlertDialog.Builder(TelaJogoForca.this);
-                dlg.setMessage(msg);
-                dlg.setNeutralButton("OK", null);
-                dlg.show();
+                NovaTela();
             }
         });
 
@@ -732,8 +726,20 @@ public class TelaJogoForca extends AppCompatActivity implements Serializable {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
                         String s = item.getTitle().toString();
+                        if (s.equals("Caderno")) {
+                            Intent intent = new Intent(TelaJogoForca.this, TelaCadernoCaracteristicasQualidade.class);
+                            startActivity(intent);
+                        }
                         if (s.equals("Desempenho")) {
                             Intent intent = new Intent(TelaJogoForca.this, TelaDesempenho.class);
+                            startActivity(intent);
+                        }
+                        if (s.equals("Ajustes")) {
+                            Intent intent = new Intent(TelaJogoForca.this, TelaAjustes.class);
+                            startActivity(intent);
+                        }
+                        if (s.equals("Avaliar")) {
+                            Intent intent = new Intent(TelaJogoForca.this, TelaAvaliacao.class);
                             startActivity(intent);
                         }
                         return true;
@@ -784,7 +790,7 @@ public class TelaJogoForca extends AppCompatActivity implements Serializable {
             button_eliminar.setEnabled(false);
             button_revelar.setEnabled(false);
             verSentimento(4);
-
+            playSound(4);
         }
     }
 
@@ -812,6 +818,7 @@ public class TelaJogoForca extends AppCompatActivity implements Serializable {
             }
             calcularPontuação();
             verSentimento(5);
+            playSound(3);
             button_dica.setEnabled(false);
             button_eliminar.setEnabled(false);
             button_revelar.setEnabled(false);
@@ -1143,6 +1150,34 @@ public class TelaJogoForca extends AppCompatActivity implements Serializable {
             button_sentimento.setBackgroundResource(R.drawable.apaixonado50px);
         }
     }
+
+    public void NovaTela(){
+
+    }
+
+    public void playSound(int num){
+        Realm realm = Realm.getDefaultInstance();
+        Ajustes aj = realm.where(Ajustes.class).equalTo("id", 1).findFirst();
+        if (aj.getSom() == 1){
+            if (num == 1){
+                MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.respostacerta);
+                mediaPlayer.start();
+            }
+            if (num == 2){
+                MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.respostacerta);
+                mediaPlayer.start();
+            }
+            if (num == 3){
+                MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.respostacerta);
+                mediaPlayer.start();
+            }
+            if (num == 4){
+                MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.respostaerrada);
+                mediaPlayer.start();
+            }
+        }
+    }
+
 
     public void finish(){
         AlertDialog.Builder alerta = new AlertDialog.Builder(TelaJogoForca.this);

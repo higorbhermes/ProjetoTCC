@@ -48,6 +48,7 @@ public class TelaFiltro extends AppCompatActivity implements Serializable {
                                 bundle.putInt("id", 201);
                                 bundle.putInt("filtro", 1);
                                 bundle.putInt("contador_partidas", 1);
+                                bundle.putInt("contador_partidas", 1);
                                 Intent intent = new Intent(TelaFiltro.this, TelaJogoForca.class);
                                 intent.putExtra("partidas", partidas);
                                 intent.putExtras(bundle);
@@ -62,7 +63,7 @@ public class TelaFiltro extends AppCompatActivity implements Serializable {
                                     Bundle bundle = new Bundle();
                                     bundle.putInt("pont", 100);
                                     bundle.putInt("id", 201);
-                                    bundle.putInt("filtro", 1);
+                                    bundle.putInt("filtro", 2);
                                     bundle.putInt("contador_partidas", 1);
                                     Intent intent = new Intent(TelaFiltro.this, TelaJogoForca.class);
                                     intent.putExtra("partidas", partidas);
@@ -86,7 +87,7 @@ public class TelaFiltro extends AppCompatActivity implements Serializable {
                                     Bundle bundle = new Bundle();
                                     bundle.putInt("pont", 100);
                                     bundle.putInt("id", 201);
-                                    bundle.putInt("filtro", 1);
+                                    bundle.putInt("filtro", 3);
                                     bundle.putInt("contador_partidas", 1);
                                     Intent intent = new Intent(TelaFiltro.this, TelaJogoForca.class);
                                     intent.putExtra("partidas", partidas);
@@ -111,7 +112,7 @@ public class TelaFiltro extends AppCompatActivity implements Serializable {
                                     Bundle bundle = new Bundle();
                                     bundle.putInt("pont", 100);
                                     bundle.putInt("id", 201);
-                                    bundle.putInt("filtro", 1);
+                                    bundle.putInt("filtro", 4);
                                     bundle.putInt("contador_partidas", 1);
                                     Intent intent = new Intent(TelaFiltro.this, TelaJogoForca.class);
                                     intent.putExtra("partidas", partidas);
@@ -136,7 +137,7 @@ public class TelaFiltro extends AppCompatActivity implements Serializable {
                                     Bundle bundle = new Bundle();
                                     bundle.putInt("pont", 100);
                                     bundle.putInt("id", 201);
-                                    bundle.putInt("filtro", 1);
+                                    bundle.putInt("filtro", 5);
                                     bundle.putInt("contador_partidas", 1);
                                     Intent intent = new Intent(TelaFiltro.this, TelaJogoForca.class);
                                     intent.putExtra("partidas", partidas);

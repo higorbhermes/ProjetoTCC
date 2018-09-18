@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.Button;
 
 import higorhermes.tcc.projetotcc.MainActivity;
+import higorhermes.tcc.projetotcc.Model.Ajustes;
 import higorhermes.tcc.projetotcc.R;
+import io.realm.Realm;
 
 /**
  * Created by higor on 29/07/18.
@@ -19,10 +21,12 @@ public class TelaMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_menu);
+        AdicionarAjustes();
         Button button_jogar = (Button) findViewById(R.id.button_jogar);
         Button button_caderno = (Button) findViewById(R.id.button_caderno);
         Button button_dados = (Button) findViewById(R.id.button_dados);
         Button button_desempenho = (Button) findViewById(R.id.button_desempenho);
+        Button button_ajustes = (Button) findViewById(R.id.button_ajustes);
         Button button_sobre = (Button) findViewById(R.id.button_sobre);
         Button button_sair = (Button) findViewById(R.id.button_sair);
 
@@ -54,6 +58,13 @@ public class TelaMenu extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        button_ajustes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TelaMenu.this, TelaAjustes.class);
+                startActivity(intent);
+            }
+        });
         button_sobre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,5 +80,19 @@ public class TelaMenu extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void AdicionarAjustes(){
+        Ajustes ajustes = new Ajustes();
+        ajustes.setId(1);
+        ajustes.setSom(1);
+        Realm realm = Realm.getDefaultInstance();
+        Ajustes aj = realm.where(Ajustes.class)
+                .equalTo("id",ajustes.getId()).findFirst();
+        if(aj == null){
+            realm.beginTransaction();
+            realm.copyToRealm(ajustes);
+            realm.commitTransaction();
+        }
     }
 }

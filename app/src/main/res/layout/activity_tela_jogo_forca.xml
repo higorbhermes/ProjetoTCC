@@ -363,10 +363,7 @@
                     android:layout_marginLeft="15px"
                     android:layout_marginRight="15px"
                     android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:drawableTop="@drawable/resposta70px"
-                    android:text="REsposta"
-                    android:textColor="@android:color/background_light" />
+                    android:text="REsposta" />
 
                 <Button
                     android:id="@+id/button_proximo_respostaerrada"
@@ -375,10 +372,7 @@
                     android:layout_marginLeft="15px"
                     android:layout_marginRight="15px"
                     android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:drawableTop="@drawable/proximo70"
-                    android:text="PRÓXIMO"
-                    android:textColor="@android:color/background_light" />
+                    android:text="PRÓXIMO" />
             </LinearLayout>
 
             <LinearLayout
@@ -395,10 +389,7 @@
                     android:layout_marginLeft="15px"
                     android:layout_marginRight="15px"
                     android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:drawableTop="@drawable/proximo70"
-                    android:text="PRÓXIMO"
-                    android:textColor="@android:color/background_light" />
+                    android:text="PRÓXIMO" />
             </LinearLayout>
 
             <LinearLayout

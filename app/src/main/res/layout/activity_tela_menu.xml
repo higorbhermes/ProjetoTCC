@@ -142,14 +142,14 @@
                     android:layout_weight="1" />
 
                 <Button
-                    android:id="@+id/button_configuracoes"
+                    android:id="@+id/button_ajustes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
                     android:drawableTop="@drawable/configuracoes80"
-                    android:textColor="@android:color/background_light"
-                    android:text="AJUSTES" />
+                    android:text="AJUSTES"
+                    android:textColor="@android:color/background_light" />
 
                 <TextView
                     android:id="@+id/tv_204"
