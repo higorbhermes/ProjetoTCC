@@ -20,11 +20,11 @@ import higorhermes.tcc.projetotcc.Model.JogoForca;
 import higorhermes.tcc.projetotcc.R;
 import io.realm.Realm;
 
-public class TelaJogoForcaCompletudeFuncional extends AppCompatActivity {
+public class TelaJogoForcaCorrecaoFuncional extends AppCompatActivity {
     int pontos;
     int erro = 0;
     int acertos = 0;
-    int numero_letras = 19;
+    int numero_letras = 17;
     int eliminar_letra = 0;
     int revelar_letra = 0;
     int menu = 1;
@@ -33,11 +33,10 @@ public class TelaJogoForcaCompletudeFuncional extends AppCompatActivity {
     int contador_partidas;
     int id;
     JogoForca[] partidas;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_jogo_forca_completude_funcional);
+        setContentView(R.layout.activity_tela_jogo_forca_correcao_funcional);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         pontos = bundle.getInt("pont");
@@ -111,8 +110,6 @@ public class TelaJogoForcaCompletudeFuncional extends AppCompatActivity {
         final TextView letra15 = (TextView) findViewById(R.id.letra15);
         final TextView letra16 = (TextView) findViewById(R.id.letra16);
         final TextView letra17 = (TextView) findViewById(R.id.letra17);
-        final TextView letra18 = (TextView) findViewById(R.id.letra18);
-        final TextView letra19 = (TextView) findViewById(R.id.letra19);
         final LinearLayout layout_0 = (LinearLayout) findViewById(R.id.layout_0);
         final LinearLayout layout_1 = (LinearLayout) findViewById(R.id.layout_1);
         final LinearLayout layout_2 = (LinearLayout) findViewById(R.id.layout_2);
@@ -133,19 +130,19 @@ public class TelaJogoForcaCompletudeFuncional extends AppCompatActivity {
             public void onClick(View view) {
                 if (pontos < 60) {
                     String msg = "É necessário possuir 60 pontos para utilizar esta ajuda!";
-                    AlertDialog.Builder dlg = new AlertDialog.Builder(  TelaJogoForcaCompletudeFuncional.this);
+                    AlertDialog.Builder dlg = new AlertDialog.Builder(  TelaJogoForcaCorrecaoFuncional.this);
                     dlg.setMessage(msg);
                     dlg.setNeutralButton("OK", null);
                     dlg.show();
                 } else {
                     if (revelar_letra >= 3) {
                         String msg = "Essa ajuda só pode ser utilizada três vezes em cada desafio!";
-                        AlertDialog.Builder dlg = new AlertDialog.Builder(TelaJogoForcaCompletudeFuncional.this);
+                        AlertDialog.Builder dlg = new AlertDialog.Builder(TelaJogoForcaCorrecaoFuncional.this);
                         dlg.setMessage(msg);
                         dlg.setNeutralButton("OK", null);
                         dlg.show();
                     } else {
-                        pontos = pontos - 60;
+                       pontos = pontos - 60;
                         calcularPontuação();
                         verSentimento(1);
                         int i = 0;
@@ -155,110 +152,69 @@ public class TelaJogoForcaCompletudeFuncional extends AppCompatActivity {
                             if (num == 1) {
                                 if ((letra1.getText().toString()).equals("___")) {
                                     letra1.setText("C");
-                                    letra14.setText("C");
+                                    letra6.setText("Ç");
+                                    letra12.setText("C");
                                     i = 1;
                                     revelar_letra = revelar_letra + 1;
                                     button_c.setEnabled(false);
                                     button_c.setText("");
-                                    acertos = acertos + 2;
+                                    acertos = acertos + 3;
                                     verificarAcertos();
                                 }
                             }
                             if (num == 2) {
                                 if ((letra2.getText().toString()).equals("___")) {
                                     letra2.setText("O");
-                                    letra16.setText("O");
+                                    letra8.setText("O");
+                                    letra14.setText("O");
                                     i = 1;
                                     revelar_letra = revelar_letra + 1;
                                     button_o.setEnabled(false);
                                     button_o.setText("");
-                                    acertos = acertos + 2;
+                                    acertos = acertos + 3;
                                     verificarAcertos();
                                 }
                             }
                             if (num == 3) {
                                 if ((letra3.getText().toString()).equals("___")) {
-                                    letra3.setText("M");
+                                    letra3.setText("R");
+                                    letra4.setText("R");
                                     i = 1;
                                     revelar_letra = revelar_letra + 1;
-                                    button_m.setEnabled(false);
-                                    button_m.setText("");
-                                    acertos = acertos + 1;
-                                    verificarAcertos();
-                                }
-                            }
-                            if (num == 4) {
-                                if ((letra4.getText().toString()).equals("___")) {
-                                    letra4.setText("P");
-                                    i = 1;
-                                    revelar_letra = revelar_letra + 1;
-                                    button_p.setEnabled(false);
-                                    button_p.setText("");
-                                    acertos = acertos + 1;
+                                    button_r.setEnabled(false);
+                                    button_r.setText("");
+                                    acertos = acertos + 2;
                                     verificarAcertos();
                                 }
                             }
                             if (num == 5) {
                                 if ((letra5.getText().toString()).equals("___")) {
-                                    letra5.setText("L");
-                                    letra19.setText("L");
-                                    i = 1;
-                                    revelar_letra = revelar_letra + 1;
-                                    button_l.setEnabled(false);
-                                    button_l.setText("");
-                                    acertos = acertos + 2;
-                                    verificarAcertos();
-                                }
-                            }
-                            if (num == 6) {
-                                if ((letra6.getText().toString()).equals("___")) {
-                                    letra6.setText("E");
-                                    letra10.setText("E");
+                                    letra5.setText("E");
                                     i = 1;
                                     revelar_letra = revelar_letra + 1;
                                     button_e.setEnabled(false);
                                     button_e.setText("");
-                                    acertos = acertos + 2;
+                                    acertos = acertos + 1;
                                     verificarAcertos();
                                 }
                             }
+
                             if (num == 7) {
                                 if ((letra7.getText().toString()).equals("___")) {
-                                    letra7.setText("T");
+                                    letra7.setText("Ã");
+                                    letra16.setText("A");
                                     i = 1;
                                     revelar_letra = revelar_letra + 1;
-                                    button_t.setEnabled(false);
-                                    button_t.setText("");
-                                    acertos = acertos + 1;
-                                    verificarAcertos();
-                                }
-                            }
-                            if (num == 8) {
-                                if ((letra8.getText().toString()).equals("___")) {
-                                    letra8.setText("U");
-                                    letra12.setText("U");
-                                    i = 1;
-                                    revelar_letra = revelar_letra + 1;
-                                    button_u.setEnabled(false);
-                                    button_u.setText("");
+                                    button_a.setEnabled(false);
+                                    button_a.setText("");
                                     acertos = acertos + 2;
                                     verificarAcertos();
                                 }
                             }
+
                             if (num == 9) {
                                 if ((letra9.getText().toString()).equals("___")) {
-                                    letra9.setText("D");
-                                    i = 1;
-                                    revelar_letra = revelar_letra + 1;
-                                    button_d.setEnabled(false);
-                                    button_d.setText("");
-                                    acertos = acertos + 1;
-                                    verificarAcertos();
-                                }
-                            }
-                            if (num == 11) {
-                                if ((letra11.getText().toString()).equals("___")) {
-                                    letra11.setText("F");
+                                    letra9.setText("F");
                                     i = 1;
                                     revelar_letra = revelar_letra + 1;
                                     button_f.setEnabled(false);
@@ -268,10 +224,22 @@ public class TelaJogoForcaCompletudeFuncional extends AppCompatActivity {
                                 }
                             }
 
-                            if (num == 13) {
-                                if ((letra13.getText().toString()).equals("___")) {
-                                    letra13.setText("N");
-                                    letra17.setText("N");
+                            if (num == 10) {
+                                if ((letra10.getText().toString()).equals("___")) {
+                                    letra10.setText("U");
+                                    i = 1;
+                                    revelar_letra = revelar_letra + 1;
+                                    button_u.setEnabled(false);
+                                    button_u.setText("");
+                                    acertos = acertos + 1;
+                                    verificarAcertos();
+                                }
+                            }
+
+                            if (num == 11) {
+                                if ((letra11.getText().toString()).equals("___")) {
+                                    letra11.setText("N");
+                                    letra15.setText("N");
                                     i = 1;
                                     revelar_letra = revelar_letra + 1;
                                     button_n.setEnabled(false);
@@ -281,9 +249,9 @@ public class TelaJogoForcaCompletudeFuncional extends AppCompatActivity {
                                 }
                             }
 
-                            if (num == 15) {
-                                if ((letra15.getText().toString()).equals("___")) {
-                                    letra15.setText("I");
+                            if (num == 13) {
+                                if ((letra13.getText().toString()).equals("___")) {
+                                    letra13.setText("I");
                                     i = 1;
                                     revelar_letra = revelar_letra + 1;
                                     button_i.setEnabled(false);
@@ -293,13 +261,13 @@ public class TelaJogoForcaCompletudeFuncional extends AppCompatActivity {
                                 }
                             }
 
-                            if (num == 18) {
-                                if ((letra18.getText().toString()).equals("___")) {
-                                    letra18.setText("A");
+                            if (num == 17) {
+                                if ((letra17.getText().toString()).equals("___")) {
+                                    letra17.setText("L");
                                     i = 1;
                                     revelar_letra = revelar_letra + 1;
-                                    button_i.setEnabled(false);
-                                    button_i.setText("");
+                                    button_l.setEnabled(false);
+                                    button_l.setText("");
                                     acertos = acertos + 1;
                                     verificarAcertos();
                                 }
@@ -315,7 +283,7 @@ public class TelaJogoForcaCompletudeFuncional extends AppCompatActivity {
             public void onClick(View view) {
                 if (pontos < 20) {
                     String msg = "É necessário possuir 20 pontos para utilizar esta ajuda!";
-                    AlertDialog.Builder dlg = new AlertDialog.Builder(TelaJogoForcaCompletudeFuncional.this);
+                    AlertDialog.Builder dlg = new AlertDialog.Builder(TelaJogoForcaCorrecaoFuncional.this);
                     dlg.setMessage(msg);
                     dlg.setNeutralButton("OK", null);
                     dlg.show();
@@ -323,8 +291,8 @@ public class TelaJogoForcaCompletudeFuncional extends AppCompatActivity {
                     pontos = pontos - 20;
                     calcularPontuação();
                     verSentimento(1);
-                    String msg = "DICA: Grau para o qual o conjunto de funções abrange todas as tarefas especificadas e objetivos do usuário.";
-                    AlertDialog.Builder dlg = new AlertDialog.Builder(TelaJogoForcaCompletudeFuncional.this);
+                    String msg = "DICA:  Grau para o qual um produto ou sistema fornece os resultados corretos com o grau de precisão necessário.";
+                    AlertDialog.Builder dlg = new AlertDialog.Builder(TelaJogoForcaCorrecaoFuncional.this);
                     dlg.setMessage(msg);
                     dlg.setNeutralButton("OK", null);
                     dlg.show();
@@ -337,14 +305,14 @@ public class TelaJogoForcaCompletudeFuncional extends AppCompatActivity {
             public void onClick(View view) {
                 if (pontos < 40) {
                     String msg = "É necessário possuir 40 pontos para utilizar esta ajuda!";
-                    AlertDialog.Builder dlg = new AlertDialog.Builder(TelaJogoForcaCompletudeFuncional.this);
+                    AlertDialog.Builder dlg = new AlertDialog.Builder(TelaJogoForcaCorrecaoFuncional.this);
                     dlg.setMessage(msg);
                     dlg.setNeutralButton("OK", null);
                     dlg.show();
                 } else {
                     if (eliminar_letra >= 3) {
                         String msg = "Essa ajuda só pode ser utilizada três vezes em cada desafio!";
-                        AlertDialog.Builder dlg = new AlertDialog.Builder(TelaJogoForcaCompletudeFuncional.this);
+                        AlertDialog.Builder dlg = new AlertDialog.Builder(TelaJogoForcaCorrecaoFuncional.this);
                         dlg.setMessage(msg);
                         dlg.setNeutralButton("OK", null);
                         dlg.show();
@@ -361,10 +329,10 @@ public class TelaJogoForcaCompletudeFuncional extends AppCompatActivity {
                             button_z.setEnabled(false);
                         }
                         if (eliminar_letra == 1) {
-                            button_r.setText("");
+                            button_m.setText("");
                             button_v.setText("");
                             button_j.setText("");
-                            button_r.setEnabled(false);
+                            button_m.setEnabled(false);
                             button_j.setEnabled(false);
                             button_v.setEnabled(false);
 
@@ -386,11 +354,12 @@ public class TelaJogoForcaCompletudeFuncional extends AppCompatActivity {
         button_a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                letra18.setText("A");
+                letra7.setText("A");
+                letra16.setText("A");
                 button_a.setText("");
                 button_a.setEnabled(false);
-                acertos = acertos + 1;
-                pontos = pontos + 10;
+                acertos = acertos + 2;
+                pontos = pontos + 20;
                 calcularPontuação();
                 verSentimento(2);
                 verificarAcertos();
@@ -414,11 +383,12 @@ public class TelaJogoForcaCompletudeFuncional extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 letra1.setText("C");
-                letra14.setText("C");
+                letra6.setText("Ç");
+                letra12.setText("C");
                 button_c.setText("");
                 button_c.setEnabled(false);
-                acertos = acertos + 2;
-                pontos = pontos + 20;
+                acertos = acertos + 3;
+                pontos = pontos + 30;
                 calcularPontuação();
                 verSentimento(2);
                 verificarAcertos();
@@ -428,25 +398,23 @@ public class TelaJogoForcaCompletudeFuncional extends AppCompatActivity {
         button_d.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                letra9.setText("D");
                 button_d.setText("");
+                erro = erro + 1;
                 button_d.setEnabled(false);
-                acertos = acertos + 1;
-                pontos = pontos + 10;
+                pontos = pontos - 10;
                 calcularPontuação();
-                verSentimento(2);
-                verificarAcertos();
+                verSentimento(3);
+                mudarImagemForca();
             }
         });
 
         button_e.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                letra6.setText("E");
-                letra10.setText("E");
+                letra5.setText("E");
                 button_e.setText("");
-                acertos = acertos + 2;
-                pontos = pontos + 20;
+                acertos = acertos + 1;
+                pontos = pontos + 10;
                 calcularPontuação();
                 button_e.setEnabled(false);
                 verSentimento(2);
@@ -457,13 +425,12 @@ public class TelaJogoForcaCompletudeFuncional extends AppCompatActivity {
         button_f.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                letra11.setText("F");
+                letra9.setText("F");
                 button_f.setText("");
                 button_f.setEnabled(false);
                 acertos = acertos + 1;
                 pontos = pontos + 10;
                 calcularPontuação();
-                button_f.setEnabled(false);
                 verSentimento(2);
                 verificarAcertos();
             }
@@ -473,8 +440,8 @@ public class TelaJogoForcaCompletudeFuncional extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 button_g.setText("");
-                button_g.setEnabled(false);
                 erro = erro + 1;
+                button_g.setEnabled(false);
                 pontos = pontos - 10;
                 calcularPontuação();
                 verSentimento(3);
@@ -498,13 +465,12 @@ public class TelaJogoForcaCompletudeFuncional extends AppCompatActivity {
         button_i.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                letra15.setText("I");
+                letra13.setText("I");
                 button_i.setText("");
                 button_i.setEnabled(false);
                 acertos = acertos + 1;
                 pontos = pontos + 10;
                 calcularPontuação();
-                button_i.setEnabled(false);
                 verSentimento(2);
                 verificarAcertos();
             }
@@ -539,11 +505,10 @@ public class TelaJogoForcaCompletudeFuncional extends AppCompatActivity {
         button_l.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                letra19.setText("L");
-                letra5.setText("L");
+                letra17.setText("L");
                 button_l.setText("");
                 button_l.setEnabled(false);
-                acertos = acertos + 2;
+                acertos = acertos + 1;
                 pontos = pontos + 20;
                 calcularPontuação();
                 verSentimento(2);
@@ -554,22 +519,21 @@ public class TelaJogoForcaCompletudeFuncional extends AppCompatActivity {
         button_m.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                letra3.setText("M");
                 button_m.setText("");
                 button_m.setEnabled(false);
-                acertos = acertos + 1;
-                pontos = pontos + 10;
+                erro = erro + 1;
+                pontos = pontos - 10;
+                mudarImagemForca();
+                verSentimento(3);
                 calcularPontuação();
-                verSentimento(2);
-                verificarAcertos();
             }
         });
 
         button_n.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                letra13.setText("N");
-                letra17.setText("N");
+                letra11.setText("N");
+                letra15.setText("N");
                 button_n.setText("");
                 button_n.setEnabled(false);
                 acertos = acertos + 2;
@@ -584,11 +548,12 @@ public class TelaJogoForcaCompletudeFuncional extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 letra2.setText("O");
-                letra16.setText("O");
+                letra8.setText("O");
+                letra14.setText("O");
                 button_o.setText("");
                 button_o.setEnabled(false);
-                acertos = acertos + 2;
-                pontos = pontos + 20;
+                acertos = acertos + 3;
+                pontos = pontos + 30;
                 calcularPontuação();
                 verSentimento(2);
                 verificarAcertos();
@@ -596,35 +561,6 @@ public class TelaJogoForcaCompletudeFuncional extends AppCompatActivity {
         });
 
         button_p.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                letra4.setText("P");
-                button_p.setText("");
-                button_p.setEnabled(false);
-                acertos = acertos + 1;
-                pontos = pontos + 10;
-                calcularPontuação();
-                verSentimento(2);
-                verificarAcertos();
-            }
-        });
-
-        button_q.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                button_q.setText("");
-                button_q.setEnabled(false);
-                erro = erro + 1;
-                pontos = pontos - 10;
-                mudarImagemForca();
-                button_r.setEnabled(false);
-                verSentimento(3);
-                calcularPontuação();
-            }
-        });
-
-
-        button_r.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 button_r.setText("");
@@ -636,6 +572,36 @@ public class TelaJogoForcaCompletudeFuncional extends AppCompatActivity {
                 calcularPontuação();
             }
         });
+
+        button_q.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                button_q.setText("");
+                erro = erro + 1;
+                pontos = pontos - 10;
+                mudarImagemForca();
+                button_q.setEnabled(false);
+                verSentimento(3);
+                calcularPontuação();
+            }
+        });
+
+
+        button_r.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                letra3.setText("R");
+                letra4.setText("R");
+                button_r.setText("");
+                button_r.setEnabled(false);
+                acertos = acertos + 2;
+                pontos = pontos + 20;
+                calcularPontuação();
+                verSentimento(2);
+                verificarAcertos();
+            }
+        });
+
         button_s.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -652,25 +618,24 @@ public class TelaJogoForcaCompletudeFuncional extends AppCompatActivity {
         button_t.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                letra7.setText("T");
                 button_t.setText("");
-                acertos = acertos + 1;
-                pontos = pontos + 10;
+                erro = erro + 1;
+                pontos = pontos - 10;
+                mudarImagemForca();
+                button_t.setEnabled(false);
+                verSentimento(3);
                 calcularPontuação();
-                verSentimento(2);
-                verificarAcertos();
             }
         });
 
         button_u.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                letra8.setText("U");
-                letra12.setText("U");
+                letra10.setText("U");
                 button_u.setText("");
                 button_u.setEnabled(false);
-                acertos = acertos + 2;
-                pontos = pontos + 20;
+                acertos = acertos + 1;
+                pontos = pontos + 10;
                 calcularPontuação();
                 verSentimento(2);
                 verificarAcertos();
@@ -747,24 +712,21 @@ public class TelaJogoForcaCompletudeFuncional extends AppCompatActivity {
             public void onClick(View view) {
                 letra1.setText("C");
                 letra2.setText("O");
-                letra3.setText("M");
-                letra4.setText("P");
-                letra5.setText("L");
-                letra6.setText("E");
-                letra7.setText("T");
-                letra8.setText("U");
-                letra9.setText("D");
-                letra10.setText("E");
-                letra11.setText("F");
-                letra12.setText("U");
-                letra13.setText("N");
-                letra14.setText("C");
-                letra15.setText("I");
-                letra16.setText("O");
-                letra17.setText("N");
-                letra18.setText("A");
-                letra19.setText("L");
-
+                letra3.setText("R");
+                letra4.setText("R");
+                letra5.setText("E");
+                letra6.setText("Ç");
+                letra7.setText("Ã");
+                letra8.setText("O");
+                letra9.setText("F");
+                letra10.setText("U");
+                letra11.setText("N");
+                letra12.setText("C");
+                letra13.setText("I");
+                letra14.setText("O");
+                letra15.setText("N");
+                letra16.setText("A");
+                letra17.setText("L");
             }
         });
 
@@ -801,26 +763,26 @@ public class TelaJogoForcaCompletudeFuncional extends AppCompatActivity {
         button_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PopupMenu popupMenu = new PopupMenu(TelaJogoForcaCompletudeFuncional.this, button_menu);
+                PopupMenu popupMenu = new PopupMenu(TelaJogoForcaCorrecaoFuncional.this, button_menu);
                 popupMenu.getMenuInflater().inflate(R.menu.popup_menu, popupMenu.getMenu());
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
                         String s = item.getTitle().toString();
                         if (s.equals("Caderno")) {
-                            Intent intent = new Intent(TelaJogoForcaCompletudeFuncional.this, TelaCadernoCaracteristicasQualidade.class);
+                            Intent intent = new Intent(TelaJogoForcaCorrecaoFuncional.this, TelaCadernoCaracteristicasQualidade.class);
                             startActivity(intent);
                         }
                         if (s.equals("Desempenho")) {
-                            Intent intent = new Intent(TelaJogoForcaCompletudeFuncional.this, TelaDesempenho.class);
+                            Intent intent = new Intent(TelaJogoForcaCorrecaoFuncional.this, TelaDesempenho.class);
                             startActivity(intent);
                         }
                         if (s.equals("Ajustes")) {
-                            Intent intent = new Intent(TelaJogoForcaCompletudeFuncional.this, TelaAjustes.class);
+                            Intent intent = new Intent(TelaJogoForcaCorrecaoFuncional.this, TelaAjustes.class);
                             startActivity(intent);
                         }
                         if (s.equals("Avaliar")) {
-                            Intent intent = new Intent(TelaJogoForcaCompletudeFuncional.this, TelaAvaliacao.class);
+                            Intent intent = new Intent(TelaJogoForcaCorrecaoFuncional.this, TelaAvaliacao.class);
                             startActivity(intent);
                         }
                         return true;
@@ -874,7 +836,6 @@ public class TelaJogoForcaCompletudeFuncional extends AppCompatActivity {
             playSound(4);
         }
     }
-
     void verificarAcertos(){
         final LinearLayout layout_respostacerta = (LinearLayout) findViewById(R.id.layout_respostacerta);
         final LinearLayout layout_teclado1 = (LinearLayout) findViewById(R.id.layout_teclado1);
@@ -1261,7 +1222,7 @@ public class TelaJogoForcaCompletudeFuncional extends AppCompatActivity {
 
 
     public void finish(){
-        AlertDialog.Builder alerta = new AlertDialog.Builder(TelaJogoForcaCompletudeFuncional.this);
+        AlertDialog.Builder alerta = new AlertDialog.Builder(TelaJogoForcaCorrecaoFuncional.this);
         alerta.setMessage("Tem certeza que gostaria de abandonar o jogo?");
         alerta.setCancelable(false);
         alerta.setNegativeButton("Não", new DialogInterface.OnClickListener() {
@@ -1273,7 +1234,7 @@ public class TelaJogoForcaCompletudeFuncional extends AppCompatActivity {
         alerta.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(TelaJogoForcaCompletudeFuncional.this, TelaMenu.class);
+                Intent intent = new Intent(TelaJogoForcaCorrecaoFuncional.this, TelaMenu.class);
                 startActivity(intent);
             }
         });

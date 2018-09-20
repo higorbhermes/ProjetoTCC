@@ -42,7 +42,13 @@
         <activity android:name=".View.TelaAjustes" />
         <activity android:name=".View.TelaAvaliacao" />
         <activity android:name=".View.TelaJogoForcaAdequacaoFuncional" />
-        <activity android:name=".View.TelaJogoForcaCompletudeFuncional"></activity>
+        <activity android:name=".View.TelaJogoForcaCompletudeFuncional" />
+        <activity android:name=".View.TelaJogoForcaCorrecaoFuncional" />
+        <activity android:name=".View.TelaJogoForcaCapacidade" />
+        <activity android:name=".View.TelaJogoForcaCoexistencia" />
+        <activity android:name=".View.TelaJogoForcaUsabilidade" />
+        <activity android:name=".View.TelaJogoForcaAcessibilidade" />
+        <activity android:name=".View.TelaJogoForcaAprendizagem"></activity>
     </application>
 
 </manifest>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fundo100"
-    tools:context="higorhermes.tcc.projetotcc.View.TelaJogoForcaCompletudeFuncional">
+    tools:context="higorhermes.tcc.projetotcc.View.TelaJogoForcaUsabilidade">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -250,10 +250,10 @@
                     android:id="@+id/letra1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15px"
-                    android:layout_marginRight="15px"
                     android:layout_weight="1"
+                    android:layout_marginLeft="15px"
                     android:text="___"
+                    android:layout_marginRight="15px"
                     android:textColor="@android:color/background_light"
                     android:textStyle="bold" />
 
@@ -261,9 +261,9 @@
                     android:id="@+id/letra2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="15px"
                     android:layout_weight="1"
                     android:text="___"
+                    android:layout_marginRight="15px"
                     android:textColor="@android:color/background_light"
                     android:textStyle="bold" />
 
@@ -271,9 +271,9 @@
                     android:id="@+id/letra3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="15px"
                     android:layout_weight="1"
                     android:text="___"
+                    android:layout_marginRight="15px"
                     android:textColor="@android:color/background_light"
                     android:textStyle="bold" />
 
@@ -281,9 +281,9 @@
                     android:id="@+id/letra4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="15px"
                     android:layout_weight="1"
                     android:text="___"
+                    android:layout_marginRight="15px"
                     android:textColor="@android:color/background_light"
                     android:textStyle="bold" />
 
@@ -291,9 +291,9 @@
                     android:id="@+id/letra5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="15px"
                     android:layout_weight="1"
                     android:text="___"
+                    android:layout_marginRight="15px"
                     android:textAppearance="@style/TextAppearance.AppCompat"
                     android:textColor="@android:color/background_light"
                     android:textStyle="bold" />
@@ -302,8 +302,8 @@
                     android:id="@+id/letra6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="15px"
                     android:layout_weight="1"
+                    android:layout_marginRight="15px"
                     android:text="___"
                     android:textColor="@android:color/background_light"
                     android:textStyle="bold" />
@@ -312,8 +312,8 @@
                     android:id="@+id/letra7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="15px"
                     android:layout_weight="1"
+                    android:layout_marginRight="15px"
                     android:text="___"
                     android:textColor="@android:color/background_light"
                     android:textStyle="bold" />
@@ -322,8 +322,8 @@
                     android:id="@+id/letra8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="15px"
                     android:layout_weight="1"
+                    android:layout_marginRight="15px"
                     android:text="___"
                     android:textColor="@android:color/background_light"
                     android:textStyle="bold" />
@@ -332,9 +332,9 @@
                     android:id="@+id/letra9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="15px"
                     android:layout_weight="1"
                     android:text="___"
+                    android:layout_marginRight="15px"
                     android:textColor="@android:color/background_light"
                     android:textStyle="bold" />
 
@@ -342,110 +342,19 @@
                     android:id="@+id/letra10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="15px"
                     android:layout_weight="1"
+                    android:layout_marginRight="15px"
                     android:text="___"
                     android:textColor="@android:color/background_light"
                     android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout_letras"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="20px"
-                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/letra11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15px"
-                    android:layout_marginRight="15px"
                     android:layout_weight="1"
                     android:text="___"
-                    android:textColor="@android:color/background_light"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/letra12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_marginRight="15px"
-                    android:layout_weight="1"
-                    android:text="___"
-                    android:textColor="@android:color/background_light"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/letra13"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15px"
-                    android:layout_weight="1"
-                    android:text="___"
-                    android:textColor="@android:color/background_light"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/letra14"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15px"
-                    android:layout_weight="1"
-                    android:text="___"
-                    android:textColor="@android:color/background_light"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/letra15"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15px"
-                    android:layout_weight="1"
-                    android:text="___"
-                    android:textAppearance="@style/TextAppearance.AppCompat"
-                    android:textColor="@android:color/background_light"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/letra16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15px"
-                    android:layout_weight="1"
-                    android:text="___"
-                    android:textColor="@android:color/background_light"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/letra17"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15px"
-                    android:layout_weight="1"
-                    android:text="___"
-                    android:textColor="@android:color/background_light"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/letra18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15px"
-                    android:layout_weight="1"
-                    android:text="___"
-                    android:textColor="@android:color/background_light"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/letra19"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15px"
-                    android:layout_weight="1"
-                    android:text="___"
                     android:textColor="@android:color/background_light"
                     android:textStyle="bold" />
 

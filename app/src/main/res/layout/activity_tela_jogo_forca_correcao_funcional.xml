@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fundo100"
-    tools:context="higorhermes.tcc.projetotcc.View.TelaJogoForcaCompletudeFuncional">
+    tools:context="higorhermes.tcc.projetotcc.View.TelaJogoForcaCorrecaoFuncional">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -328,10 +328,20 @@
                     android:textColor="@android:color/background_light"
                     android:textStyle="bold" />
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_letras"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20px"
+                android:orientation="horizontal">
+
                 <TextView
                     android:id="@+id/letra9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="15px"
                     android:layout_marginRight="15px"
                     android:layout_weight="1"
                     android:text="___"
@@ -348,20 +358,10 @@
                     android:textColor="@android:color/background_light"
                     android:textStyle="bold" />
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout_letras"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="20px"
-                android:orientation="horizontal">
-
                 <TextView
                     android:id="@+id/letra11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15px"
                     android:layout_marginRight="15px"
                     android:layout_weight="1"
                     android:text="___"
@@ -385,6 +385,7 @@
                     android:layout_marginRight="15px"
                     android:layout_weight="1"
                     android:text="___"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
                     android:textColor="@android:color/background_light"
                     android:textStyle="bold" />
 
@@ -405,7 +406,6 @@
                     android:layout_marginRight="15px"
                     android:layout_weight="1"
                     android:text="___"
-                    android:textAppearance="@style/TextAppearance.AppCompat"
                     android:textColor="@android:color/background_light"
                     android:textStyle="bold" />
 
@@ -421,26 +421,6 @@
 
                 <TextView
                     android:id="@+id/letra17"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15px"
-                    android:layout_weight="1"
-                    android:text="___"
-                    android:textColor="@android:color/background_light"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/letra18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15px"
-                    android:layout_weight="1"
-                    android:text="___"
-                    android:textColor="@android:color/background_light"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/letra19"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15px"
