@@ -49,7 +49,7 @@ public class TelaFiltro extends AppCompatActivity implements Serializable {
                                 bundle.putInt("filtro", 1);
                                 bundle.putInt("partidas_atuais", 1);
                                 bundle.putInt("contador_partidas", 1);
-                                Intent intent = new Intent(TelaFiltro.this, TelaJogoForcaAcessibilidade.class);
+                                Intent intent = new Intent(TelaFiltro.this, TelaJogoForcaDisponibilidade.class);
                                 intent.putExtra("partidas", partidas);
                                 intent.putExtras(bundle);
                                 startActivity(intent);

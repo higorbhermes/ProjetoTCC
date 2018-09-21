@@ -48,7 +48,13 @@
         <activity android:name=".View.TelaJogoForcaCoexistencia" />
         <activity android:name=".View.TelaJogoForcaUsabilidade" />
         <activity android:name=".View.TelaJogoForcaAcessibilidade" />
-        <activity android:name=".View.TelaJogoForcaAprendizagem"></activity>
+        <activity android:name=".View.TelaJogoForcaAprendizagem" />
+        <activity android:name=".View.TelaJogoForcaCompatibilidade" />
+        <activity android:name=".View.TelaJogoForcaAdequabilidade" />
+        <activity android:name=".View.TelaJogoForcaOperabilidade" />
+        <activity android:name=".View.TelaJogoForcaConfiabilidade" />
+        <activity android:name=".View.TelaJogoForcaMaturidade" />
+        <activity android:name=".View.TelaJogoForcaDisponibilidade"></activity>
     </application>
 
 </manifest>

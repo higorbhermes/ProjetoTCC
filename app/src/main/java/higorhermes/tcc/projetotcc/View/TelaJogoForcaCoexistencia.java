@@ -6102,8 +6102,7 @@ public class  TelaJogoForcaCoexistencia extends AppCompatActivity {
                 }
             }
             if (letracerta5.equals("A") || letracerta5.equals("Ã") || letracerta5.equals("Á") || letracerta5.equals("Â")){
-                if (letra5.getText().toString().equals("___")){                    letra5.setText(letracerta1);
-                    acertos = acertos + 1;
+                if (letra5.getText().toString().equals("___")){                    letra5.setText(letracerta5);                    acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
@@ -6190,8 +6189,7 @@ public class  TelaJogoForcaCoexistencia extends AppCompatActivity {
             }
             if (letracerta15.equals("A") || letracerta15.equals("Ã") || letracerta15.equals("Á") || letracerta15.equals("Â")){
                 if (letra15.getText().toString().equals("___")){
-                    letra5.setText(letracerta1);
-                    acertos = acertos + 1;
+                    letra5.setText(letracerta5);                    acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
