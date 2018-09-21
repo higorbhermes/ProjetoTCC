@@ -311,10 +311,10 @@ public class TelaJogoForcaDisponibilidade extends AppCompatActivity {
                         calcularPontuação();
                         if (eliminar_letra == 0) {
                             button_w.setText("");
-                            button_n.setText("");
+                            button_q.setText("");
                             button_z.setText("");
                             button_w.setEnabled(false);
-                            button_n.setEnabled(false);
+                            button_q.setEnabled(false);
                             button_z.setEnabled(false);
                         }
                         if (eliminar_letra == 1) {

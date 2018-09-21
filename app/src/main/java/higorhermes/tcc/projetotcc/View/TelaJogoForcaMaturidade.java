@@ -319,10 +319,10 @@ public class TelaJogoForcaMaturidade extends AppCompatActivity {
                             button_z.setEnabled(false);
                         }
                         if (eliminar_letra == 1) {
-                            button_m.setText("");
+                            button_q.setText("");
                             button_v.setText("");
                             button_j.setText("");
-                            button_m.setEnabled(false);
+                            button_q.setEnabled(false);
                             button_j.setEnabled(false);
                             button_v.setEnabled(false);
 

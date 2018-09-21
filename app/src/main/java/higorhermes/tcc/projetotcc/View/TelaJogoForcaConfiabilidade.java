@@ -309,12 +309,12 @@ public class TelaJogoForcaConfiabilidade extends AppCompatActivity {
                         verSentimento(1);
                         pontos = pontos - 40;
                         calcularPontuação();
-                        if (eliminar_letra == 0) {
+                        if (eliminar_letra < 3) {
                             button_w.setText("");
-                            button_n.setText("");
+                            button_r.setText("");
                             button_z.setText("");
                             button_w.setEnabled(false);
-                            button_n.setEnabled(false);
+                            button_r.setEnabled(false);
                             button_z.setEnabled(false);
                         }
                         if (eliminar_letra == 1) {
@@ -329,10 +329,10 @@ public class TelaJogoForcaConfiabilidade extends AppCompatActivity {
                         if (eliminar_letra == 2) {
                             button_h.setText("");
                             button_k.setText("");
-                            button_f.setText("");
+                            button_u.setText("");
                             button_h.setEnabled(false);
                             button_k.setEnabled(false);
-                            button_f.setEnabled(false);
+                            button_u.setEnabled(false);
                         }
                         eliminar_letra = eliminar_letra + 1;
                     }

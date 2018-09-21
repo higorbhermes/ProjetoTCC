@@ -12,19 +12,17 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-
 import java.util.Random;
-
 import higorhermes.tcc.projetotcc.Model.Ajustes;
 import higorhermes.tcc.projetotcc.Model.JogoForca;
 import higorhermes.tcc.projetotcc.R;
 import io.realm.Realm;
 
-public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
+public class TelaJogoForcaManutencao extends AppCompatActivity {
     int pontos;
     int erro = 0;
     int acertos = 0;
-    int numero_letras = 12;
+    int numero_letras = 10;
     int eliminar_letra = 0;
     int revelar_letra = 0;
     int menu = 1;
@@ -33,18 +31,18 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
     int partida_atual;
     int contador_partidas;
     int id;
-    String letracerta1 = "A";
-    String letracerta2 = "P";
-    String letracerta3 = "R";
-    String letracerta4 = "E";
-    String letracerta5 = "N";
-    String letracerta6 = "D";
-    String letracerta7 = "I";
-    String letracerta8 = "Z";
-    String letracerta9 = "A";
-    String letracerta10 = "G";
-    String letracerta11 = "E";
-    String letracerta12 = "M";
+    String letracerta1 = "M";
+    String letracerta2 = "A";
+    String letracerta3 = "N";
+    String letracerta4 = "U";
+    String letracerta5 = "T";
+    String letracerta6 = "E";
+    String letracerta7 = "N";
+    String letracerta8 = "Ç";
+    String letracerta9 = "Ã";
+    String letracerta10 = "O";
+    String letracerta11 = "";
+    String letracerta12 = "";
     String letracerta13 = "";
     String letracerta14 = "";
     String letracerta15 = "";
@@ -58,13 +56,13 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
     String letracerta23 = "";
     String letracerta24 = "";
     String letracerta25 = "";
-    String dica = "Grau em que um produto ou sistema pode ser usado por usuários específicos para atingir as metas especificadas de aprender a usar o produto ou sistema com eficácia, eficiência, isenção de riscos e satisfação em um contexto específico de uso.";
+    String dica = "Essa característica representa o grau de eficácia e eficiência com o qual um produto ou sistema pode ser modificado para melhorá-lo, corrigi-lo ou adaptá-lo a mudanças no ambiente e nos requisitos.";
     JogoForca[] partidas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_jogo_forca_aprendizagem);
+        setContentView(R.layout.activity_tela_jogo_forca_manutencao);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         pontos = bundle.getInt("pont");
@@ -119,10 +117,10 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
         final TextView letra8 = (TextView) findViewById(R.id.letra8);
         final TextView letra9 = (TextView) findViewById(R.id.letra9);
         final TextView letra10 = (TextView) findViewById(R.id.letra10);
-        final TextView letra11 = (TextView) findViewById(R.id.letra11);
-        final TextView letra12 = (TextView) findViewById(R.id.letra12);
-        final TextView letra13 =  null;
-        final TextView letra14 =  null;
+        final TextView letra11 = null;
+        final TextView letra12 = null;
+        final TextView letra13 = null;
+        final TextView letra14 = null;
         final TextView letra15 = null;
         final TextView letra16 = null;
         final TextView letra17 = null;
@@ -166,18 +164,19 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
             public void onClick(View view) {
                 if (pontos < 60) {
                     String msg = "É necessário possuir 60 pontos para utilizar esta ajuda!";
-                    AlertDialog.Builder dlg = new AlertDialog.Builder(     TelaJogoForcaAprendizagem.this);
+                    AlertDialog.Builder dlg = new AlertDialog.Builder(    TelaJogoForcaManutencao.this);
                     dlg.setMessage(msg);
                     dlg.setNeutralButton("OK", null);
                     dlg.show();
                 } else {
                     if (revelar_letra >= 3) {
                         String msg = "Essa ajuda só pode ser utilizada três vezes em cada desafio!";
-                        AlertDialog.Builder dlg = new AlertDialog.Builder(   TelaJogoForcaAprendizagem.this);
+                        AlertDialog.Builder dlg = new AlertDialog.Builder(  TelaJogoForcaManutencao.this);
                         dlg.setMessage(msg);
                         dlg.setNeutralButton("OK", null);
                         dlg.show();
-                    } else {
+                    }
+                    else {
                         pontos = pontos - 60;
                         calcularPontuação();
                         verSentimento(1);
@@ -274,7 +273,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
             public void onClick(View view) {
                 if (pontos < 20) {
                     String msg = "É necessário possuir 20 pontos para utilizar esta ajuda!";
-                    AlertDialog.Builder dlg = new AlertDialog.Builder(   TelaJogoForcaAprendizagem.this);
+                    AlertDialog.Builder dlg = new AlertDialog.Builder(  TelaJogoForcaManutencao.this);
                     dlg.setMessage(msg);
                     dlg.setNeutralButton("OK", null);
                     dlg.show();
@@ -283,7 +282,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
                     calcularPontuação();
                     verSentimento(1);
                     String msg = "DICA: "+dica;
-                    AlertDialog.Builder dlg = new AlertDialog.Builder(   TelaJogoForcaAprendizagem.this);
+                    AlertDialog.Builder dlg = new AlertDialog.Builder(  TelaJogoForcaManutencao.this);
                     dlg.setMessage(msg);
                     dlg.setNeutralButton("OK", null);
                     dlg.show();
@@ -296,14 +295,14 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
             public void onClick(View view) {
                 if (pontos < 40) {
                     String msg = "É necessário possuir 40 pontos para utilizar esta ajuda!";
-                    AlertDialog.Builder dlg = new AlertDialog.Builder(   TelaJogoForcaAprendizagem.this);
+                    AlertDialog.Builder dlg = new AlertDialog.Builder(  TelaJogoForcaManutencao.this);
                     dlg.setMessage(msg);
                     dlg.setNeutralButton("OK", null);
                     dlg.show();
                 } else {
                     if (eliminar_letra >= 3) {
                         String msg = "Essa ajuda só pode ser utilizada três vezes em cada desafio!";
-                        AlertDialog.Builder dlg = new AlertDialog.Builder(   TelaJogoForcaAprendizagem.this);
+                        AlertDialog.Builder dlg = new AlertDialog.Builder(  TelaJogoForcaManutencao.this);
                         dlg.setMessage(msg);
                         dlg.setNeutralButton("OK", null);
                         dlg.show();
@@ -313,17 +312,17 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
                         calcularPontuação();
                         if (eliminar_letra == 0) {
                             button_w.setText("");
-                            button_t.setText("");
+                            button_b.setText("");
                             button_z.setText("");
                             button_w.setEnabled(false);
-                            button_t.setEnabled(false);
+                            button_b.setEnabled(false);
                             button_z.setEnabled(false);
                         }
                         if (eliminar_letra == 1) {
-                            button_c.setText("");
+                            button_q.setText("");
                             button_v.setText("");
                             button_j.setText("");
-                            button_c.setEnabled(false);
+                            button_q.setEnabled(false);
                             button_j.setEnabled(false);
                             button_v.setEnabled(false);
 
@@ -692,26 +691,26 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
         button_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PopupMenu popupMenu = new PopupMenu(   TelaJogoForcaAprendizagem.this, button_menu);
+                PopupMenu popupMenu = new PopupMenu(  TelaJogoForcaManutencao.this, button_menu);
                 popupMenu.getMenuInflater().inflate(R.menu.popup_menu, popupMenu.getMenu());
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
                         String s = item.getTitle().toString();
                         if (s.equals("Caderno")) {
-                            Intent intent = new Intent(   TelaJogoForcaAprendizagem.this, TelaCadernoCaracteristicasQualidade.class);
+                            Intent intent = new Intent(  TelaJogoForcaManutencao.this, TelaCadernoCaracteristicasQualidade.class);
                             startActivity(intent);
                         }
                         if (s.equals("Desempenho")) {
-                            Intent intent = new Intent(   TelaJogoForcaAprendizagem.this, TelaDesempenho.class);
+                            Intent intent = new Intent(  TelaJogoForcaManutencao.this, TelaDesempenho.class);
                             startActivity(intent);
                         }
                         if (s.equals("Ajustes")) {
-                            Intent intent = new Intent(   TelaJogoForcaAprendizagem.this, TelaAjustes.class);
+                            Intent intent = new Intent(  TelaJogoForcaManutencao.this, TelaAjustes.class);
                             startActivity(intent);
                         }
                         if (s.equals("Avaliar")) {
-                            Intent intent = new Intent(   TelaJogoForcaAprendizagem.this, TelaAvaliacao.class);
+                            Intent intent = new Intent(  TelaJogoForcaManutencao.this, TelaAvaliacao.class);
                             startActivity(intent);
                         }
                         return true;
@@ -1162,10 +1161,10 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
         final TextView letra8 = (TextView) findViewById(R.id.letra8);
         final TextView letra9 = (TextView) findViewById(R.id.letra9);
         final TextView letra10 = (TextView) findViewById(R.id.letra10);
-        final TextView letra11 = (TextView) findViewById(R.id.letra11);
-        final TextView letra12 = (TextView) findViewById(R.id.letra12);
-        final TextView letra13 =  null;
-        final TextView letra14 =  null;
+        final TextView letra11 = null;
+        final TextView letra12 = null;
+        final TextView letra13 = null;
+        final TextView letra14 = null;
         final TextView letra15 = null;
         final TextView letra16 = null;
         final TextView letra17 = null;
@@ -6030,10 +6029,10 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
         final TextView letra8 = (TextView) findViewById(R.id.letra8);
         final TextView letra9 = (TextView) findViewById(R.id.letra9);
         final TextView letra10 = (TextView) findViewById(R.id.letra10);
-        final TextView letra11 = (TextView) findViewById(R.id.letra11);
-        final TextView letra12 = (TextView) findViewById(R.id.letra12);
-        final TextView letra13 =  null;
-        final TextView letra14 =  null;
+        final TextView letra11 = null;
+        final TextView letra12 = null;
+        final TextView letra13 = null;
+        final TextView letra14 = null;
         final TextView letra15 = null;
         final TextView letra16 = null;
         final TextView letra17 = null;
@@ -6073,14 +6072,14 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
         final Button button_z = (Button) findViewById(R.id.button_z);
         if (num == 1){
             if (letracerta1.equals("A") || letracerta1.equals("Ã") || letracerta1.equals("Á") || letracerta1.equals("Â")){
-                if (letra1.getText().toString().equals("___")){                    letra1.setText(letracerta1);
+                if (letra1.getText().toString().equals("__")){                    letra1.setText(letracerta1);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta2.equals("A") || letracerta2.equals("Ã") || letracerta2.equals("Á") || letracerta2.equals("Â")){
-                if (letra2.getText().toString().equals("___")){                    letra2.setText(letracerta2);
+                if (letra2.getText().toString().equals("__")){                    letra2.setText(letracerta2);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -6088,28 +6087,30 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta3.equals("A") || letracerta3.equals("Ã") || letracerta3.equals("Á") || letracerta3.equals("Â")){
-                if (letra3.getText().toString().equals("___")){                    letra3.setText(letracerta3);
+                if (letra3.getText().toString().equals("__")){                    letra3.setText(letracerta3);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta4.equals("A") || letracerta4.equals("Ã") || letracerta4.equals("Á") || letracerta4.equals("Â")){
-                if (letra4.getText().toString().equals("___")){                    letra4.setText(letracerta4);
+                if (letra4.getText().toString().equals("__")){                    letra4.setText(letracerta4);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta5.equals("A") || letracerta5.equals("Ã") || letracerta5.equals("Á") || letracerta5.equals("Â")){
-                if (letra5.getText().toString().equals("___")){                    letra5.setText(letracerta5);                    acertos = acertos + 1;
+                if (letra5.getText().toString().equals("__")){
+                    letra5.setText(letracerta5);
+                    acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
 
             }
             if (letracerta6.equals("A") || letracerta6.equals("Ã") || letracerta6.equals("Á") || letracerta6.equals("Â")){
-                if (letra6.getText().toString().equals("___")){
+                if (letra6.getText().toString().equals("__")){
                     letra6.setText(letracerta6);
                     acertos = acertos + 1;
                     cont ++;
@@ -6118,7 +6119,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta7.equals("A") || letracerta7.equals("Ã") || letracerta7.equals("Á") || letracerta7.equals("Â")){
-                if (letra7.getText().toString().equals("___")){
+                if (letra7.getText().toString().equals("__")){
                     letra7.setText(letracerta7);
                     acertos = acertos + 1;
                     cont ++;
@@ -6127,7 +6128,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta8.equals("A") || letracerta8.equals("Ã") || letracerta8.equals("Á") || letracerta8.equals("Â")){
-                if (letra8.getText().toString().equals("___")){
+                if (letra8.getText().toString().equals("__")){
                     letra8.setText(letracerta8);
                     acertos = acertos + 1;
                     cont ++;
@@ -6136,7 +6137,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta9.equals("A") || letracerta9.equals("Ã") || letracerta9.equals("Á") || letracerta9.equals("Â")){
-                if (letra9.getText().toString().equals("___")){
+                if (letra9.getText().toString().equals("__")){
                     letra9.setText(letracerta9);
                     acertos = acertos + 1;
                     cont ++;
@@ -6145,7 +6146,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta10.equals("A") || letracerta10.equals("Ã") || letracerta10.equals("Á") || letracerta10.equals("Â")){
-                if (letra10.getText().toString().equals("___")){
+                if (letra10.getText().toString().equals("__")){
                     letra10.setText(letracerta10);
                     acertos = acertos + 1;
                     cont ++;
@@ -6154,7 +6155,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta11.equals("A") || letracerta11.equals("Ã") || letracerta11.equals("Á") || letracerta11.equals("Â")){
-                if (letra11.getText().toString().equals("___")){
+                if (letra11.getText().toString().equals("__")){
                     letra11.setText(letracerta11);
                     acertos = acertos + 1;
                     cont ++;
@@ -6163,7 +6164,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta12.equals("A") || letracerta12.equals("Ã") || letracerta12.equals("Á") || letracerta12.equals("Â")){
-                if (letra12.getText().toString().equals("___")){
+                if (letra12.getText().toString().equals("__")){
                     letra12.setText(letracerta12);
                     acertos = acertos + 1;
                     cont ++;
@@ -6171,7 +6172,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
                 }
             }
             if (letracerta13.equals("A") || letracerta13.equals("Ã") || letracerta13.equals("Á") || letracerta13.equals("Â")){
-                if (letra13.getText().toString().equals("___")){
+                if (letra13.getText().toString().equals("__")){
                     letra13.setText(letracerta13);
                     acertos = acertos + 1;
                     cont ++;
@@ -6179,7 +6180,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
                 }
             }
             if (letracerta14.equals("A") || letracerta14.equals("Ã") || letracerta14.equals("Á") || letracerta14.equals("Â")){
-                if (letra14.getText().toString().equals("___")){
+                if (letra14.getText().toString().equals("__")){
                     letra14.setText(letracerta14);
                     acertos = acertos + 1;
                     cont ++;
@@ -6188,16 +6189,15 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta15.equals("A") || letracerta15.equals("Ã") || letracerta15.equals("Á") || letracerta15.equals("Â")){
-                if (letra15.getText().toString().equals("___")){
-                    letra5.setText(letracerta1);
-                    acertos = acertos + 1;
+                if (letra15.getText().toString().equals("__")){
+                    letra15.setText(letracerta15);                    acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
 
             }
             if (letracerta16.equals("A") || letracerta16.equals("Ã") || letracerta16.equals("Á") || letracerta16.equals("Â")){
-                if (letra16.getText().toString().equals("___")){
+                if (letra16.getText().toString().equals("__")){
                     letra16.setText(letracerta16);
                     acertos = acertos + 1;
                     cont ++;
@@ -6206,7 +6206,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta17.equals("A") || letracerta17.equals("Ã") || letracerta17.equals("Á") || letracerta17.equals("Â")){
-                if (letra17.getText().toString().equals("___")){
+                if (letra17.getText().toString().equals("__")){
                     letra17.setText(letracerta17);
                     acertos = acertos + 1;
                     cont ++;
@@ -6215,7 +6215,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta18.equals("A") || letracerta18.equals("Ã") || letracerta18.equals("Á") || letracerta18.equals("Â")){
-                if (letra18.getText().toString().equals("___")){
+                if (letra18.getText().toString().equals("__")){
                     letra18.setText(letracerta18);
                     acertos = acertos + 1;
                     cont ++;
@@ -6224,7 +6224,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta19.equals("A") || letracerta19.equals("Ã") || letracerta19.equals("Á") || letracerta19.equals("Â")){
-                if (letra19.getText().toString().equals("___")){
+                if (letra19.getText().toString().equals("__")){
                     letra19.setText(letracerta19);
                     acertos = acertos + 1;
                     cont ++;
@@ -6233,7 +6233,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta20.equals("A") || letracerta20.equals("Ã") || letracerta20.equals("Á") || letracerta20.equals("Â")){
-                if (letra20.getText().toString().equals("___")){
+                if (letra20.getText().toString().equals("__")){
                     letra20.setText(letracerta20);
                     acertos = acertos + 1;
                     cont ++;
@@ -6242,7 +6242,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta21.equals("A") || letracerta21.equals("Ã") || letracerta21.equals("Á") || letracerta21.equals("Â")){
-                if (letra21.getText().toString().equals("___")){
+                if (letra21.getText().toString().equals("__")){
                     letra21.setText(letracerta21);
                     acertos = acertos + 1;
                     cont ++;
@@ -6251,7 +6251,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta22.equals("A") || letracerta22.equals("Ã") || letracerta22.equals("Á") || letracerta22.equals("Â")){
-                if (letra22.getText().toString().equals("___")){
+                if (letra22.getText().toString().equals("__")){
                     letra22.setText(letracerta22);
                     acertos = acertos + 1;
                     cont ++;
@@ -6260,7 +6260,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta23.equals("A") || letracerta23.equals("Ã") || letracerta23.equals("Á") || letracerta23.equals("Â")){
-                if (letra23.getText().toString().equals("___")){
+                if (letra23.getText().toString().equals("__")){
                     letra23.setText(letracerta23);
                     acertos = acertos + 1;
                     cont ++;
@@ -6269,7 +6269,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta24.equals("A") || letracerta24.equals("Ã") || letracerta24.equals("Á") || letracerta24.equals("Â")){
-                if (letra24.getText().toString().equals("___")){
+                if (letra24.getText().toString().equals("__")){
                     letra24.setText(letracerta24);
                     acertos = acertos + 1;
                     cont ++;
@@ -6278,7 +6278,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta25.equals("A") || letracerta25.equals("Ã") || letracerta25.equals("Á") || letracerta25.equals("Â")){
-                if (letra25.getText().toString().equals("___")){
+                if (letra25.getText().toString().equals("__")){
                     letra25.setText(letracerta25);
                     acertos = acertos + 1;
                     cont ++;
@@ -6296,14 +6296,14 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
         }
         if (num == 2){
             if (letracerta1.equals("B")){
-                if (letra1.getText().toString().equals("___")){                    letra1.setText(letracerta1);
+                if (letra1.getText().toString().equals("__")){                    letra1.setText(letracerta1);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta2.equals("B")){
-                if (letra2.getText().toString().equals("___")){                    letra2.setText(letracerta2);
+                if (letra2.getText().toString().equals("__")){                    letra2.setText(letracerta2);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -6311,21 +6311,21 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta3.equals("B")){
-                if (letra3.getText().toString().equals("___")){                    letra3.setText(letracerta3);
+                if (letra3.getText().toString().equals("__")){                    letra3.setText(letracerta3);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta4.equals("B")){
-                if (letra4.getText().toString().equals("___")){                    letra4.setText(letracerta4);
+                if (letra4.getText().toString().equals("__")){                    letra4.setText(letracerta4);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta5.equals("B")){
-                if (letra5.getText().toString().equals("___")){                    letra5.setText(letracerta5);
+                if (letra5.getText().toString().equals("__")){                    letra5.setText(letracerta5);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -6333,7 +6333,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta6.equals("B")){
-                if (letra6.getText().toString().equals("___")){
+                if (letra6.getText().toString().equals("__")){
                     letra6.setText(letracerta6);
                     acertos = acertos + 1;
                     cont ++;
@@ -6342,7 +6342,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta7.equals("B")){
-                if (letra7.getText().toString().equals("___")){
+                if (letra7.getText().toString().equals("__")){
                     letra7.setText(letracerta7);
                     acertos = acertos + 1;
                     cont ++;
@@ -6351,7 +6351,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta8.equals("B")){
-                if (letra8.getText().toString().equals("___")){
+                if (letra8.getText().toString().equals("__")){
                     letra8.setText(letracerta8);
                     acertos = acertos + 1;
                     cont ++;
@@ -6360,7 +6360,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta9.equals("B")){
-                if (letra9.getText().toString().equals("___")){
+                if (letra9.getText().toString().equals("__")){
                     letra9.setText(letracerta9);
                     acertos = acertos + 1;
                     cont ++;
@@ -6369,7 +6369,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta10.equals("B")){
-                if (letra10.getText().toString().equals("___")){
+                if (letra10.getText().toString().equals("__")){
                     letra10.setText(letracerta10);
                     acertos = acertos + 1;
                     cont ++;
@@ -6378,7 +6378,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta11.equals("B")){
-                if (letra11.getText().toString().equals("___")){
+                if (letra11.getText().toString().equals("__")){
                     letra11.setText(letracerta11);
                     acertos = acertos + 1;
                     cont ++;
@@ -6387,7 +6387,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta12.equals("B")){
-                if (letra12.getText().toString().equals("___")){
+                if (letra12.getText().toString().equals("__")){
                     letra12.setText(letracerta12);
                     acertos = acertos + 1;
                     cont ++;
@@ -6396,7 +6396,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta13.equals("B")){
-                if (letra13.getText().toString().equals("___")){
+                if (letra13.getText().toString().equals("__")){
                     letra13.setText(letracerta13);
                     acertos = acertos + 1;
                     cont ++;
@@ -6405,7 +6405,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta14.equals("B")){
-                if (letra14.getText().toString().equals("___")){
+                if (letra14.getText().toString().equals("__")){
                     letra14.setText(letracerta14);
                     acertos = acertos + 1;
                     cont ++;
@@ -6414,7 +6414,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta15.equals("B")){
-                if (letra15.getText().toString().equals("___")){
+                if (letra15.getText().toString().equals("__")){
                     letra15.setText(letracerta15);
                     acertos = acertos + 1;
                     cont ++;
@@ -6423,7 +6423,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta16.equals("B")){
-                if (letra16.getText().toString().equals("___")){
+                if (letra16.getText().toString().equals("__")){
                     letra16.setText(letracerta16);
                     acertos = acertos + 1;
                     cont ++;
@@ -6432,7 +6432,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta17.equals("B")){
-                if (letra17.getText().toString().equals("___")){
+                if (letra17.getText().toString().equals("__")){
                     letra17.setText(letracerta17);
                     acertos = acertos + 1;
                     cont ++;
@@ -6441,7 +6441,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta18.equals("B")){
-                if (letra18.getText().toString().equals("___")){
+                if (letra18.getText().toString().equals("__")){
                     letra18.setText(letracerta18);
                     acertos = acertos + 1;
                     cont ++;
@@ -6450,7 +6450,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta19.equals("B")){
-                if (letra19.getText().toString().equals("___")){
+                if (letra19.getText().toString().equals("__")){
                     letra19.setText(letracerta19);
                     acertos = acertos + 1;
                     cont ++;
@@ -6459,7 +6459,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta20.equals("B")){
-                if (letra20.getText().toString().equals("___")){
+                if (letra20.getText().toString().equals("__")){
                     letra20.setText(letracerta20);
                     acertos = acertos + 1;
                     cont ++;
@@ -6468,7 +6468,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta21.equals("B")){
-                if (letra21.getText().toString().equals("___")){
+                if (letra21.getText().toString().equals("__")){
                     letra21.setText(letracerta21);
                     acertos = acertos + 1;
                     cont ++;
@@ -6477,7 +6477,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta22.equals("B")){
-                if (letra22.getText().toString().equals("___")){
+                if (letra22.getText().toString().equals("__")){
                     letra22.setText(letracerta22);
                     acertos = acertos + 1;
                     cont ++;
@@ -6486,7 +6486,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta23.equals("B")){
-                if (letra23.getText().toString().equals("___")){
+                if (letra23.getText().toString().equals("__")){
                     letra23.setText(letracerta23);
                     acertos = acertos + 1;
                     cont ++;
@@ -6495,7 +6495,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta24.equals("B")){
-                if (letra24.getText().toString().equals("___")){
+                if (letra24.getText().toString().equals("__")){
                     letra24.setText(letracerta24);
                     acertos = acertos + 1;
                     cont ++;
@@ -6504,7 +6504,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta25.equals("B")){
-                if (letra25.getText().toString().equals("___")){
+                if (letra25.getText().toString().equals("__")){
                     letra25.setText(letracerta25);
                     acertos = acertos + 1;
                     cont ++;
@@ -6523,14 +6523,14 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
         if (num == 3){
             if (letracerta1.equals("C") || letracerta1.equals("Ç")){
-                if (letra1.getText().toString().equals("___")){                    letra1.setText(letracerta1);
+                if (letra1.getText().toString().equals("__")){                    letra1.setText(letracerta1);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta2.equals("C") || letracerta2.equals("Ç")){
-                if (letra2.getText().toString().equals("___")){                    letra2.setText(letracerta2);
+                if (letra2.getText().toString().equals("__")){                    letra2.setText(letracerta2);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -6538,21 +6538,21 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta3.equals("C") || letracerta3.equals("Ç")){
-                if (letra3.getText().toString().equals("___")){                    letra3.setText(letracerta3);
+                if (letra3.getText().toString().equals("__")){                    letra3.setText(letracerta3);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta4.equals("C") || letracerta4.equals("Ç")){
-                if (letra4.getText().toString().equals("___")){                    letra4.setText(letracerta4);
+                if (letra4.getText().toString().equals("__")){                    letra4.setText(letracerta4);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta5.equals("C") || letracerta5.equals("Ç")){
-                if (letra5.getText().toString().equals("___")){                    letra5.setText(letracerta5);
+                if (letra5.getText().toString().equals("__")){                    letra5.setText(letracerta5);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -6560,7 +6560,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta6.equals("C") || letracerta6.equals("Ç")){
-                if (letra6.getText().toString().equals("___")){
+                if (letra6.getText().toString().equals("__")){
                     letra6.setText(letracerta6);
                     acertos = acertos + 1;
                     cont ++;
@@ -6569,7 +6569,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta7.equals("C") || letracerta7.equals("Ç")){
-                if (letra7.getText().toString().equals("___")){
+                if (letra7.getText().toString().equals("__")){
                     letra7.setText(letracerta7);
                     acertos = acertos + 1;
                     cont ++;
@@ -6578,7 +6578,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta8.equals("C") || letracerta8.equals("Ç")){
-                if (letra8.getText().toString().equals("___")){
+                if (letra8.getText().toString().equals("__")){
                     letra8.setText(letracerta8);
                     acertos = acertos + 1;
                     cont ++;
@@ -6587,7 +6587,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta9.equals("C") || letracerta9.equals("Ç")){
-                if (letra9.getText().toString().equals("___")){
+                if (letra9.getText().toString().equals("__")){
                     letra9.setText(letracerta9);
                     acertos = acertos + 1;
                     cont ++;
@@ -6596,7 +6596,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta10.equals("C") || letracerta10.equals("Ç")){
-                if (letra10.getText().toString().equals("___")){
+                if (letra10.getText().toString().equals("__")){
                     letra10.setText(letracerta10);
                     acertos = acertos + 1;
                     cont ++;
@@ -6605,7 +6605,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta11.equals("C") || letracerta11.equals("Ç")){
-                if (letra11.getText().toString().equals("___")){
+                if (letra11.getText().toString().equals("__")){
                     letra11.setText(letracerta11);
                     acertos = acertos + 1;
                     cont ++;
@@ -6614,7 +6614,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta12.equals("C") || letracerta12.equals("Ç")){
-                if (letra12.getText().toString().equals("___")){
+                if (letra12.getText().toString().equals("__")){
                     letra12.setText(letracerta12);
                     acertos = acertos + 1;
                     cont ++;
@@ -6623,7 +6623,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta13.equals("C") || letracerta13.equals("Ç") ){
-                if (letra13.getText().toString().equals("___")){
+                if (letra13.getText().toString().equals("__")){
                     letra13.setText(letracerta13);
                     acertos = acertos + 1;
                     cont ++;
@@ -6632,7 +6632,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta14.equals("C") || letracerta14.equals("Ç") ){
-                if (letra14.getText().toString().equals("___")){
+                if (letra14.getText().toString().equals("__")){
                     letra14.setText(letracerta14);
                     acertos = acertos + 1;
                     cont ++;
@@ -6641,7 +6641,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta15.equals("C") || letracerta15.equals("Ç")){
-                if (letra15.getText().toString().equals("___")){
+                if (letra15.getText().toString().equals("__")){
                     letra15.setText(letracerta15);
                     acertos = acertos + 1;
                     cont ++;
@@ -6650,7 +6650,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta16.equals("C") || letracerta16.equals("Ç") ){
-                if (letra16.getText().toString().equals("___")){
+                if (letra16.getText().toString().equals("__")){
                     letra16.setText(letracerta16);
                     acertos = acertos + 1;
                     cont ++;
@@ -6659,7 +6659,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta17.equals("C") || letracerta17.equals("Ç") ){
-                if (letra17.getText().toString().equals("___")){
+                if (letra17.getText().toString().equals("__")){
                     letra17.setText(letracerta17);
                     acertos = acertos + 1;
                     cont ++;
@@ -6668,7 +6668,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta18.equals("C") || letracerta18.equals("Ç") ){
-                if (letra18.getText().toString().equals("___")){
+                if (letra18.getText().toString().equals("__")){
                     letra18.setText(letracerta18);
                     acertos = acertos + 1;
                     cont ++;
@@ -6677,7 +6677,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta19.equals("C") || letracerta19.equals("Ç") ){
-                if (letra19.getText().toString().equals("___")){
+                if (letra19.getText().toString().equals("__")){
                     letra19.setText(letracerta19);
                     acertos = acertos + 1;
                     cont ++;
@@ -6686,7 +6686,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta20.equals("C") || letracerta20.equals("Ç") ){
-                if (letra20.getText().toString().equals("___")){
+                if (letra20.getText().toString().equals("__")){
                     letra20.setText(letracerta20);
                     acertos = acertos + 1;
                     cont ++;
@@ -6695,7 +6695,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta21.equals("C") || letracerta21.equals("Ç") ){
-                if (letra21.getText().toString().equals("___")){
+                if (letra21.getText().toString().equals("__")){
                     letra21.setText(letracerta21);
                     acertos = acertos + 1;
                     cont ++;
@@ -6704,7 +6704,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta22.equals("C") || letracerta22.equals("Ç") ){
-                if (letra22.getText().toString().equals("___")){
+                if (letra22.getText().toString().equals("__")){
                     letra22.setText(letracerta22);
                     acertos = acertos + 1;
                     cont ++;
@@ -6713,7 +6713,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta23.equals("C") || letracerta23.equals("Ç")){
-                if (letra23.getText().toString().equals("___")){
+                if (letra23.getText().toString().equals("__")){
                     letra23.setText(letracerta23);
                     acertos = acertos + 1;
                     cont ++;
@@ -6722,7 +6722,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta24.equals("C") || letracerta24.equals("Ç")){
-                if (letra24.getText().toString().equals("___")){
+                if (letra24.getText().toString().equals("__")){
                     letra24.setText(letracerta24);
                     acertos = acertos + 1;
                     cont ++;
@@ -6731,7 +6731,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta25.equals("C") || letracerta25.equals("Ç")){
-                if (letra25.getText().toString().equals("___")){
+                if (letra25.getText().toString().equals("__")){
                     letra25.setText(letracerta25);
                     acertos = acertos + 1;
                     cont ++;
@@ -6749,14 +6749,14 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
         }
         if (num == 4){
             if (letracerta1.equals("D")){
-                if (letra1.getText().toString().equals("___")){                    letra1.setText(letracerta1);
+                if (letra1.getText().toString().equals("__")){                    letra1.setText(letracerta1);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta2.equals("D")){
-                if (letra2.getText().toString().equals("___")){                    letra2.setText(letracerta2);
+                if (letra2.getText().toString().equals("__")){                    letra2.setText(letracerta2);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -6764,21 +6764,21 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta3.equals("D")){
-                if (letra3.getText().toString().equals("___")){                    letra3.setText(letracerta3);
+                if (letra3.getText().toString().equals("__")){                    letra3.setText(letracerta3);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta4.equals("D")){
-                if (letra4.getText().toString().equals("___")){                    letra4.setText(letracerta4);
+                if (letra4.getText().toString().equals("__")){                    letra4.setText(letracerta4);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta5.equals("D")){
-                if (letra5.getText().toString().equals("___")){                    letra5.setText(letracerta5);
+                if (letra5.getText().toString().equals("__")){                    letra5.setText(letracerta5);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -6786,7 +6786,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta6.equals("D")){
-                if (letra6.getText().toString().equals("___")){
+                if (letra6.getText().toString().equals("__")){
                     letra6.setText(letracerta6);
                     acertos = acertos + 1;
                     cont ++;
@@ -6795,7 +6795,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta7.equals("D")){
-                if (letra7.getText().toString().equals("___")){
+                if (letra7.getText().toString().equals("__")){
                     letra7.setText(letracerta7);
                     acertos = acertos + 1;
                     cont ++;
@@ -6804,7 +6804,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta8.equals("D")){
-                if (letra8.getText().toString().equals("___")){
+                if (letra8.getText().toString().equals("__")){
                     letra8.setText(letracerta8);
                     acertos = acertos + 1;
                     cont ++;
@@ -6813,7 +6813,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta9.equals("D")){
-                if (letra9.getText().toString().equals("___")){
+                if (letra9.getText().toString().equals("__")){
                     letra9.setText(letracerta9);
                     acertos = acertos + 1;
                     cont ++;
@@ -6822,7 +6822,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta10.equals("D")){
-                if (letra10.getText().toString().equals("___")){
+                if (letra10.getText().toString().equals("__")){
                     letra10.setText(letracerta10);
                     acertos = acertos + 1;
                     cont ++;
@@ -6831,7 +6831,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta11.equals("D")){
-                if (letra11.getText().toString().equals("___")){
+                if (letra11.getText().toString().equals("__")){
                     letra11.setText(letracerta11);
                     acertos = acertos + 1;
                     cont ++;
@@ -6840,7 +6840,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta12.equals("D")){
-                if (letra12.getText().toString().equals("___")){
+                if (letra12.getText().toString().equals("__")){
                     letra12.setText(letracerta12);
                     acertos = acertos + 1;
                     cont ++;
@@ -6849,7 +6849,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta13.equals("D")){
-                if (letra13.getText().toString().equals("___")){
+                if (letra13.getText().toString().equals("__")){
                     letra13.setText(letracerta13);
                     acertos = acertos + 1;
                     cont ++;
@@ -6858,7 +6858,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta14.equals("D")){
-                if (letra14.getText().toString().equals("___")){
+                if (letra14.getText().toString().equals("__")){
                     letra14.setText(letracerta14);
                     acertos = acertos + 1;
                     cont ++;
@@ -6867,7 +6867,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta15.equals("D")){
-                if (letra15.getText().toString().equals("___")){
+                if (letra15.getText().toString().equals("__")){
                     letra15.setText(letracerta15);
                     acertos = acertos + 1;
                     cont ++;
@@ -6876,7 +6876,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta16.equals("D")){
-                if (letra16.getText().toString().equals("___")){
+                if (letra16.getText().toString().equals("__")){
                     letra16.setText(letracerta16);
                     acertos = acertos + 1;
                     cont ++;
@@ -6885,7 +6885,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta17.equals("D")){
-                if (letra17.getText().toString().equals("___")){
+                if (letra17.getText().toString().equals("__")){
                     letra17.setText(letracerta17);
                     acertos = acertos + 1;
                     cont ++;
@@ -6894,7 +6894,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta18.equals("D")){
-                if (letra18.getText().toString().equals("___")){
+                if (letra18.getText().toString().equals("__")){
                     letra18.setText(letracerta18);
                     acertos = acertos + 1;
                     cont ++;
@@ -6903,7 +6903,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta19.equals("D")){
-                if (letra19.getText().toString().equals("___")){
+                if (letra19.getText().toString().equals("__")){
                     letra19.setText(letracerta19);
                     acertos = acertos + 1;
                     cont ++;
@@ -6912,7 +6912,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta20.equals("D")){
-                if (letra20.getText().toString().equals("___")){
+                if (letra20.getText().toString().equals("__")){
                     letra20.setText(letracerta20);
                     acertos = acertos + 1;
                     cont ++;
@@ -6921,7 +6921,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta21.equals("D")){
-                if (letra21.getText().toString().equals("___")){
+                if (letra21.getText().toString().equals("__")){
                     letra21.setText(letracerta21);
                     acertos = acertos + 1;
                     cont ++;
@@ -6930,7 +6930,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta22.equals("D")){
-                if (letra22.getText().toString().equals("___")){
+                if (letra22.getText().toString().equals("__")){
                     letra22.setText(letracerta22);
                     acertos = acertos + 1;
                     cont ++;
@@ -6939,7 +6939,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta23.equals("D")){
-                if (letra23.getText().toString().equals("___")){
+                if (letra23.getText().toString().equals("__")){
                     letra23.setText(letracerta23);
                     acertos = acertos + 1;
                     cont ++;
@@ -6948,7 +6948,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta24.equals("D")){
-                if (letra24.getText().toString().equals("___")){
+                if (letra24.getText().toString().equals("__")){
                     letra24.setText(letracerta24);
                     acertos = acertos + 1;
                     cont ++;
@@ -6957,7 +6957,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta25.equals("D")){
-                if (letra25.getText().toString().equals("___")){
+                if (letra25.getText().toString().equals("__")){
                     letra25.setText(letracerta25);
                     acertos = acertos + 1;
                     cont ++;
@@ -6975,14 +6975,14 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
         }
         if (num == 5){
             if (letracerta1.equals("E") || letracerta1.equals("Ẽ") || letracerta1.equals("É") || letracerta1.equals("Ê")){
-                if (letra1.getText().toString().equals("___")){                    letra1.setText(letracerta1);
+                if (letra1.getText().toString().equals("__")){                    letra1.setText(letracerta1);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta2.equals("E") || letracerta2.equals("Ẽ") || letracerta2.equals("É") || letracerta2.equals("Ê")){
-                if (letra2.getText().toString().equals("___")){                    letra2.setText(letracerta2);
+                if (letra2.getText().toString().equals("__")){                    letra2.setText(letracerta2);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -6990,21 +6990,21 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta3.equals("E") || letracerta3.equals("Ẽ") || letracerta3.equals("É") || letracerta3.equals("Ê")){
-                if (letra3.getText().toString().equals("___")){                    letra3.setText(letracerta3);
+                if (letra3.getText().toString().equals("__")){                    letra3.setText(letracerta3);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta4.equals("E") || letracerta4.equals("Ẽ") || letracerta4.equals("É") || letracerta4.equals("Ê")){
-                if (letra4.getText().toString().equals("___")){                    letra4.setText(letracerta4);
+                if (letra4.getText().toString().equals("__")){                    letra4.setText(letracerta4);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta5.equals("E") || letracerta5.equals("Ẽ") || letracerta5.equals("É") || letracerta5.equals("Ê")){
-                if (letra5.getText().toString().equals("___")){                    letra5.setText(letracerta5);
+                if (letra5.getText().toString().equals("__")){                    letra5.setText(letracerta5);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -7012,7 +7012,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta6.equals("E") || letracerta6.equals("Ẽ") || letracerta6.equals("É") || letracerta6.equals("Ê")){
-                if (letra6.getText().toString().equals("___")){
+                if (letra6.getText().toString().equals("__")){
                     letra6.setText(letracerta6);
                     acertos = acertos + 1;
                     cont ++;
@@ -7021,7 +7021,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta7.equals("E") || letracerta7.equals("Ẽ") || letracerta7.equals("É") || letracerta7.equals("Ê")){
-                if (letra7.getText().toString().equals("___")){
+                if (letra7.getText().toString().equals("__")){
                     letra7.setText(letracerta7);
                     acertos = acertos + 1;
                     cont ++;
@@ -7030,7 +7030,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta8.equals("E") || letracerta8.equals("Ẽ") || letracerta8.equals("É") || letracerta8.equals("Ê")){
-                if (letra8.getText().toString().equals("___")){
+                if (letra8.getText().toString().equals("__")){
                     letra8.setText(letracerta8);
                     acertos = acertos + 1;
                     cont ++;
@@ -7039,7 +7039,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta9.equals("E") || letracerta9.equals("Ẽ") || letracerta9.equals("É") || letracerta9.equals("Ê")){
-                if (letra9.getText().toString().equals("___")){
+                if (letra9.getText().toString().equals("__")){
                     letra9.setText(letracerta9);
                     acertos = acertos + 1;
                     cont ++;
@@ -7048,7 +7048,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta10.equals("E") || letracerta10.equals("Ẽ") || letracerta10.equals("É") || letracerta10.equals("Ê")){
-                if (letra10.getText().toString().equals("___")){
+                if (letra10.getText().toString().equals("__")){
                     letra10.setText(letracerta10);
                     acertos = acertos + 1;
                     cont ++;
@@ -7057,7 +7057,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta11.equals("E") || letracerta11.equals("Ẽ") || letracerta11.equals("É") || letracerta11.equals("Ê")){
-                if (letra11.getText().toString().equals("___")){
+                if (letra11.getText().toString().equals("__")){
                     letra11.setText(letracerta11);
                     acertos = acertos + 1;
                     cont ++;
@@ -7066,7 +7066,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta12.equals("E") || letracerta12.equals("Ẽ") || letracerta12.equals("É") || letracerta12.equals("Ê")){
-                if (letra12.getText().toString().equals("___")){
+                if (letra12.getText().toString().equals("__")){
                     letra12.setText(letracerta12);
                     acertos = acertos + 1;
                     cont ++;
@@ -7075,7 +7075,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta13.equals("E") || letracerta13.equals("Ẽ") || letracerta13.equals("É") || letracerta13.equals("Ê")){
-                if (letra13.getText().toString().equals("___")){
+                if (letra13.getText().toString().equals("__")){
                     letra13.setText(letracerta13);
                     acertos = acertos + 1;
                     cont ++;
@@ -7084,7 +7084,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta14.equals("E") || letracerta14.equals("Ẽ") || letracerta14.equals("É") || letracerta14.equals("Ê")){
-                if (letra14.getText().toString().equals("___")){
+                if (letra14.getText().toString().equals("__")){
                     letra14.setText(letracerta14);
                     acertos = acertos + 1;
                     cont ++;
@@ -7093,7 +7093,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta15.equals("E") || letracerta15.equals("Ẽ") || letracerta15.equals("É") || letracerta15.equals("Ê")){
-                if (letra15.getText().toString().equals("___")){
+                if (letra15.getText().toString().equals("__")){
                     letra15.setText(letracerta15);
                     acertos = acertos + 1;
                     cont ++;
@@ -7102,7 +7102,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta16.equals("E") || letracerta16.equals("Ẽ") || letracerta16.equals("É") || letracerta16.equals("Ê")){
-                if (letra16.getText().toString().equals("___")){
+                if (letra16.getText().toString().equals("__")){
                     letra16.setText(letracerta16);
                     acertos = acertos + 1;
                     cont ++;
@@ -7111,7 +7111,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta17.equals("E") || letracerta17.equals("Ẽ") || letracerta17.equals("É") || letracerta17.equals("Ê")){
-                if (letra17.getText().toString().equals("___")){
+                if (letra17.getText().toString().equals("__")){
                     letra17.setText(letracerta17);
                     acertos = acertos + 1;
                     cont ++;
@@ -7120,7 +7120,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta18.equals("E") || letracerta18.equals("Ẽ") || letracerta18.equals("É") || letracerta18.equals("Ê")){
-                if (letra18.getText().toString().equals("___")){
+                if (letra18.getText().toString().equals("__")){
                     letra18.setText(letracerta18);
                     acertos = acertos + 1;
                     cont ++;
@@ -7129,7 +7129,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta19.equals("E") || letracerta19.equals("Ẽ") || letracerta19.equals("É") || letracerta19.equals("Ê")){
-                if (letra19.getText().toString().equals("___")){
+                if (letra19.getText().toString().equals("__")){
                     letra19.setText(letracerta19);
                     acertos = acertos + 1;
                     cont ++;
@@ -7138,7 +7138,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta20.equals("E") || letracerta20.equals("Ẽ") || letracerta20.equals("É") || letracerta20.equals("Ê")){
-                if (letra20.getText().toString().equals("___")){
+                if (letra20.getText().toString().equals("__")){
                     letra20.setText(letracerta20);
                     acertos = acertos + 1;
                     cont ++;
@@ -7147,7 +7147,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta21.equals("E") || letracerta21.equals("Ẽ") || letracerta21.equals("É") || letracerta21.equals("Ê")){
-                if (letra21.getText().toString().equals("___")){
+                if (letra21.getText().toString().equals("__")){
                     letra21.setText(letracerta21);
                     acertos = acertos + 1;
                     cont ++;
@@ -7156,7 +7156,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta22.equals("E") || letracerta22.equals("Ẽ") || letracerta22.equals("É") || letracerta22.equals("Ê")){
-                if (letra22.getText().toString().equals("___")){
+                if (letra22.getText().toString().equals("__")){
                     letra22.setText(letracerta22);
                     acertos = acertos + 1;
                     cont ++;
@@ -7165,7 +7165,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta23.equals("E") || letracerta23.equals("Ẽ") || letracerta23.equals("É") || letracerta23.equals("Ê")){
-                if (letra23.getText().toString().equals("___")){
+                if (letra23.getText().toString().equals("__")){
                     letra23.setText(letracerta23);
                     acertos = acertos + 1;
                     cont ++;
@@ -7174,7 +7174,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta24.equals("E") || letracerta24.equals("Ẽ") || letracerta24.equals("É") || letracerta24.equals("Ê")){
-                if (letra24.getText().toString().equals("___")){
+                if (letra24.getText().toString().equals("__")){
                     letra24.setText(letracerta24);
                     acertos = acertos + 1;
                     cont ++;
@@ -7183,7 +7183,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta25.equals("E") || letracerta25.equals("Ẽ") || letracerta25.equals("É") || letracerta25.equals("Ê")){
-                if (letra25.getText().toString().equals("___")){
+                if (letra25.getText().toString().equals("__")){
                     letra25.setText(letracerta25);
                     acertos = acertos + 1;
                     cont ++;
@@ -7201,14 +7201,14 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
         }
         if (num == 6){
             if (letracerta1.equals("F")){
-                if (letra1.getText().toString().equals("___")){                    letra1.setText(letracerta1);
+                if (letra1.getText().toString().equals("__")){                    letra1.setText(letracerta1);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta2.equals("F")){
-                if (letra2.getText().toString().equals("___")){                    letra2.setText(letracerta2);
+                if (letra2.getText().toString().equals("__")){                    letra2.setText(letracerta2);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -7216,21 +7216,21 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta3.equals("F")){
-                if (letra3.getText().toString().equals("___")){                    letra3.setText(letracerta3);
+                if (letra3.getText().toString().equals("__")){                    letra3.setText(letracerta3);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta4.equals("F")){
-                if (letra4.getText().toString().equals("___")){                    letra4.setText(letracerta4);
+                if (letra4.getText().toString().equals("__")){                    letra4.setText(letracerta4);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta5.equals("F")){
-                if (letra5.getText().toString().equals("___")){                    letra5.setText(letracerta5);
+                if (letra5.getText().toString().equals("__")){                    letra5.setText(letracerta5);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -7238,7 +7238,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta6.equals("F")){
-                if (letra6.getText().toString().equals("___")){
+                if (letra6.getText().toString().equals("__")){
                     letra6.setText(letracerta6);
                     acertos = acertos + 1;
                     cont ++;
@@ -7247,7 +7247,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta7.equals("F")){
-                if (letra7.getText().toString().equals("___")){
+                if (letra7.getText().toString().equals("__")){
                     letra7.setText(letracerta7);
                     acertos = acertos + 1;
                     cont ++;
@@ -7256,7 +7256,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta8.equals("F")){
-                if (letra8.getText().toString().equals("___")){
+                if (letra8.getText().toString().equals("__")){
                     letra8.setText(letracerta8);
                     acertos = acertos + 1;
                     cont ++;
@@ -7265,7 +7265,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta9.equals("F")){
-                if (letra9.getText().toString().equals("___")){
+                if (letra9.getText().toString().equals("__")){
                     letra9.setText(letracerta9);
                     acertos = acertos + 1;
                     cont ++;
@@ -7274,7 +7274,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta10.equals("F")){
-                if (letra10.getText().toString().equals("___")){
+                if (letra10.getText().toString().equals("__")){
                     letra10.setText(letracerta10);
                     acertos = acertos + 1;
                     cont ++;
@@ -7283,7 +7283,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta11.equals("F")){
-                if (letra11.getText().toString().equals("___")){
+                if (letra11.getText().toString().equals("__")){
                     letra11.setText(letracerta11);
                     acertos = acertos + 1;
                     cont ++;
@@ -7292,7 +7292,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta12.equals("F")){
-                if (letra12.getText().toString().equals("___")){
+                if (letra12.getText().toString().equals("__")){
                     letra12.setText(letracerta12);
                     acertos = acertos + 1;
                     cont ++;
@@ -7301,7 +7301,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta13.equals("F")){
-                if (letra13.getText().toString().equals("___")){
+                if (letra13.getText().toString().equals("__")){
                     letra13.setText(letracerta13);
                     acertos = acertos + 1;
                     cont ++;
@@ -7310,7 +7310,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta14.equals("F")){
-                if (letra14.getText().toString().equals("___")){
+                if (letra14.getText().toString().equals("__")){
                     letra14.setText(letracerta14);
                     acertos = acertos + 1;
                     cont ++;
@@ -7319,7 +7319,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta15.equals("F")){
-                if (letra15.getText().toString().equals("___")){
+                if (letra15.getText().toString().equals("__")){
                     letra15.setText(letracerta15);
                     acertos = acertos + 1;
                     cont ++;
@@ -7328,7 +7328,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta16.equals("F")){
-                if (letra16.getText().toString().equals("___")){
+                if (letra16.getText().toString().equals("__")){
                     letra16.setText(letracerta16);
                     acertos = acertos + 1;
                     cont ++;
@@ -7337,7 +7337,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta17.equals("F")){
-                if (letra17.getText().toString().equals("___")){
+                if (letra17.getText().toString().equals("__")){
                     letra17.setText(letracerta17);
                     acertos = acertos + 1;
                     cont ++;
@@ -7346,7 +7346,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta18.equals("F")){
-                if (letra18.getText().toString().equals("___")){
+                if (letra18.getText().toString().equals("__")){
                     letra18.setText(letracerta18);
                     acertos = acertos + 1;
                     cont ++;
@@ -7355,7 +7355,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta19.equals("F")){
-                if (letra19.getText().toString().equals("___")){
+                if (letra19.getText().toString().equals("__")){
                     letra19.setText(letracerta19);
                     acertos = acertos + 1;
                     cont ++;
@@ -7364,7 +7364,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta20.equals("F")){
-                if (letra20.getText().toString().equals("___")){
+                if (letra20.getText().toString().equals("__")){
                     letra20.setText(letracerta20);
                     acertos = acertos + 1;
                     cont ++;
@@ -7373,7 +7373,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta21.equals("F")){
-                if (letra21.getText().toString().equals("___")){
+                if (letra21.getText().toString().equals("__")){
                     letra21.setText(letracerta21);
                     acertos = acertos + 1;
                     cont ++;
@@ -7382,7 +7382,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta22.equals("F")){
-                if (letra22.getText().toString().equals("___")){
+                if (letra22.getText().toString().equals("__")){
                     letra22.setText(letracerta22);
                     acertos = acertos + 1;
                     cont ++;
@@ -7391,7 +7391,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta23.equals("F")){
-                if (letra23.getText().toString().equals("___")){
+                if (letra23.getText().toString().equals("__")){
                     letra23.setText(letracerta23);
                     acertos = acertos + 1;
                     cont ++;
@@ -7400,7 +7400,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta24.equals("F")){
-                if (letra24.getText().toString().equals("___")){
+                if (letra24.getText().toString().equals("__")){
                     letra24.setText(letracerta24);
                     acertos = acertos + 1;
                     cont ++;
@@ -7409,7 +7409,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta25.equals("F")){
-                if (letra25.getText().toString().equals("___")){
+                if (letra25.getText().toString().equals("__")){
                     letra25.setText(letracerta25);
                     acertos = acertos + 1;
                     cont ++;
@@ -7427,14 +7427,14 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
         }
         if (num == 7){
             if (letracerta1.equals("G")){
-                if (letra1.getText().toString().equals("___")){                    letra1.setText(letracerta1);
+                if (letra1.getText().toString().equals("__")){                    letra1.setText(letracerta1);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta2.equals("G")){
-                if (letra2.getText().toString().equals("___")){                    letra2.setText(letracerta2);
+                if (letra2.getText().toString().equals("__")){                    letra2.setText(letracerta2);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -7442,21 +7442,21 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta3.equals("G")){
-                if (letra3.getText().toString().equals("___")){                    letra3.setText(letracerta3);
+                if (letra3.getText().toString().equals("__")){                    letra3.setText(letracerta3);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta4.equals("G")){
-                if (letra4.getText().toString().equals("___")){                    letra4.setText(letracerta4);
+                if (letra4.getText().toString().equals("__")){                    letra4.setText(letracerta4);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta5.equals("G")){
-                if (letra5.getText().toString().equals("___")){                    letra5.setText(letracerta5);
+                if (letra5.getText().toString().equals("__")){                    letra5.setText(letracerta5);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -7464,7 +7464,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta6.equals("G")){
-                if (letra6.getText().toString().equals("___")){
+                if (letra6.getText().toString().equals("__")){
                     letra6.setText(letracerta6);
                     acertos = acertos + 1;
                     cont ++;
@@ -7473,7 +7473,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta7.equals("G")){
-                if (letra7.getText().toString().equals("___")){
+                if (letra7.getText().toString().equals("__")){
                     letra7.setText(letracerta7);
                     acertos = acertos + 1;
                     cont ++;
@@ -7482,7 +7482,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta8.equals("G")){
-                if (letra8.getText().toString().equals("___")){
+                if (letra8.getText().toString().equals("__")){
                     letra8.setText(letracerta8);
                     acertos = acertos + 1;
                     cont ++;
@@ -7491,7 +7491,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta9.equals("G")){
-                if (letra9.getText().toString().equals("___")){
+                if (letra9.getText().toString().equals("__")){
                     letra9.setText(letracerta9);
                     acertos = acertos + 1;
                     cont ++;
@@ -7500,7 +7500,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta10.equals("G")){
-                if (letra10.getText().toString().equals("___")){
+                if (letra10.getText().toString().equals("__")){
                     letra10.setText(letracerta10);
                     acertos = acertos + 1;
                     cont ++;
@@ -7509,7 +7509,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta11.equals("G")){
-                if (letra11.getText().toString().equals("___")){
+                if (letra11.getText().toString().equals("__")){
                     letra11.setText(letracerta11);
                     acertos = acertos + 1;
                     cont ++;
@@ -7518,7 +7518,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta12.equals("G")){
-                if (letra12.getText().toString().equals("___")){
+                if (letra12.getText().toString().equals("__")){
                     letra12.setText(letracerta12);
                     acertos = acertos + 1;
                     cont ++;
@@ -7527,7 +7527,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta13.equals("G")){
-                if (letra13.getText().toString().equals("___")){
+                if (letra13.getText().toString().equals("__")){
                     letra13.setText(letracerta13);
                     acertos = acertos + 1;
                     cont ++;
@@ -7536,7 +7536,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta14.equals("G")){
-                if (letra14.getText().toString().equals("___")){
+                if (letra14.getText().toString().equals("__")){
                     letra14.setText(letracerta14);
                     acertos = acertos + 1;
                     cont ++;
@@ -7545,7 +7545,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta15.equals("G")){
-                if (letra15.getText().toString().equals("___")){
+                if (letra15.getText().toString().equals("__")){
                     letra15.setText(letracerta15);
                     acertos = acertos + 1;
                     cont ++;
@@ -7554,7 +7554,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta16.equals("G")){
-                if (letra16.getText().toString().equals("___")){
+                if (letra16.getText().toString().equals("__")){
                     letra16.setText(letracerta16);
                     acertos = acertos + 1;
                     cont ++;
@@ -7563,7 +7563,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta17.equals("G")){
-                if (letra17.getText().toString().equals("___")){
+                if (letra17.getText().toString().equals("__")){
                     letra17.setText(letracerta17);
                     acertos = acertos + 1;
                     cont ++;
@@ -7572,7 +7572,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta18.equals("G")){
-                if (letra18.getText().toString().equals("___")){
+                if (letra18.getText().toString().equals("__")){
                     letra18.setText(letracerta18);
                     acertos = acertos + 1;
                     cont ++;
@@ -7581,7 +7581,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta19.equals("G")){
-                if (letra19.getText().toString().equals("___")){
+                if (letra19.getText().toString().equals("__")){
                     letra19.setText(letracerta19);
                     acertos = acertos + 1;
                     cont ++;
@@ -7590,7 +7590,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta20.equals("G")){
-                if (letra20.getText().toString().equals("___")){
+                if (letra20.getText().toString().equals("__")){
                     letra20.setText(letracerta20);
                     acertos = acertos + 1;
                     cont ++;
@@ -7599,7 +7599,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta21.equals("G")){
-                if (letra21.getText().toString().equals("___")){
+                if (letra21.getText().toString().equals("__")){
                     letra21.setText(letracerta21);
                     acertos = acertos + 1;
                     cont ++;
@@ -7608,7 +7608,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta22.equals("G")){
-                if (letra22.getText().toString().equals("___")){
+                if (letra22.getText().toString().equals("__")){
                     letra22.setText(letracerta22);
                     acertos = acertos + 1;
                     cont ++;
@@ -7617,7 +7617,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta23.equals("G")){
-                if (letra23.getText().toString().equals("___")){
+                if (letra23.getText().toString().equals("__")){
                     letra23.setText(letracerta23);
                     acertos = acertos + 1;
                     cont ++;
@@ -7626,7 +7626,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta24.equals("G")){
-                if (letra24.getText().toString().equals("___")){
+                if (letra24.getText().toString().equals("__")){
                     letra24.setText(letracerta24);
                     acertos = acertos + 1;
                     cont ++;
@@ -7635,7 +7635,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta25.equals("G")){
-                if (letra25.getText().toString().equals("___")){
+                if (letra25.getText().toString().equals("__")){
                     letra25.setText(letracerta25);
                     acertos = acertos + 1;
                     cont ++;
@@ -7653,14 +7653,14 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
         }
         if (num == 8){
             if (letracerta1.equals("H")){
-                if (letra1.getText().toString().equals("___")){                    letra1.setText(letracerta1);
+                if (letra1.getText().toString().equals("__")){                    letra1.setText(letracerta1);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta2.equals("H")){
-                if (letra2.getText().toString().equals("___")){                    letra2.setText(letracerta2);
+                if (letra2.getText().toString().equals("__")){                    letra2.setText(letracerta2);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -7668,21 +7668,21 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta3.equals("H")){
-                if (letra3.getText().toString().equals("___")){                    letra3.setText(letracerta3);
+                if (letra3.getText().toString().equals("__")){                    letra3.setText(letracerta3);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta4.equals("H")){
-                if (letra4.getText().toString().equals("___")){                    letra4.setText(letracerta4);
+                if (letra4.getText().toString().equals("__")){                    letra4.setText(letracerta4);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta5.equals("H")){
-                if (letra5.getText().toString().equals("___")){                    letra5.setText(letracerta5);
+                if (letra5.getText().toString().equals("__")){                    letra5.setText(letracerta5);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -7690,7 +7690,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta6.equals("H")){
-                if (letra6.getText().toString().equals("___")){
+                if (letra6.getText().toString().equals("__")){
                     letra6.setText(letracerta6);
                     acertos = acertos + 1;
                     cont ++;
@@ -7699,7 +7699,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta7.equals("H")){
-                if (letra7.getText().toString().equals("___")){
+                if (letra7.getText().toString().equals("__")){
                     letra7.setText(letracerta7);
                     acertos = acertos + 1;
                     cont ++;
@@ -7708,7 +7708,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta8.equals("H")){
-                if (letra8.getText().toString().equals("___")){
+                if (letra8.getText().toString().equals("__")){
                     letra8.setText(letracerta8);
                     acertos = acertos + 1;
                     cont ++;
@@ -7717,7 +7717,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta9.equals("H")){
-                if (letra9.getText().toString().equals("___")){
+                if (letra9.getText().toString().equals("__")){
                     letra9.setText(letracerta9);
                     acertos = acertos + 1;
                     cont ++;
@@ -7726,7 +7726,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta10.equals("H")){
-                if (letra10.getText().toString().equals("___")){
+                if (letra10.getText().toString().equals("__")){
                     letra10.setText(letracerta10);
                     acertos = acertos + 1;
                     cont ++;
@@ -7735,7 +7735,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta11.equals("H")){
-                if (letra11.getText().toString().equals("___")){
+                if (letra11.getText().toString().equals("__")){
                     letra11.setText(letracerta11);
                     acertos = acertos + 1;
                     cont ++;
@@ -7744,7 +7744,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta12.equals("H")){
-                if (letra12.getText().toString().equals("___")){
+                if (letra12.getText().toString().equals("__")){
                     letra12.setText(letracerta12);
                     acertos = acertos + 1;
                     cont ++;
@@ -7753,7 +7753,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta13.equals("H")){
-                if (letra13.getText().toString().equals("___")){
+                if (letra13.getText().toString().equals("__")){
                     letra13.setText(letracerta13);
                     acertos = acertos + 1;
                     cont ++;
@@ -7762,7 +7762,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta14.equals("H")){
-                if (letra14.getText().toString().equals("___")){
+                if (letra14.getText().toString().equals("__")){
                     letra14.setText(letracerta14);
                     acertos = acertos + 1;
                     cont ++;
@@ -7771,7 +7771,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta15.equals("H")){
-                if (letra15.getText().toString().equals("___")){
+                if (letra15.getText().toString().equals("__")){
                     letra15.setText(letracerta15);
                     acertos = acertos + 1;
                     cont ++;
@@ -7780,7 +7780,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta16.equals("H")){
-                if (letra16.getText().toString().equals("___")){
+                if (letra16.getText().toString().equals("__")){
                     letra16.setText(letracerta16);
                     acertos = acertos + 1;
                     cont ++;
@@ -7789,7 +7789,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta17.equals("H")){
-                if (letra17.getText().toString().equals("___")){
+                if (letra17.getText().toString().equals("__")){
                     letra17.setText(letracerta17);
                     acertos = acertos + 1;
                     cont ++;
@@ -7798,7 +7798,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta18.equals("H")){
-                if (letra18.getText().toString().equals("___")){
+                if (letra18.getText().toString().equals("__")){
                     letra18.setText(letracerta18);
                     acertos = acertos + 1;
                     cont ++;
@@ -7807,7 +7807,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta19.equals("H")){
-                if (letra19.getText().toString().equals("___")){
+                if (letra19.getText().toString().equals("__")){
                     letra19.setText(letracerta19);
                     acertos = acertos + 1;
                     cont ++;
@@ -7816,7 +7816,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta20.equals("H")){
-                if (letra20.getText().toString().equals("___")){
+                if (letra20.getText().toString().equals("__")){
                     letra20.setText(letracerta20);
                     acertos = acertos + 1;
                     cont ++;
@@ -7825,7 +7825,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta21.equals("H")){
-                if (letra21.getText().toString().equals("___")){
+                if (letra21.getText().toString().equals("__")){
                     letra21.setText(letracerta21);
                     acertos = acertos + 1;
                     cont ++;
@@ -7834,7 +7834,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta22.equals("H")){
-                if (letra22.getText().toString().equals("___")){
+                if (letra22.getText().toString().equals("__")){
                     letra22.setText(letracerta22);
                     acertos = acertos + 1;
                     cont ++;
@@ -7843,7 +7843,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta23.equals("H")){
-                if (letra23.getText().toString().equals("___")){
+                if (letra23.getText().toString().equals("__")){
                     letra23.setText(letracerta23);
                     acertos = acertos + 1;
                     cont ++;
@@ -7852,7 +7852,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta24.equals("H")){
-                if (letra24.getText().toString().equals("___")){
+                if (letra24.getText().toString().equals("__")){
                     letra24.setText(letracerta24);
                     acertos = acertos + 1;
                     cont ++;
@@ -7861,7 +7861,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta25.equals("H")){
-                if (letra25.getText().toString().equals("___")){
+                if (letra25.getText().toString().equals("__")){
                     letra25.setText(letracerta25);
                     acertos = acertos + 1;
                     cont ++;
@@ -7880,14 +7880,14 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
         }
         if (num == 9){
             if (letracerta1.equals("I") || letracerta1.equals("Ĩ") || letracerta1.equals("Í") || letracerta1.equals("Î")){
-                if (letra1.getText().toString().equals("___")){                    letra1.setText(letracerta1);
+                if (letra1.getText().toString().equals("__")){                    letra1.setText(letracerta1);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta2.equals("I") || letracerta2.equals("Ĩ") || letracerta2.equals("Í") || letracerta2.equals("Î")){
-                if (letra2.getText().toString().equals("___")){                    letra2.setText(letracerta2);
+                if (letra2.getText().toString().equals("__")){                    letra2.setText(letracerta2);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -7895,21 +7895,21 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta3.equals("I") || letracerta3.equals("Ĩ") || letracerta3.equals("Í") || letracerta3.equals("Î")){
-                if (letra3.getText().toString().equals("___")){                    letra3.setText(letracerta3);
+                if (letra3.getText().toString().equals("__")){                    letra3.setText(letracerta3);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta4.equals("I") || letracerta4.equals("Ĩ") || letracerta4.equals("Í") || letracerta4.equals("Î")){
-                if (letra4.getText().toString().equals("___")){                    letra4.setText(letracerta4);
+                if (letra4.getText().toString().equals("__")){                    letra4.setText(letracerta4);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta5.equals("I") || letracerta5.equals("Ĩ") || letracerta5.equals("Í") || letracerta5.equals("Î")){
-                if (letra5.getText().toString().equals("___")){                    letra5.setText(letracerta5);
+                if (letra5.getText().toString().equals("__")){                    letra5.setText(letracerta5);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -7917,7 +7917,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta6.equals("I") || letracerta6.equals("Ĩ") || letracerta6.equals("Í") || letracerta6.equals("Î")){
-                if (letra6.getText().toString().equals("___")){
+                if (letra6.getText().toString().equals("__")){
                     letra6.setText(letracerta6);
                     acertos = acertos + 1;
                     cont ++;
@@ -7926,7 +7926,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta7.equals("I") || letracerta7.equals("Ĩ") || letracerta7.equals("Í") || letracerta7.equals("Î")){
-                if (letra7.getText().toString().equals("___")){
+                if (letra7.getText().toString().equals("__")){
                     letra7.setText(letracerta7);
                     acertos = acertos + 1;
                     cont ++;
@@ -7935,7 +7935,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta8.equals("I") || letracerta8.equals("Ĩ") || letracerta8.equals("Í") || letracerta8.equals("Î")){
-                if (letra8.getText().toString().equals("___")){
+                if (letra8.getText().toString().equals("__")){
                     letra8.setText(letracerta8);
                     acertos = acertos + 1;
                     cont ++;
@@ -7944,7 +7944,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta9.equals("I") || letracerta9.equals("Ĩ") || letracerta9.equals("Í") || letracerta9.equals("Î")){
-                if (letra9.getText().toString().equals("___")){
+                if (letra9.getText().toString().equals("__")){
                     letra9.setText(letracerta9);
                     acertos = acertos + 1;
                     cont ++;
@@ -7953,7 +7953,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta10.equals("I") || letracerta10.equals("Ĩ") || letracerta10.equals("Í") || letracerta10.equals("Î")){
-                if (letra10.getText().toString().equals("___")){
+                if (letra10.getText().toString().equals("__")){
                     letra10.setText(letracerta10);
                     acertos = acertos + 1;
                     cont ++;
@@ -7962,7 +7962,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta11.equals("I") || letracerta11.equals("Ĩ") || letracerta11.equals("Í") || letracerta11.equals("Î")){
-                if (letra11.getText().toString().equals("___")){
+                if (letra11.getText().toString().equals("__")){
                     letra11.setText(letracerta11);
                     acertos = acertos + 1;
                     cont ++;
@@ -7971,7 +7971,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta12.equals("I") || letracerta12.equals("Ĩ") || letracerta12.equals("Í") || letracerta12.equals("Î")){
-                if (letra12.getText().toString().equals("___")){
+                if (letra12.getText().toString().equals("__")){
                     letra12.setText(letracerta12);
                     acertos = acertos + 1;
                     cont ++;
@@ -7980,7 +7980,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta13.equals("I") || letracerta13.equals("Ĩ") || letracerta13.equals("Í") || letracerta13.equals("Î")){
-                if (letra13.getText().toString().equals("___")){
+                if (letra13.getText().toString().equals("__")){
                     letra13.setText(letracerta13);
                     acertos = acertos + 1;
                     cont ++;
@@ -7989,7 +7989,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta14.equals("I") || letracerta14.equals("Ĩ") || letracerta14.equals("Í") || letracerta14.equals("Î")){
-                if (letra14.getText().toString().equals("___")){
+                if (letra14.getText().toString().equals("__")){
                     letra14.setText(letracerta14);
                     acertos = acertos + 1;
                     cont ++;
@@ -7998,7 +7998,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta15.equals("I") || letracerta15.equals("Ĩ") || letracerta15.equals("Í") || letracerta15.equals("Î")){
-                if (letra15.getText().toString().equals("___")){
+                if (letra15.getText().toString().equals("__")){
                     letra15.setText(letracerta15);
                     acertos = acertos + 1;
                     cont ++;
@@ -8007,7 +8007,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta16.equals("I") || letracerta16.equals("Ĩ") || letracerta16.equals("Í") || letracerta16.equals("Î")){
-                if (letra16.getText().toString().equals("___")){
+                if (letra16.getText().toString().equals("__")){
                     letra16.setText(letracerta16);
                     acertos = acertos + 1;
                     cont ++;
@@ -8016,7 +8016,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta17.equals("I") || letracerta17.equals("Ĩ") || letracerta17.equals("Í") || letracerta17.equals("Î")){
-                if (letra17.getText().toString().equals("___")){
+                if (letra17.getText().toString().equals("__")){
                     letra17.setText(letracerta17);
                     acertos = acertos + 1;
                     cont ++;
@@ -8025,7 +8025,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta18.equals("I") || letracerta18.equals("Ĩ") || letracerta18.equals("Í") || letracerta18.equals("Î")){
-                if (letra18.getText().toString().equals("___")){
+                if (letra18.getText().toString().equals("__")){
                     letra18.setText(letracerta18);
                     acertos = acertos + 1;
                     cont ++;
@@ -8034,7 +8034,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta19.equals("I") || letracerta19.equals("Ĩ") || letracerta19.equals("Í") || letracerta19.equals("Î")){
-                if (letra19.getText().toString().equals("___")){
+                if (letra19.getText().toString().equals("__")){
                     letra19.setText(letracerta19);
                     acertos = acertos + 1;
                     cont ++;
@@ -8043,7 +8043,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta20.equals("I") || letracerta20.equals("Ĩ") || letracerta20.equals("Í") || letracerta20.equals("Î")){
-                if (letra20.getText().toString().equals("___")){
+                if (letra20.getText().toString().equals("__")){
                     letra20.setText(letracerta20);
                     acertos = acertos + 1;
                     cont ++;
@@ -8052,7 +8052,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta21.equals("I") || letracerta21.equals("Ĩ") || letracerta21.equals("Í") || letracerta21.equals("Î")){
-                if (letra21.getText().toString().equals("___")){
+                if (letra21.getText().toString().equals("__")){
                     letra21.setText(letracerta21);
                     acertos = acertos + 1;
                     cont ++;
@@ -8061,7 +8061,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta22.equals("I") || letracerta22.equals("Ĩ") || letracerta22.equals("Í") || letracerta22.equals("Î")){
-                if (letra22.getText().toString().equals("___")){
+                if (letra22.getText().toString().equals("__")){
                     letra22.setText(letracerta22);
                     acertos = acertos + 1;
                     cont ++;
@@ -8070,7 +8070,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta23.equals("I") || letracerta23.equals("Ĩ") || letracerta23.equals("Í") || letracerta23.equals("Î")){
-                if (letra23.getText().toString().equals("___")){
+                if (letra23.getText().toString().equals("__")){
                     letra23.setText(letracerta23);
                     acertos = acertos + 1;
                     cont ++;
@@ -8079,7 +8079,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta24.equals("I") || letracerta24.equals("Ĩ") || letracerta24.equals("Í") || letracerta24.equals("Î")){
-                if (letra24.getText().toString().equals("___")){
+                if (letra24.getText().toString().equals("__")){
                     letra24.setText(letracerta24);
                     acertos = acertos + 1;
                     cont ++;
@@ -8088,7 +8088,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta25.equals("I") || letracerta25.equals("Ĩ") || letracerta25.equals("Í") || letracerta25.equals("Î")){
-                if (letra25.getText().toString().equals("___")){
+                if (letra25.getText().toString().equals("__")){
                     letra25.setText(letracerta25);
                     acertos = acertos + 1;
                     cont ++;
@@ -8107,14 +8107,14 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
         }
         if (num == 10){
             if (letracerta1.equals("J")){
-                if (letra1.getText().toString().equals("___")){                    letra1.setText(letracerta1);
+                if (letra1.getText().toString().equals("__")){                    letra1.setText(letracerta1);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta2.equals("J")){
-                if (letra2.getText().toString().equals("___")){                    letra2.setText(letracerta2);
+                if (letra2.getText().toString().equals("__")){                    letra2.setText(letracerta2);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -8122,21 +8122,21 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta3.equals("J")){
-                if (letra3.getText().toString().equals("___")){                    letra3.setText(letracerta3);
+                if (letra3.getText().toString().equals("__")){                    letra3.setText(letracerta3);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta4.equals("J")){
-                if (letra4.getText().toString().equals("___")){                    letra4.setText(letracerta4);
+                if (letra4.getText().toString().equals("__")){                    letra4.setText(letracerta4);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta5.equals("J")){
-                if (letra5.getText().toString().equals("___")){                    letra5.setText(letracerta5);
+                if (letra5.getText().toString().equals("__")){                    letra5.setText(letracerta5);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -8144,7 +8144,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta6.equals("J")){
-                if (letra6.getText().toString().equals("___")){
+                if (letra6.getText().toString().equals("__")){
                     letra6.setText(letracerta6);
                     acertos = acertos + 1;
                     cont ++;
@@ -8153,7 +8153,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta7.equals("J")){
-                if (letra7.getText().toString().equals("___")){
+                if (letra7.getText().toString().equals("__")){
                     letra7.setText(letracerta7);
                     acertos = acertos + 1;
                     cont ++;
@@ -8162,7 +8162,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta8.equals("J")){
-                if (letra8.getText().toString().equals("___")){
+                if (letra8.getText().toString().equals("__")){
                     letra8.setText(letracerta8);
                     acertos = acertos + 1;
                     cont ++;
@@ -8171,7 +8171,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta9.equals("J")){
-                if (letra9.getText().toString().equals("___")){
+                if (letra9.getText().toString().equals("__")){
                     letra9.setText(letracerta9);
                     acertos = acertos + 1;
                     cont ++;
@@ -8180,7 +8180,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta10.equals("J")){
-                if (letra10.getText().toString().equals("___")){
+                if (letra10.getText().toString().equals("__")){
                     letra10.setText(letracerta10);
                     acertos = acertos + 1;
                     cont ++;
@@ -8189,7 +8189,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta11.equals("J")){
-                if (letra11.getText().toString().equals("___")){
+                if (letra11.getText().toString().equals("__")){
                     letra11.setText(letracerta11);
                     acertos = acertos + 1;
                     cont ++;
@@ -8198,7 +8198,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta12.equals("J")){
-                if (letra12.getText().toString().equals("___")){
+                if (letra12.getText().toString().equals("__")){
                     letra12.setText(letracerta12);
                     acertos = acertos + 1;
                     cont ++;
@@ -8207,7 +8207,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta13.equals("J")){
-                if (letra13.getText().toString().equals("___")){
+                if (letra13.getText().toString().equals("__")){
                     letra13.setText(letracerta13);
                     acertos = acertos + 1;
                     cont ++;
@@ -8216,7 +8216,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta14.equals("J")){
-                if (letra14.getText().toString().equals("___")){
+                if (letra14.getText().toString().equals("__")){
                     letra14.setText(letracerta14);
                     acertos = acertos + 1;
                     cont ++;
@@ -8225,7 +8225,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta15.equals("J")){
-                if (letra15.getText().toString().equals("___")){
+                if (letra15.getText().toString().equals("__")){
                     letra15.setText(letracerta15);
                     acertos = acertos + 1;
                     cont ++;
@@ -8234,7 +8234,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta16.equals("J")){
-                if (letra16.getText().toString().equals("___")){
+                if (letra16.getText().toString().equals("__")){
                     letra16.setText(letracerta16);
                     acertos = acertos + 1;
                     cont ++;
@@ -8243,7 +8243,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta17.equals("J")){
-                if (letra17.getText().toString().equals("___")){
+                if (letra17.getText().toString().equals("__")){
                     letra17.setText(letracerta17);
                     acertos = acertos + 1;
                     cont ++;
@@ -8252,7 +8252,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta18.equals("J")){
-                if (letra18.getText().toString().equals("___")){
+                if (letra18.getText().toString().equals("__")){
                     letra18.setText(letracerta18);
                     acertos = acertos + 1;
                     cont ++;
@@ -8261,7 +8261,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta19.equals("J")){
-                if (letra19.getText().toString().equals("___")){
+                if (letra19.getText().toString().equals("__")){
                     letra19.setText(letracerta19);
                     acertos = acertos + 1;
                     cont ++;
@@ -8270,7 +8270,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta20.equals("J")){
-                if (letra20.getText().toString().equals("___")){
+                if (letra20.getText().toString().equals("__")){
                     letra20.setText(letracerta20);
                     acertos = acertos + 1;
                     cont ++;
@@ -8279,7 +8279,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta21.equals("J")){
-                if (letra21.getText().toString().equals("___")){
+                if (letra21.getText().toString().equals("__")){
                     letra21.setText(letracerta21);
                     acertos = acertos + 1;
                     cont ++;
@@ -8288,7 +8288,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta22.equals("J")){
-                if (letra22.getText().toString().equals("___")){
+                if (letra22.getText().toString().equals("__")){
                     letra22.setText(letracerta22);
                     acertos = acertos + 1;
                     cont ++;
@@ -8297,7 +8297,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta23.equals("J")){
-                if (letra23.getText().toString().equals("___")){
+                if (letra23.getText().toString().equals("__")){
                     letra23.setText(letracerta23);
                     acertos = acertos + 1;
                     cont ++;
@@ -8306,7 +8306,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta24.equals("J")){
-                if (letra24.getText().toString().equals("___")){
+                if (letra24.getText().toString().equals("__")){
                     letra24.setText(letracerta24);
                     acertos = acertos + 1;
                     cont ++;
@@ -8315,7 +8315,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta25.equals("J")){
-                if (letra25.getText().toString().equals("___")){
+                if (letra25.getText().toString().equals("__")){
                     letra25.setText(letracerta25);
                     acertos = acertos + 1;
                     cont ++;
@@ -8333,14 +8333,14 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
         }
         if (num == 11){
             if (letracerta1.equals("K")){
-                if (letra1.getText().toString().equals("___")){                    letra1.setText(letracerta1);
+                if (letra1.getText().toString().equals("__")){                    letra1.setText(letracerta1);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta2.equals("K")){
-                if (letra2.getText().toString().equals("___")){                    letra2.setText(letracerta2);
+                if (letra2.getText().toString().equals("__")){                    letra2.setText(letracerta2);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -8348,21 +8348,21 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta3.equals("K")){
-                if (letra3.getText().toString().equals("___")){                    letra3.setText(letracerta3);
+                if (letra3.getText().toString().equals("__")){                    letra3.setText(letracerta3);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta4.equals("K")){
-                if (letra4.getText().toString().equals("___")){                    letra4.setText(letracerta4);
+                if (letra4.getText().toString().equals("__")){                    letra4.setText(letracerta4);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta5.equals("K")){
-                if (letra5.getText().toString().equals("___")){                    letra5.setText(letracerta5);
+                if (letra5.getText().toString().equals("__")){                    letra5.setText(letracerta5);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -8370,7 +8370,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta6.equals("K")){
-                if (letra6.getText().toString().equals("___")){
+                if (letra6.getText().toString().equals("__")){
                     letra6.setText(letracerta6);
                     acertos = acertos + 1;
                     cont ++;
@@ -8379,7 +8379,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta7.equals("K")){
-                if (letra7.getText().toString().equals("___")){
+                if (letra7.getText().toString().equals("__")){
                     letra7.setText(letracerta7);
                     acertos = acertos + 1;
                     cont ++;
@@ -8388,7 +8388,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta8.equals("K")){
-                if (letra8.getText().toString().equals("___")){
+                if (letra8.getText().toString().equals("__")){
                     letra8.setText(letracerta8);
                     acertos = acertos + 1;
                     cont ++;
@@ -8397,7 +8397,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta9.equals("K")){
-                if (letra9.getText().toString().equals("___")){
+                if (letra9.getText().toString().equals("__")){
                     letra9.setText(letracerta9);
                     acertos = acertos + 1;
                     cont ++;
@@ -8406,7 +8406,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta10.equals("K")){
-                if (letra10.getText().toString().equals("___")){
+                if (letra10.getText().toString().equals("__")){
                     letra10.setText(letracerta10);
                     acertos = acertos + 1;
                     cont ++;
@@ -8415,7 +8415,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta11.equals("K")){
-                if (letra11.getText().toString().equals("___")){
+                if (letra11.getText().toString().equals("__")){
                     letra11.setText(letracerta11);
                     acertos = acertos + 1;
                     cont ++;
@@ -8424,7 +8424,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta12.equals("K")){
-                if (letra12.getText().toString().equals("___")){
+                if (letra12.getText().toString().equals("__")){
                     letra12.setText(letracerta12);
                     acertos = acertos + 1;
                     cont ++;
@@ -8433,7 +8433,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta13.equals("K")){
-                if (letra13.getText().toString().equals("___")){
+                if (letra13.getText().toString().equals("__")){
                     letra13.setText(letracerta13);
                     acertos = acertos + 1;
                     cont ++;
@@ -8442,7 +8442,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta14.equals("K")){
-                if (letra14.getText().toString().equals("___")){
+                if (letra14.getText().toString().equals("__")){
                     letra14.setText(letracerta14);
                     acertos = acertos + 1;
                     cont ++;
@@ -8451,7 +8451,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta15.equals("K")){
-                if (letra15.getText().toString().equals("___")){
+                if (letra15.getText().toString().equals("__")){
                     letra15.setText(letracerta15);
                     acertos = acertos + 1;
                     cont ++;
@@ -8460,7 +8460,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta16.equals("K")){
-                if (letra16.getText().toString().equals("___")){
+                if (letra16.getText().toString().equals("__")){
                     letra16.setText(letracerta16);
                     acertos = acertos + 1;
                     cont ++;
@@ -8469,7 +8469,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta17.equals("K")){
-                if (letra17.getText().toString().equals("___")){
+                if (letra17.getText().toString().equals("__")){
                     letra17.setText(letracerta17);
                     acertos = acertos + 1;
                     cont ++;
@@ -8478,7 +8478,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta18.equals("K")){
-                if (letra18.getText().toString().equals("___")){
+                if (letra18.getText().toString().equals("__")){
                     letra18.setText(letracerta18);
                     acertos = acertos + 1;
                     cont ++;
@@ -8487,7 +8487,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta19.equals("K")){
-                if (letra19.getText().toString().equals("___")){
+                if (letra19.getText().toString().equals("__")){
                     letra19.setText(letracerta19);
                     acertos = acertos + 1;
                     cont ++;
@@ -8496,7 +8496,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta20.equals("K")){
-                if (letra20.getText().toString().equals("___")){
+                if (letra20.getText().toString().equals("__")){
                     letra20.setText(letracerta20);
                     acertos = acertos + 1;
                     cont ++;
@@ -8505,7 +8505,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta21.equals("K")){
-                if (letra21.getText().toString().equals("___")){
+                if (letra21.getText().toString().equals("__")){
                     letra21.setText(letracerta21);
                     acertos = acertos + 1;
                     cont ++;
@@ -8514,7 +8514,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta22.equals("K")){
-                if (letra22.getText().toString().equals("___")){
+                if (letra22.getText().toString().equals("__")){
                     letra22.setText(letracerta22);
                     acertos = acertos + 1;
                     cont ++;
@@ -8523,7 +8523,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta23.equals("K")){
-                if (letra23.getText().toString().equals("___")){
+                if (letra23.getText().toString().equals("__")){
                     letra23.setText(letracerta23);
                     acertos = acertos + 1;
                     cont ++;
@@ -8532,7 +8532,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta24.equals("K")){
-                if (letra24.getText().toString().equals("___")){
+                if (letra24.getText().toString().equals("__")){
                     letra24.setText(letracerta24);
                     acertos = acertos + 1;
                     cont ++;
@@ -8541,7 +8541,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta25.equals("K")){
-                if (letra25.getText().toString().equals("___")){
+                if (letra25.getText().toString().equals("__")){
                     letra25.setText(letracerta25);
                     acertos = acertos + 1;
                     cont ++;
@@ -8559,14 +8559,14 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
         }
         if (num == 12){
             if (letracerta1.equals("L")){
-                if (letra1.getText().toString().equals("___")){                    letra1.setText(letracerta1);
+                if (letra1.getText().toString().equals("__")){                    letra1.setText(letracerta1);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta2.equals("L")){
-                if (letra2.getText().toString().equals("___")){                    letra2.setText(letracerta2);
+                if (letra2.getText().toString().equals("__")){                    letra2.setText(letracerta2);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -8574,21 +8574,21 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta3.equals("L")){
-                if (letra3.getText().toString().equals("___")){                    letra3.setText(letracerta3);
+                if (letra3.getText().toString().equals("__")){                    letra3.setText(letracerta3);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta4.equals("L")){
-                if (letra4.getText().toString().equals("___")){                    letra4.setText(letracerta4);
+                if (letra4.getText().toString().equals("__")){                    letra4.setText(letracerta4);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta5.equals("L")){
-                if (letra5.getText().toString().equals("___")){                    letra5.setText(letracerta5);
+                if (letra5.getText().toString().equals("__")){                    letra5.setText(letracerta5);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -8596,7 +8596,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta6.equals("L")){
-                if (letra6.getText().toString().equals("___")){
+                if (letra6.getText().toString().equals("__")){
                     letra6.setText(letracerta6);
                     acertos = acertos + 1;
                     cont ++;
@@ -8605,7 +8605,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta7.equals("L")){
-                if (letra7.getText().toString().equals("___")){
+                if (letra7.getText().toString().equals("__")){
                     letra7.setText(letracerta7);
                     acertos = acertos + 1;
                     cont ++;
@@ -8614,7 +8614,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta8.equals("L")){
-                if (letra8.getText().toString().equals("___")){
+                if (letra8.getText().toString().equals("__")){
                     letra8.setText(letracerta8);
                     acertos = acertos + 1;
                     cont ++;
@@ -8623,7 +8623,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta9.equals("L")){
-                if (letra9.getText().toString().equals("___")){
+                if (letra9.getText().toString().equals("__")){
                     letra9.setText(letracerta9);
                     acertos = acertos + 1;
                     cont ++;
@@ -8632,7 +8632,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta10.equals("L")){
-                if (letra10.getText().toString().equals("___")){
+                if (letra10.getText().toString().equals("__")){
                     letra10.setText(letracerta10);
                     acertos = acertos + 1;
                     cont ++;
@@ -8641,7 +8641,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta11.equals("L")){
-                if (letra11.getText().toString().equals("___")){
+                if (letra11.getText().toString().equals("__")){
                     letra11.setText(letracerta11);
                     acertos = acertos + 1;
                     cont ++;
@@ -8650,7 +8650,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta12.equals("L")){
-                if (letra12.getText().toString().equals("___")){
+                if (letra12.getText().toString().equals("__")){
                     letra12.setText(letracerta12);
                     acertos = acertos + 1;
                     cont ++;
@@ -8659,7 +8659,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta13.equals("L")){
-                if (letra13.getText().toString().equals("___")){
+                if (letra13.getText().toString().equals("__")){
                     letra13.setText(letracerta13);
                     acertos = acertos + 1;
                     cont ++;
@@ -8668,7 +8668,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta14.equals("L")){
-                if (letra14.getText().toString().equals("___")){
+                if (letra14.getText().toString().equals("__")){
                     letra14.setText(letracerta14);
                     acertos = acertos + 1;
                     cont ++;
@@ -8677,7 +8677,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta15.equals("L")){
-                if (letra15.getText().toString().equals("___")){
+                if (letra15.getText().toString().equals("__")){
                     letra15.setText(letracerta15);
                     acertos = acertos + 1;
                     cont ++;
@@ -8686,7 +8686,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta16.equals("L")){
-                if (letra16.getText().toString().equals("___")){
+                if (letra16.getText().toString().equals("__")){
                     letra16.setText(letracerta16);
                     acertos = acertos + 1;
                     cont ++;
@@ -8695,7 +8695,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta17.equals("L")){
-                if (letra17.getText().toString().equals("___")){
+                if (letra17.getText().toString().equals("__")){
                     letra17.setText(letracerta17);
                     acertos = acertos + 1;
                     cont ++;
@@ -8704,7 +8704,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta18.equals("L")){
-                if (letra18.getText().toString().equals("___")){
+                if (letra18.getText().toString().equals("__")){
                     letra18.setText(letracerta18);
                     acertos = acertos + 1;
                     cont ++;
@@ -8713,7 +8713,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta19.equals("L")){
-                if (letra19.getText().toString().equals("___")){
+                if (letra19.getText().toString().equals("__")){
                     letra19.setText(letracerta19);
                     acertos = acertos + 1;
                     cont ++;
@@ -8722,7 +8722,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta20.equals("L")){
-                if (letra20.getText().toString().equals("___")){
+                if (letra20.getText().toString().equals("__")){
                     letra20.setText(letracerta20);
                     acertos = acertos + 1;
                     cont ++;
@@ -8731,7 +8731,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta21.equals("L")){
-                if (letra21.getText().toString().equals("___")){
+                if (letra21.getText().toString().equals("__")){
                     letra21.setText(letracerta21);
                     acertos = acertos + 1;
                     cont ++;
@@ -8740,7 +8740,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta22.equals("L")){
-                if (letra22.getText().toString().equals("___")){
+                if (letra22.getText().toString().equals("__")){
                     letra22.setText(letracerta22);
                     acertos = acertos + 1;
                     cont ++;
@@ -8749,7 +8749,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta23.equals("L")){
-                if (letra23.getText().toString().equals("___")){
+                if (letra23.getText().toString().equals("__")){
                     letra23.setText(letracerta23);
                     acertos = acertos + 1;
                     cont ++;
@@ -8758,7 +8758,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta24.equals("L")){
-                if (letra24.getText().toString().equals("___")){
+                if (letra24.getText().toString().equals("__")){
                     letra24.setText(letracerta24);
                     acertos = acertos + 1;
                     cont ++;
@@ -8767,7 +8767,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta25.equals("L")){
-                if (letra25.getText().toString().equals("___")){
+                if (letra25.getText().toString().equals("__")){
                     letra25.setText(letracerta25);
                     acertos = acertos + 1;
                     cont ++;
@@ -8785,14 +8785,14 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
         }
         if (num == 13){
             if (letracerta1.equals("M")){
-                if (letra1.getText().toString().equals("___")){                    letra1.setText(letracerta1);
+                if (letra1.getText().toString().equals("__")){                    letra1.setText(letracerta1);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta2.equals("M")){
-                if (letra2.getText().toString().equals("___")){                    letra2.setText(letracerta2);
+                if (letra2.getText().toString().equals("__")){                    letra2.setText(letracerta2);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -8800,21 +8800,21 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta3.equals("M")){
-                if (letra3.getText().toString().equals("___")){                    letra3.setText(letracerta3);
+                if (letra3.getText().toString().equals("__")){                    letra3.setText(letracerta3);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta4.equals("M")){
-                if (letra4.getText().toString().equals("___")){                    letra4.setText(letracerta4);
+                if (letra4.getText().toString().equals("__")){                    letra4.setText(letracerta4);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta5.equals("M")){
-                if (letra5.getText().toString().equals("___")){                    letra5.setText(letracerta5);
+                if (letra5.getText().toString().equals("__")){                    letra5.setText(letracerta5);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -8822,7 +8822,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta6.equals("M")){
-                if (letra6.getText().toString().equals("___")){
+                if (letra6.getText().toString().equals("__")){
                     letra6.setText(letracerta6);
                     acertos = acertos + 1;
                     cont ++;
@@ -8831,7 +8831,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta7.equals("M")){
-                if (letra7.getText().toString().equals("___")){
+                if (letra7.getText().toString().equals("__")){
                     letra7.setText(letracerta7);
                     acertos = acertos + 1;
                     cont ++;
@@ -8840,7 +8840,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta8.equals("M")){
-                if (letra8.getText().toString().equals("___")){
+                if (letra8.getText().toString().equals("__")){
                     letra8.setText(letracerta8);
                     acertos = acertos + 1;
                     cont ++;
@@ -8849,7 +8849,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta9.equals("M")){
-                if (letra9.getText().toString().equals("___")){
+                if (letra9.getText().toString().equals("__")){
                     letra9.setText(letracerta9);
                     acertos = acertos + 1;
                     cont ++;
@@ -8858,7 +8858,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta10.equals("M")){
-                if (letra10.getText().toString().equals("___")){
+                if (letra10.getText().toString().equals("__")){
                     letra10.setText(letracerta10);
                     acertos = acertos + 1;
                     cont ++;
@@ -8867,7 +8867,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta11.equals("M")){
-                if (letra11.getText().toString().equals("___")){
+                if (letra11.getText().toString().equals("__")){
                     letra11.setText(letracerta11);
                     acertos = acertos + 1;
                     cont ++;
@@ -8876,7 +8876,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta12.equals("M")){
-                if (letra12.getText().toString().equals("___")){
+                if (letra12.getText().toString().equals("__")){
                     letra12.setText(letracerta12);
                     acertos = acertos + 1;
                     cont ++;
@@ -8885,7 +8885,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta13.equals("M")){
-                if (letra13.getText().toString().equals("___")){
+                if (letra13.getText().toString().equals("__")){
                     letra13.setText(letracerta13);
                     acertos = acertos + 1;
                     cont ++;
@@ -8894,7 +8894,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta14.equals("M")){
-                if (letra14.getText().toString().equals("___")){
+                if (letra14.getText().toString().equals("__")){
                     letra14.setText(letracerta14);
                     acertos = acertos + 1;
                     cont ++;
@@ -8903,7 +8903,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta15.equals("M")){
-                if (letra15.getText().toString().equals("___")){
+                if (letra15.getText().toString().equals("__")){
                     letra15.setText(letracerta15);
                     acertos = acertos + 1;
                     cont ++;
@@ -8912,7 +8912,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta16.equals("M")){
-                if (letra16.getText().toString().equals("___")){
+                if (letra16.getText().toString().equals("__")){
                     letra16.setText(letracerta16);
                     acertos = acertos + 1;
                     cont ++;
@@ -8921,7 +8921,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta17.equals("M")){
-                if (letra17.getText().toString().equals("___")){
+                if (letra17.getText().toString().equals("__")){
                     letra17.setText(letracerta17);
                     acertos = acertos + 1;
                     cont ++;
@@ -8930,7 +8930,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta18.equals("M")){
-                if (letra18.getText().toString().equals("___")){
+                if (letra18.getText().toString().equals("__")){
                     letra18.setText(letracerta18);
                     acertos = acertos + 1;
                     cont ++;
@@ -8939,7 +8939,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta19.equals("M")){
-                if (letra19.getText().toString().equals("___")){
+                if (letra19.getText().toString().equals("__")){
                     letra19.setText(letracerta19);
                     acertos = acertos + 1;
                     cont ++;
@@ -8948,7 +8948,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta20.equals("M")){
-                if (letra20.getText().toString().equals("___")){
+                if (letra20.getText().toString().equals("__")){
                     letra20.setText(letracerta20);
                     acertos = acertos + 1;
                     cont ++;
@@ -8957,7 +8957,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta21.equals("M")){
-                if (letra21.getText().toString().equals("___")){
+                if (letra21.getText().toString().equals("__")){
                     letra21.setText(letracerta21);
                     acertos = acertos + 1;
                     cont ++;
@@ -8966,7 +8966,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta22.equals("M")){
-                if (letra22.getText().toString().equals("___")){
+                if (letra22.getText().toString().equals("__")){
                     letra22.setText(letracerta22);
                     acertos = acertos + 1;
                     cont ++;
@@ -8975,7 +8975,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta23.equals("M")){
-                if (letra23.getText().toString().equals("___")){
+                if (letra23.getText().toString().equals("__")){
                     letra23.setText(letracerta23);
                     acertos = acertos + 1;
                     cont ++;
@@ -8984,7 +8984,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta24.equals("M")){
-                if (letra24.getText().toString().equals("___")){
+                if (letra24.getText().toString().equals("__")){
                     letra24.setText(letracerta24);
                     acertos = acertos + 1;
                     cont ++;
@@ -8993,7 +8993,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta25.equals("M")){
-                if (letra25.getText().toString().equals("___")){
+                if (letra25.getText().toString().equals("__")){
                     letra25.setText(letracerta25);
                     acertos = acertos + 1;
                     cont ++;
@@ -9011,14 +9011,14 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
         }
         if (num == 14){
             if (letracerta1.equals("N")){
-                if (letra1.getText().toString().equals("___")){                    letra1.setText(letracerta1);
+                if (letra1.getText().toString().equals("__")){                    letra1.setText(letracerta1);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta2.equals("N")){
-                if (letra2.getText().toString().equals("___")){                    letra2.setText(letracerta2);
+                if (letra2.getText().toString().equals("__")){                    letra2.setText(letracerta2);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -9026,21 +9026,21 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta3.equals("N")){
-                if (letra3.getText().toString().equals("___")){                    letra3.setText(letracerta3);
+                if (letra3.getText().toString().equals("__")){                    letra3.setText(letracerta3);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta4.equals("N")){
-                if (letra4.getText().toString().equals("___")){                    letra4.setText(letracerta4);
+                if (letra4.getText().toString().equals("__")){                    letra4.setText(letracerta4);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta5.equals("N")){
-                if (letra5.getText().toString().equals("___")){                    letra5.setText(letracerta5);
+                if (letra5.getText().toString().equals("__")){                    letra5.setText(letracerta5);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -9048,7 +9048,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta6.equals("N")){
-                if (letra6.getText().toString().equals("___")){
+                if (letra6.getText().toString().equals("__")){
                     letra6.setText(letracerta6);
                     acertos = acertos + 1;
                     cont ++;
@@ -9057,7 +9057,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta7.equals("N")){
-                if (letra7.getText().toString().equals("___")){
+                if (letra7.getText().toString().equals("__")){
                     letra7.setText(letracerta7);
                     acertos = acertos + 1;
                     cont ++;
@@ -9066,7 +9066,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta8.equals("N")){
-                if (letra8.getText().toString().equals("___")){
+                if (letra8.getText().toString().equals("__")){
                     letra8.setText(letracerta8);
                     acertos = acertos + 1;
                     cont ++;
@@ -9075,7 +9075,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta9.equals("N")){
-                if (letra9.getText().toString().equals("___")){
+                if (letra9.getText().toString().equals("__")){
                     letra9.setText(letracerta9);
                     acertos = acertos + 1;
                     cont ++;
@@ -9084,7 +9084,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta10.equals("N")){
-                if (letra10.getText().toString().equals("___")){
+                if (letra10.getText().toString().equals("__")){
                     letra10.setText(letracerta10);
                     acertos = acertos + 1;
                     cont ++;
@@ -9093,7 +9093,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta11.equals("N")){
-                if (letra11.getText().toString().equals("___")){
+                if (letra11.getText().toString().equals("__")){
                     letra11.setText(letracerta11);
                     acertos = acertos + 1;
                     cont ++;
@@ -9102,7 +9102,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta12.equals("N")){
-                if (letra12.getText().toString().equals("___")){
+                if (letra12.getText().toString().equals("__")){
                     letra12.setText(letracerta12);
                     acertos = acertos + 1;
                     cont ++;
@@ -9111,7 +9111,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta13.equals("N")){
-                if (letra13.getText().toString().equals("___")){
+                if (letra13.getText().toString().equals("__")){
                     letra13.setText(letracerta13);
                     acertos = acertos + 1;
                     cont ++;
@@ -9120,7 +9120,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta14.equals("N")){
-                if (letra14.getText().toString().equals("___")){
+                if (letra14.getText().toString().equals("__")){
                     letra14.setText(letracerta14);
                     acertos = acertos + 1;
                     cont ++;
@@ -9129,7 +9129,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta15.equals("N")){
-                if (letra15.getText().toString().equals("___")){
+                if (letra15.getText().toString().equals("__")){
                     letra15.setText(letracerta15);
                     acertos = acertos + 1;
                     cont ++;
@@ -9138,7 +9138,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta16.equals("N")){
-                if (letra16.getText().toString().equals("___")){
+                if (letra16.getText().toString().equals("__")){
                     letra16.setText(letracerta16);
                     acertos = acertos + 1;
                     cont ++;
@@ -9147,7 +9147,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta17.equals("N")){
-                if (letra17.getText().toString().equals("___")){
+                if (letra17.getText().toString().equals("__")){
                     letra17.setText(letracerta17);
                     acertos = acertos + 1;
                     cont ++;
@@ -9156,7 +9156,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta18.equals("N")){
-                if (letra18.getText().toString().equals("___")){
+                if (letra18.getText().toString().equals("__")){
                     letra18.setText(letracerta18);
                     acertos = acertos + 1;
                     cont ++;
@@ -9165,7 +9165,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta19.equals("N")){
-                if (letra19.getText().toString().equals("___")){
+                if (letra19.getText().toString().equals("__")){
                     letra19.setText(letracerta19);
                     acertos = acertos + 1;
                     cont ++;
@@ -9174,7 +9174,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta20.equals("N")){
-                if (letra20.getText().toString().equals("___")){
+                if (letra20.getText().toString().equals("__")){
                     letra20.setText(letracerta20);
                     acertos = acertos + 1;
                     cont ++;
@@ -9183,7 +9183,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta21.equals("N")){
-                if (letra21.getText().toString().equals("___")){
+                if (letra21.getText().toString().equals("__")){
                     letra21.setText(letracerta21);
                     acertos = acertos + 1;
                     cont ++;
@@ -9192,7 +9192,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta22.equals("N")){
-                if (letra22.getText().toString().equals("___")){
+                if (letra22.getText().toString().equals("__")){
                     letra22.setText(letracerta22);
                     acertos = acertos + 1;
                     cont ++;
@@ -9201,7 +9201,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta23.equals("N")){
-                if (letra23.getText().toString().equals("___")){
+                if (letra23.getText().toString().equals("__")){
                     letra23.setText(letracerta23);
                     acertos = acertos + 1;
                     cont ++;
@@ -9210,7 +9210,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta24.equals("N")){
-                if (letra24.getText().toString().equals("___")){
+                if (letra24.getText().toString().equals("__")){
                     letra24.setText(letracerta24);
                     acertos = acertos + 1;
                     cont ++;
@@ -9219,7 +9219,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta25.equals("N")){
-                if (letra25.getText().toString().equals("___")){
+                if (letra25.getText().toString().equals("__")){
                     letra25.setText(letracerta25);
                     acertos = acertos + 1;
                     cont ++;
@@ -9237,14 +9237,14 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
         }
         if (num == 15){
             if (letracerta1.equals("O") || letracerta1.equals("Õ") || letracerta1.equals("Ó") || letracerta1.equals("Ô")){
-                if (letra1.getText().toString().equals("___")){                    letra1.setText(letracerta1);
+                if (letra1.getText().toString().equals("__")){                    letra1.setText(letracerta1);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta2.equals("O") || letracerta2.equals("Õ") || letracerta2.equals("Ó") || letracerta2.equals("Ô")){
-                if (letra2.getText().toString().equals("___")){                    letra2.setText(letracerta2);
+                if (letra2.getText().toString().equals("__")){                    letra2.setText(letracerta2);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -9252,21 +9252,21 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta3.equals("O") || letracerta3.equals("Õ") || letracerta3.equals("Ó") || letracerta3.equals("Ô")){
-                if (letra3.getText().toString().equals("___")){                    letra3.setText(letracerta3);
+                if (letra3.getText().toString().equals("__")){                    letra3.setText(letracerta3);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta4.equals("O") || letracerta4.equals("Õ") || letracerta4.equals("Ó") || letracerta4.equals("Ô")){
-                if (letra4.getText().toString().equals("___")){                    letra4.setText(letracerta4);
+                if (letra4.getText().toString().equals("__")){                    letra4.setText(letracerta4);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta5.equals("O") || letracerta5.equals("Õ") || letracerta5.equals("Ó") || letracerta5.equals("Ô")){
-                if (letra5.getText().toString().equals("___")){                    letra5.setText(letracerta5);
+                if (letra5.getText().toString().equals("__")){                    letra5.setText(letracerta5);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -9274,7 +9274,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta6.equals("O") || letracerta6.equals("Õ") || letracerta6.equals("Ó") || letracerta6.equals("Ô")){
-                if (letra6.getText().toString().equals("___")){
+                if (letra6.getText().toString().equals("__")){
                     letra6.setText(letracerta6);
                     acertos = acertos + 1;
                     cont ++;
@@ -9283,7 +9283,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta7.equals("O") || letracerta7.equals("Õ") || letracerta7.equals("Ó") || letracerta7.equals("Ô")){
-                if (letra7.getText().toString().equals("___")){
+                if (letra7.getText().toString().equals("__")){
                     letra7.setText(letracerta7);
                     acertos = acertos + 1;
                     cont ++;
@@ -9292,7 +9292,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta8.equals("O") || letracerta8.equals("Õ") || letracerta8.equals("Ó") || letracerta8.equals("Ô")){
-                if (letra8.getText().toString().equals("___")){
+                if (letra8.getText().toString().equals("__")){
                     letra8.setText(letracerta8);
                     acertos = acertos + 1;
                     cont ++;
@@ -9301,7 +9301,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta9.equals("O") || letracerta9.equals("Õ") || letracerta9.equals("Ó") || letracerta9.equals("Ô")){
-                if (letra9.getText().toString().equals("___")){
+                if (letra9.getText().toString().equals("__")){
                     letra9.setText(letracerta9);
                     acertos = acertos + 1;
                     cont ++;
@@ -9310,7 +9310,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta10.equals("O") || letracerta10.equals("Õ") || letracerta10.equals("Ó") || letracerta10.equals("Ô")){
-                if (letra10.getText().toString().equals("___")){
+                if (letra10.getText().toString().equals("__")){
                     letra10.setText(letracerta10);
                     acertos = acertos + 1;
                     cont ++;
@@ -9319,7 +9319,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta11.equals("O") || letracerta11.equals("Õ") || letracerta11.equals("Ó") || letracerta11.equals("Ô")){
-                if (letra11.getText().toString().equals("___")){
+                if (letra11.getText().toString().equals("__")){
                     letra11.setText(letracerta11);
                     acertos = acertos + 1;
                     cont ++;
@@ -9328,7 +9328,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta12.equals("O") || letracerta12.equals("Õ") || letracerta12.equals("Ó") || letracerta12.equals("Ô")){
-                if (letra12.getText().toString().equals("___")){
+                if (letra12.getText().toString().equals("__")){
                     letra12.setText(letracerta12);
                     acertos = acertos + 1;
                     cont ++;
@@ -9337,7 +9337,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta13.equals("O") || letracerta13.equals("Õ") || letracerta13.equals("Ó") || letracerta13.equals("Ô")){
-                if (letra13.getText().toString().equals("___")){
+                if (letra13.getText().toString().equals("__")){
                     letra13.setText(letracerta13);
                     acertos = acertos + 1;
                     cont ++;
@@ -9346,7 +9346,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta14.equals("O") || letracerta14.equals("Õ") || letracerta14.equals("Ó") || letracerta14.equals("Ô")){
-                if (letra14.getText().toString().equals("___")){
+                if (letra14.getText().toString().equals("__")){
                     letra14.setText(letracerta14);
                     acertos = acertos + 1;
                     cont ++;
@@ -9355,7 +9355,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta15.equals("O") || letracerta15.equals("Õ") || letracerta15.equals("Ó") || letracerta15.equals("Ô")){
-                if (letra15.getText().toString().equals("___")){
+                if (letra15.getText().toString().equals("__")){
                     letra15.setText(letracerta15);
                     acertos = acertos + 1;
                     cont ++;
@@ -9364,7 +9364,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta16.equals("O") || letracerta16.equals("Õ") || letracerta16.equals("Ó") || letracerta16.equals("Ô")){
-                if (letra16.getText().toString().equals("___")){
+                if (letra16.getText().toString().equals("__")){
                     letra16.setText(letracerta16);
                     acertos = acertos + 1;
                     cont ++;
@@ -9373,7 +9373,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta17.equals("O") || letracerta17.equals("Õ") || letracerta17.equals("Ó") || letracerta17.equals("Ô")){
-                if (letra17.getText().toString().equals("___")){
+                if (letra17.getText().toString().equals("__")){
                     letra17.setText(letracerta17);
                     acertos = acertos + 1;
                     cont ++;
@@ -9382,7 +9382,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta18.equals("O") || letracerta18.equals("Õ") || letracerta18.equals("Ó") || letracerta18.equals("Ô")){
-                if (letra18.getText().toString().equals("___")){
+                if (letra18.getText().toString().equals("__")){
                     letra18.setText(letracerta18);
                     acertos = acertos + 1;
                     cont ++;
@@ -9391,7 +9391,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta19.equals("O") || letracerta19.equals("Õ") || letracerta19.equals("Ó") || letracerta19.equals("Ô")){
-                if (letra19.getText().toString().equals("___")){
+                if (letra19.getText().toString().equals("__")){
                     letra19.setText(letracerta19);
                     acertos = acertos + 1;
                     cont ++;
@@ -9400,7 +9400,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta20.equals("O") || letracerta20.equals("Õ") || letracerta20.equals("Ó") || letracerta20.equals("Ô")){
-                if (letra20.getText().toString().equals("___")){
+                if (letra20.getText().toString().equals("__")){
                     letra20.setText(letracerta20);
                     acertos = acertos + 1;
                     cont ++;
@@ -9409,7 +9409,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta21.equals("O") || letracerta21.equals("Õ") || letracerta21.equals("Ó") || letracerta21.equals("Ô")){
-                if (letra21.getText().toString().equals("___")){
+                if (letra21.getText().toString().equals("__")){
                     letra21.setText(letracerta21);
                     acertos = acertos + 1;
                     cont ++;
@@ -9418,7 +9418,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta22.equals("O") || letracerta22.equals("Õ") || letracerta22.equals("Ó") || letracerta22.equals("Ô")){
-                if (letra22.getText().toString().equals("___")){
+                if (letra22.getText().toString().equals("__")){
                     letra22.setText(letracerta22);
                     acertos = acertos + 1;
                     cont ++;
@@ -9427,7 +9427,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta23.equals("O") || letracerta23.equals("Õ") || letracerta23.equals("Ó") || letracerta23.equals("Ô")){
-                if (letra23.getText().toString().equals("___")){
+                if (letra23.getText().toString().equals("__")){
                     letra23.setText(letracerta23);
                     acertos = acertos + 1;
                     cont ++;
@@ -9436,7 +9436,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta24.equals("O") || letracerta24.equals("Õ") || letracerta24.equals("Ó") || letracerta24.equals("Ô")){
-                if (letra24.getText().toString().equals("___")){
+                if (letra24.getText().toString().equals("__")){
                     letra24.setText(letracerta24);
                     acertos = acertos + 1;
                     cont ++;
@@ -9445,7 +9445,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta25.equals("O") || letracerta25.equals("Õ") || letracerta25.equals("Ó") || letracerta25.equals("Ô")){
-                if (letra25.getText().toString().equals("___")){
+                if (letra25.getText().toString().equals("__")){
                     letra25.setText(letracerta25);
                     acertos = acertos + 1;
                     cont ++;
@@ -9463,14 +9463,14 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
         }
         if (num == 16){
             if (letracerta1.equals("P")){
-                if (letra1.getText().toString().equals("___")){                    letra1.setText(letracerta1);
+                if (letra1.getText().toString().equals("__")){                    letra1.setText(letracerta1);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta2.equals("P")){
-                if (letra2.getText().toString().equals("___")){                    letra2.setText(letracerta2);
+                if (letra2.getText().toString().equals("__")){                    letra2.setText(letracerta2);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -9478,21 +9478,21 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta3.equals("P")){
-                if (letra3.getText().toString().equals("___")){                    letra3.setText(letracerta3);
+                if (letra3.getText().toString().equals("__")){                    letra3.setText(letracerta3);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta4.equals("P")){
-                if (letra4.getText().toString().equals("___")){                    letra4.setText(letracerta4);
+                if (letra4.getText().toString().equals("__")){                    letra4.setText(letracerta4);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta5.equals("P")){
-                if (letra5.getText().toString().equals("___")){                    letra5.setText(letracerta5);
+                if (letra5.getText().toString().equals("__")){                    letra5.setText(letracerta5);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -9500,7 +9500,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta6.equals("P")){
-                if (letra6.getText().toString().equals("___")){
+                if (letra6.getText().toString().equals("__")){
                     letra6.setText(letracerta6);
                     acertos = acertos + 1;
                     cont ++;
@@ -9509,7 +9509,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta7.equals("P")){
-                if (letra7.getText().toString().equals("___")){
+                if (letra7.getText().toString().equals("__")){
                     letra7.setText(letracerta7);
                     acertos = acertos + 1;
                     cont ++;
@@ -9518,7 +9518,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta8.equals("P")){
-                if (letra8.getText().toString().equals("___")){
+                if (letra8.getText().toString().equals("__")){
                     letra8.setText(letracerta8);
                     acertos = acertos + 1;
                     cont ++;
@@ -9527,7 +9527,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta9.equals("P")){
-                if (letra9.getText().toString().equals("___")){
+                if (letra9.getText().toString().equals("__")){
                     letra9.setText(letracerta9);
                     acertos = acertos + 1;
                     cont ++;
@@ -9536,7 +9536,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta10.equals("P")){
-                if (letra10.getText().toString().equals("___")){
+                if (letra10.getText().toString().equals("__")){
                     letra10.setText(letracerta10);
                     acertos = acertos + 1;
                     cont ++;
@@ -9545,7 +9545,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta11.equals("P")){
-                if (letra11.getText().toString().equals("___")){
+                if (letra11.getText().toString().equals("__")){
                     letra11.setText(letracerta11);
                     acertos = acertos + 1;
                     cont ++;
@@ -9554,7 +9554,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta12.equals("P")){
-                if (letra12.getText().toString().equals("___")){
+                if (letra12.getText().toString().equals("__")){
                     letra12.setText(letracerta12);
                     acertos = acertos + 1;
                     cont ++;
@@ -9563,7 +9563,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta13.equals("P")){
-                if (letra13.getText().toString().equals("___")){
+                if (letra13.getText().toString().equals("__")){
                     letra13.setText(letracerta13);
                     acertos = acertos + 1;
                     cont ++;
@@ -9572,7 +9572,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta14.equals("P")){
-                if (letra14.getText().toString().equals("___")){
+                if (letra14.getText().toString().equals("__")){
                     letra14.setText(letracerta14);
                     acertos = acertos + 1;
                     cont ++;
@@ -9581,7 +9581,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta15.equals("P")){
-                if (letra15.getText().toString().equals("___")){
+                if (letra15.getText().toString().equals("__")){
                     letra15.setText(letracerta15);
                     acertos = acertos + 1;
                     cont ++;
@@ -9590,7 +9590,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta16.equals("P")){
-                if (letra16.getText().toString().equals("___")){
+                if (letra16.getText().toString().equals("__")){
                     letra16.setText(letracerta16);
                     acertos = acertos + 1;
                     cont ++;
@@ -9599,7 +9599,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta17.equals("P")){
-                if (letra17.getText().toString().equals("___")){
+                if (letra17.getText().toString().equals("__")){
                     letra17.setText(letracerta17);
                     acertos = acertos + 1;
                     cont ++;
@@ -9608,7 +9608,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta18.equals("P")){
-                if (letra18.getText().toString().equals("___")){
+                if (letra18.getText().toString().equals("__")){
                     letra18.setText(letracerta18);
                     acertos = acertos + 1;
                     cont ++;
@@ -9617,7 +9617,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta19.equals("P")){
-                if (letra19.getText().toString().equals("___")){
+                if (letra19.getText().toString().equals("__")){
                     letra19.setText(letracerta19);
                     acertos = acertos + 1;
                     cont ++;
@@ -9626,7 +9626,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta20.equals("P")){
-                if (letra20.getText().toString().equals("___")){
+                if (letra20.getText().toString().equals("__")){
                     letra20.setText(letracerta20);
                     acertos = acertos + 1;
                     cont ++;
@@ -9635,7 +9635,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta21.equals("P")){
-                if (letra21.getText().toString().equals("___")){
+                if (letra21.getText().toString().equals("__")){
                     letra21.setText(letracerta21);
                     acertos = acertos + 1;
                     cont ++;
@@ -9644,7 +9644,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta22.equals("P")){
-                if (letra22.getText().toString().equals("___")){
+                if (letra22.getText().toString().equals("__")){
                     letra22.setText(letracerta22);
                     acertos = acertos + 1;
                     cont ++;
@@ -9653,7 +9653,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta23.equals("P")){
-                if (letra23.getText().toString().equals("___")){
+                if (letra23.getText().toString().equals("__")){
                     letra23.setText(letracerta23);
                     acertos = acertos + 1;
                     cont ++;
@@ -9662,7 +9662,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta24.equals("P")){
-                if (letra24.getText().toString().equals("___")){
+                if (letra24.getText().toString().equals("__")){
                     letra24.setText(letracerta24);
                     acertos = acertos + 1;
                     cont ++;
@@ -9671,7 +9671,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta25.equals("P")){
-                if (letra25.getText().toString().equals("___")){
+                if (letra25.getText().toString().equals("__")){
                     letra25.setText(letracerta25);
                     acertos = acertos + 1;
                     cont ++;
@@ -9689,14 +9689,14 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
         }
         if (num == 17){
             if (letracerta1.equals("Q")){
-                if (letra1.getText().toString().equals("___")){                    letra1.setText(letracerta1);
+                if (letra1.getText().toString().equals("__")){                    letra1.setText(letracerta1);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta2.equals("Q")){
-                if (letra2.getText().toString().equals("___")){                    letra2.setText(letracerta2);
+                if (letra2.getText().toString().equals("__")){                    letra2.setText(letracerta2);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -9704,21 +9704,21 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta3.equals("Q")){
-                if (letra3.getText().toString().equals("___")){                    letra3.setText(letracerta3);
+                if (letra3.getText().toString().equals("__")){                    letra3.setText(letracerta3);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta4.equals("Q")){
-                if (letra4.getText().toString().equals("___")){                    letra4.setText(letracerta4);
+                if (letra4.getText().toString().equals("__")){                    letra4.setText(letracerta4);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta5.equals("Q")){
-                if (letra5.getText().toString().equals("___")){                    letra5.setText(letracerta5);
+                if (letra5.getText().toString().equals("__")){                    letra5.setText(letracerta5);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -9726,7 +9726,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta6.equals("Q")){
-                if (letra6.getText().toString().equals("___")){
+                if (letra6.getText().toString().equals("__")){
                     letra6.setText(letracerta6);
                     acertos = acertos + 1;
                     cont ++;
@@ -9735,7 +9735,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta7.equals("Q")){
-                if (letra7.getText().toString().equals("___")){
+                if (letra7.getText().toString().equals("__")){
                     letra7.setText(letracerta7);
                     acertos = acertos + 1;
                     cont ++;
@@ -9744,7 +9744,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta8.equals("Q")){
-                if (letra8.getText().toString().equals("___")){
+                if (letra8.getText().toString().equals("__")){
                     letra8.setText(letracerta8);
                     acertos = acertos + 1;
                     cont ++;
@@ -9753,7 +9753,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta9.equals("Q")){
-                if (letra9.getText().toString().equals("___")){
+                if (letra9.getText().toString().equals("__")){
                     letra9.setText(letracerta9);
                     acertos = acertos + 1;
                     cont ++;
@@ -9762,7 +9762,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta10.equals("Q")){
-                if (letra10.getText().toString().equals("___")){
+                if (letra10.getText().toString().equals("__")){
                     letra10.setText(letracerta10);
                     acertos = acertos + 1;
                     cont ++;
@@ -9771,7 +9771,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta11.equals("Q")){
-                if (letra11.getText().toString().equals("___")){
+                if (letra11.getText().toString().equals("__")){
                     letra11.setText(letracerta11);
                     acertos = acertos + 1;
                     cont ++;
@@ -9780,7 +9780,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta12.equals("Q")){
-                if (letra12.getText().toString().equals("___")){
+                if (letra12.getText().toString().equals("__")){
                     letra12.setText(letracerta12);
                     acertos = acertos + 1;
                     cont ++;
@@ -9789,7 +9789,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta13.equals("Q")){
-                if (letra13.getText().toString().equals("___")){
+                if (letra13.getText().toString().equals("__")){
                     letra13.setText(letracerta13);
                     acertos = acertos + 1;
                     cont ++;
@@ -9798,7 +9798,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta14.equals("Q")){
-                if (letra14.getText().toString().equals("___")){
+                if (letra14.getText().toString().equals("__")){
                     letra14.setText(letracerta14);
                     acertos = acertos + 1;
                     cont ++;
@@ -9807,7 +9807,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta15.equals("Q")){
-                if (letra15.getText().toString().equals("___")){
+                if (letra15.getText().toString().equals("__")){
                     letra15.setText(letracerta15);
                     acertos = acertos + 1;
                     cont ++;
@@ -9816,7 +9816,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta16.equals("Q")){
-                if (letra16.getText().toString().equals("___")){
+                if (letra16.getText().toString().equals("__")){
                     letra16.setText(letracerta16);
                     acertos = acertos + 1;
                     cont ++;
@@ -9825,7 +9825,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta17.equals("Q")){
-                if (letra17.getText().toString().equals("___")){
+                if (letra17.getText().toString().equals("__")){
                     letra17.setText(letracerta17);
                     acertos = acertos + 1;
                     cont ++;
@@ -9834,7 +9834,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta18.equals("Q")){
-                if (letra18.getText().toString().equals("___")){
+                if (letra18.getText().toString().equals("__")){
                     letra18.setText(letracerta18);
                     acertos = acertos + 1;
                     cont ++;
@@ -9843,7 +9843,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta19.equals("Q")){
-                if (letra19.getText().toString().equals("___")){
+                if (letra19.getText().toString().equals("__")){
                     letra19.setText(letracerta19);
                     acertos = acertos + 1;
                     cont ++;
@@ -9852,7 +9852,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta20.equals("Q")){
-                if (letra20.getText().toString().equals("___")){
+                if (letra20.getText().toString().equals("__")){
                     letra20.setText(letracerta20);
                     acertos = acertos + 1;
                     cont ++;
@@ -9861,7 +9861,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta21.equals("Q")){
-                if (letra21.getText().toString().equals("___")){
+                if (letra21.getText().toString().equals("__")){
                     letra21.setText(letracerta21);
                     acertos = acertos + 1;
                     cont ++;
@@ -9870,7 +9870,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta22.equals("Q")){
-                if (letra22.getText().toString().equals("___")){
+                if (letra22.getText().toString().equals("__")){
                     letra22.setText(letracerta22);
                     acertos = acertos + 1;
                     cont ++;
@@ -9879,7 +9879,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta23.equals("Q")){
-                if (letra23.getText().toString().equals("___")){
+                if (letra23.getText().toString().equals("__")){
                     letra23.setText(letracerta23);
                     acertos = acertos + 1;
                     cont ++;
@@ -9888,7 +9888,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta24.equals("Q")){
-                if (letra24.getText().toString().equals("___")){
+                if (letra24.getText().toString().equals("__")){
                     letra24.setText(letracerta24);
                     acertos = acertos + 1;
                     cont ++;
@@ -9897,7 +9897,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta25.equals("Q")){
-                if (letra25.getText().toString().equals("___")){
+                if (letra25.getText().toString().equals("__")){
                     letra25.setText(letracerta25);
                     acertos = acertos + 1;
                     cont ++;
@@ -9915,14 +9915,14 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
         }
         if (num == 18){
             if (letracerta1.equals("R")){
-                if (letra1.getText().toString().equals("___")){                    letra1.setText(letracerta1);
+                if (letra1.getText().toString().equals("__")){                    letra1.setText(letracerta1);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta2.equals("R")){
-                if (letra2.getText().toString().equals("___")){                    letra2.setText(letracerta2);
+                if (letra2.getText().toString().equals("__")){                    letra2.setText(letracerta2);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -9930,21 +9930,21 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta3.equals("R")){
-                if (letra3.getText().toString().equals("___")){                    letra3.setText(letracerta3);
+                if (letra3.getText().toString().equals("__")){                    letra3.setText(letracerta3);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta4.equals("R")){
-                if (letra4.getText().toString().equals("___")){                    letra4.setText(letracerta4);
+                if (letra4.getText().toString().equals("__")){                    letra4.setText(letracerta4);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta5.equals("R")){
-                if (letra5.getText().toString().equals("___")){                    letra5.setText(letracerta5);
+                if (letra5.getText().toString().equals("__")){                    letra5.setText(letracerta5);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -9952,7 +9952,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta6.equals("R")){
-                if (letra6.getText().toString().equals("___")){
+                if (letra6.getText().toString().equals("__")){
                     letra6.setText(letracerta6);
                     acertos = acertos + 1;
                     cont ++;
@@ -9961,7 +9961,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta7.equals("R")){
-                if (letra7.getText().toString().equals("___")){
+                if (letra7.getText().toString().equals("__")){
                     letra7.setText(letracerta7);
                     acertos = acertos + 1;
                     cont ++;
@@ -9970,7 +9970,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta8.equals("R")){
-                if (letra8.getText().toString().equals("___")){
+                if (letra8.getText().toString().equals("__")){
                     letra8.setText(letracerta8);
                     acertos = acertos + 1;
                     cont ++;
@@ -9979,7 +9979,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta9.equals("R")){
-                if (letra9.getText().toString().equals("___")){
+                if (letra9.getText().toString().equals("__")){
                     letra9.setText(letracerta9);
                     acertos = acertos + 1;
                     cont ++;
@@ -9988,7 +9988,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta10.equals("R")){
-                if (letra10.getText().toString().equals("___")){
+                if (letra10.getText().toString().equals("__")){
                     letra10.setText(letracerta10);
                     acertos = acertos + 1;
                     cont ++;
@@ -9997,7 +9997,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta11.equals("R")){
-                if (letra11.getText().toString().equals("___")){
+                if (letra11.getText().toString().equals("__")){
                     letra11.setText(letracerta11);
                     acertos = acertos + 1;
                     cont ++;
@@ -10006,7 +10006,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta12.equals("R")){
-                if (letra12.getText().toString().equals("___")){
+                if (letra12.getText().toString().equals("__")){
                     letra12.setText(letracerta12);
                     acertos = acertos + 1;
                     cont ++;
@@ -10015,7 +10015,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta13.equals("R")){
-                if (letra13.getText().toString().equals("___")){
+                if (letra13.getText().toString().equals("__")){
                     letra13.setText(letracerta13);
                     acertos = acertos + 1;
                     cont ++;
@@ -10024,7 +10024,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta14.equals("R")){
-                if (letra14.getText().toString().equals("___")){
+                if (letra14.getText().toString().equals("__")){
                     letra14.setText(letracerta14);
                     acertos = acertos + 1;
                     cont ++;
@@ -10033,7 +10033,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta15.equals("R")){
-                if (letra15.getText().toString().equals("___")){
+                if (letra15.getText().toString().equals("__")){
                     letra15.setText(letracerta15);
                     acertos = acertos + 1;
                     cont ++;
@@ -10042,7 +10042,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta16.equals("R")){
-                if (letra16.getText().toString().equals("___")){
+                if (letra16.getText().toString().equals("__")){
                     letra16.setText(letracerta16);
                     acertos = acertos + 1;
                     cont ++;
@@ -10051,7 +10051,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta17.equals("R")){
-                if (letra17.getText().toString().equals("___")){
+                if (letra17.getText().toString().equals("__")){
                     letra17.setText(letracerta17);
                     acertos = acertos + 1;
                     cont ++;
@@ -10060,7 +10060,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta18.equals("R")){
-                if (letra18.getText().toString().equals("___")){
+                if (letra18.getText().toString().equals("__")){
                     letra18.setText(letracerta18);
                     acertos = acertos + 1;
                     cont ++;
@@ -10069,7 +10069,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta19.equals("R")){
-                if (letra19.getText().toString().equals("___")){
+                if (letra19.getText().toString().equals("__")){
                     letra19.setText(letracerta19);
                     acertos = acertos + 1;
                     cont ++;
@@ -10078,7 +10078,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta20.equals("R")){
-                if (letra20.getText().toString().equals("___")){
+                if (letra20.getText().toString().equals("__")){
                     letra20.setText(letracerta20);
                     acertos = acertos + 1;
                     cont ++;
@@ -10087,7 +10087,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta21.equals("R")){
-                if (letra21.getText().toString().equals("___")){
+                if (letra21.getText().toString().equals("__")){
                     letra21.setText(letracerta21);
                     acertos = acertos + 1;
                     cont ++;
@@ -10096,7 +10096,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta22.equals("R")){
-                if (letra22.getText().toString().equals("___")){
+                if (letra22.getText().toString().equals("__")){
                     letra22.setText(letracerta22);
                     acertos = acertos + 1;
                     cont ++;
@@ -10105,7 +10105,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta23.equals("R")){
-                if (letra23.getText().toString().equals("___")){
+                if (letra23.getText().toString().equals("__")){
                     letra23.setText(letracerta23);
                     acertos = acertos + 1;
                     cont ++;
@@ -10114,7 +10114,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta24.equals("R")){
-                if (letra24.getText().toString().equals("___")){
+                if (letra24.getText().toString().equals("__")){
                     letra24.setText(letracerta24);
                     acertos = acertos + 1;
                     cont ++;
@@ -10123,7 +10123,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta25.equals("R")){
-                if (letra25.getText().toString().equals("___")){
+                if (letra25.getText().toString().equals("__")){
                     letra25.setText(letracerta25);
                     acertos = acertos + 1;
                     cont ++;
@@ -10141,14 +10141,14 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
         }
         if (num == 19){
             if (letracerta1.equals("S")){
-                if (letra1.getText().toString().equals("___")){                    letra1.setText(letracerta1);
+                if (letra1.getText().toString().equals("__")){                    letra1.setText(letracerta1);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta2.equals("S")){
-                if (letra2.getText().toString().equals("___")){                    letra2.setText(letracerta2);
+                if (letra2.getText().toString().equals("__")){                    letra2.setText(letracerta2);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -10156,21 +10156,21 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta3.equals("S")){
-                if (letra3.getText().toString().equals("___")){                    letra3.setText(letracerta3);
+                if (letra3.getText().toString().equals("__")){                    letra3.setText(letracerta3);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta4.equals("S")){
-                if (letra4.getText().toString().equals("___")){                    letra4.setText(letracerta4);
+                if (letra4.getText().toString().equals("__")){                    letra4.setText(letracerta4);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta5.equals("S")){
-                if (letra5.getText().toString().equals("___")){                    letra5.setText(letracerta5);
+                if (letra5.getText().toString().equals("__")){                    letra5.setText(letracerta5);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -10178,7 +10178,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta6.equals("S")){
-                if (letra6.getText().toString().equals("___")){
+                if (letra6.getText().toString().equals("__")){
                     letra6.setText(letracerta6);
                     acertos = acertos + 1;
                     cont ++;
@@ -10187,7 +10187,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta7.equals("S")){
-                if (letra7.getText().toString().equals("___")){
+                if (letra7.getText().toString().equals("__")){
                     letra7.setText(letracerta7);
                     acertos = acertos + 1;
                     cont ++;
@@ -10196,7 +10196,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta8.equals("S")){
-                if (letra8.getText().toString().equals("___")){
+                if (letra8.getText().toString().equals("__")){
                     letra8.setText(letracerta8);
                     acertos = acertos + 1;
                     cont ++;
@@ -10205,7 +10205,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta9.equals("S")){
-                if (letra9.getText().toString().equals("___")){
+                if (letra9.getText().toString().equals("__")){
                     letra9.setText(letracerta9);
                     acertos = acertos + 1;
                     cont ++;
@@ -10214,7 +10214,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta10.equals("S")){
-                if (letra10.getText().toString().equals("___")){
+                if (letra10.getText().toString().equals("__")){
                     letra10.setText(letracerta10);
                     acertos = acertos + 1;
                     cont ++;
@@ -10223,7 +10223,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta11.equals("S")){
-                if (letra11.getText().toString().equals("___")){
+                if (letra11.getText().toString().equals("__")){
                     letra11.setText(letracerta11);
                     acertos = acertos + 1;
                     cont ++;
@@ -10232,7 +10232,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta12.equals("S")){
-                if (letra12.getText().toString().equals("___")){
+                if (letra12.getText().toString().equals("__")){
                     letra12.setText(letracerta12);
                     acertos = acertos + 1;
                     cont ++;
@@ -10241,7 +10241,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta13.equals("S")){
-                if (letra13.getText().toString().equals("___")){
+                if (letra13.getText().toString().equals("__")){
                     letra13.setText(letracerta13);
                     acertos = acertos + 1;
                     cont ++;
@@ -10250,7 +10250,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta14.equals("S")){
-                if (letra14.getText().toString().equals("___")){
+                if (letra14.getText().toString().equals("__")){
                     letra14.setText(letracerta14);
                     acertos = acertos + 1;
                     cont ++;
@@ -10259,7 +10259,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta15.equals("S")){
-                if (letra15.getText().toString().equals("___")){
+                if (letra15.getText().toString().equals("__")){
                     letra15.setText(letracerta15);
                     acertos = acertos + 1;
                     cont ++;
@@ -10268,7 +10268,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta16.equals("S")){
-                if (letra16.getText().toString().equals("___")){
+                if (letra16.getText().toString().equals("__")){
                     letra16.setText(letracerta16);
                     acertos = acertos + 1;
                     cont ++;
@@ -10277,7 +10277,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta17.equals("S")){
-                if (letra17.getText().toString().equals("___")){
+                if (letra17.getText().toString().equals("__")){
                     letra17.setText(letracerta17);
                     acertos = acertos + 1;
                     cont ++;
@@ -10286,7 +10286,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta18.equals("S")){
-                if (letra18.getText().toString().equals("___")){
+                if (letra18.getText().toString().equals("__")){
                     letra18.setText(letracerta18);
                     acertos = acertos + 1;
                     cont ++;
@@ -10295,7 +10295,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta19.equals("S")){
-                if (letra19.getText().toString().equals("___")){
+                if (letra19.getText().toString().equals("__")){
                     letra19.setText(letracerta19);
                     acertos = acertos + 1;
                     cont ++;
@@ -10304,7 +10304,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta20.equals("S")){
-                if (letra20.getText().toString().equals("___")){
+                if (letra20.getText().toString().equals("__")){
                     letra20.setText(letracerta20);
                     acertos = acertos + 1;
                     cont ++;
@@ -10313,7 +10313,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta21.equals("S")){
-                if (letra21.getText().toString().equals("___")){
+                if (letra21.getText().toString().equals("__")){
                     letra21.setText(letracerta21);
                     acertos = acertos + 1;
                     cont ++;
@@ -10322,7 +10322,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta22.equals("S")){
-                if (letra22.getText().toString().equals("___")){
+                if (letra22.getText().toString().equals("__")){
                     letra22.setText(letracerta22);
                     acertos = acertos + 1;
                     cont ++;
@@ -10331,7 +10331,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta23.equals("S")){
-                if (letra23.getText().toString().equals("___")){
+                if (letra23.getText().toString().equals("__")){
                     letra23.setText(letracerta23);
                     acertos = acertos + 1;
                     cont ++;
@@ -10340,7 +10340,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta24.equals("S")){
-                if (letra24.getText().toString().equals("___")){
+                if (letra24.getText().toString().equals("__")){
                     letra24.setText(letracerta24);
                     acertos = acertos + 1;
                     cont ++;
@@ -10349,7 +10349,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta25.equals("S")){
-                if (letra25.getText().toString().equals("___")){
+                if (letra25.getText().toString().equals("__")){
                     letra25.setText(letracerta25);
                     acertos = acertos + 1;
                     cont ++;
@@ -10367,14 +10367,14 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
         }
         if (num == 20){
             if (letracerta1.equals("T")){
-                if (letra1.getText().toString().equals("___")){                    letra1.setText(letracerta1);
+                if (letra1.getText().toString().equals("__")){                    letra1.setText(letracerta1);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta2.equals("T")){
-                if (letra2.getText().toString().equals("___")){                    letra2.setText(letracerta2);
+                if (letra2.getText().toString().equals("__")){                    letra2.setText(letracerta2);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -10382,21 +10382,21 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta3.equals("T")){
-                if (letra3.getText().toString().equals("___")){                    letra3.setText(letracerta3);
+                if (letra3.getText().toString().equals("__")){                    letra3.setText(letracerta3);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta4.equals("T")){
-                if (letra4.getText().toString().equals("___")){                    letra4.setText(letracerta4);
+                if (letra4.getText().toString().equals("__")){                    letra4.setText(letracerta4);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta5.equals("T")){
-                if (letra5.getText().toString().equals("___")){                    letra5.setText(letracerta5);
+                if (letra5.getText().toString().equals("__")){                    letra5.setText(letracerta5);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -10404,7 +10404,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta6.equals("T")){
-                if (letra6.getText().toString().equals("___")){
+                if (letra6.getText().toString().equals("__")){
                     letra6.setText(letracerta6);
                     acertos = acertos + 1;
                     cont ++;
@@ -10413,7 +10413,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta7.equals("T")){
-                if (letra7.getText().toString().equals("___")){
+                if (letra7.getText().toString().equals("__")){
                     letra7.setText(letracerta7);
                     acertos = acertos + 1;
                     cont ++;
@@ -10422,7 +10422,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta8.equals("T")){
-                if (letra8.getText().toString().equals("___")){
+                if (letra8.getText().toString().equals("__")){
                     letra8.setText(letracerta8);
                     acertos = acertos + 1;
                     cont ++;
@@ -10431,7 +10431,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta9.equals("T")){
-                if (letra9.getText().toString().equals("___")){
+                if (letra9.getText().toString().equals("__")){
                     letra9.setText(letracerta9);
                     acertos = acertos + 1;
                     cont ++;
@@ -10440,7 +10440,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta10.equals("T")){
-                if (letra10.getText().toString().equals("___")){
+                if (letra10.getText().toString().equals("__")){
                     letra10.setText(letracerta10);
                     acertos = acertos + 1;
                     cont ++;
@@ -10449,7 +10449,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta11.equals("T")){
-                if (letra11.getText().toString().equals("___")){
+                if (letra11.getText().toString().equals("__")){
                     letra11.setText(letracerta11);
                     acertos = acertos + 1;
                     cont ++;
@@ -10458,7 +10458,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta12.equals("T")){
-                if (letra12.getText().toString().equals("___")){
+                if (letra12.getText().toString().equals("__")){
                     letra12.setText(letracerta12);
                     acertos = acertos + 1;
                     cont ++;
@@ -10467,7 +10467,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta13.equals("T")){
-                if (letra13.getText().toString().equals("___")){
+                if (letra13.getText().toString().equals("__")){
                     letra13.setText(letracerta13);
                     acertos = acertos + 1;
                     cont ++;
@@ -10476,7 +10476,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta14.equals("T")){
-                if (letra14.getText().toString().equals("___")){
+                if (letra14.getText().toString().equals("__")){
                     letra14.setText(letracerta14);
                     acertos = acertos + 1;
                     cont ++;
@@ -10485,7 +10485,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta15.equals("T")){
-                if (letra15.getText().toString().equals("___")){
+                if (letra15.getText().toString().equals("__")){
                     letra15.setText(letracerta15);
                     acertos = acertos + 1;
                     cont ++;
@@ -10494,7 +10494,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta16.equals("T")){
-                if (letra16.getText().toString().equals("___")){
+                if (letra16.getText().toString().equals("__")){
                     letra16.setText(letracerta16);
                     acertos = acertos + 1;
                     cont ++;
@@ -10503,7 +10503,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta17.equals("T")){
-                if (letra17.getText().toString().equals("___")){
+                if (letra17.getText().toString().equals("__")){
                     letra17.setText(letracerta17);
                     acertos = acertos + 1;
                     cont ++;
@@ -10512,7 +10512,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta18.equals("T")){
-                if (letra18.getText().toString().equals("___")){
+                if (letra18.getText().toString().equals("__")){
                     letra18.setText(letracerta18);
                     acertos = acertos + 1;
                     cont ++;
@@ -10521,7 +10521,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta19.equals("T")){
-                if (letra19.getText().toString().equals("___")){
+                if (letra19.getText().toString().equals("__")){
                     letra19.setText(letracerta19);
                     acertos = acertos + 1;
                     cont ++;
@@ -10530,7 +10530,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta20.equals("T")){
-                if (letra20.getText().toString().equals("___")){
+                if (letra20.getText().toString().equals("__")){
                     letra20.setText(letracerta20);
                     acertos = acertos + 1;
                     cont ++;
@@ -10539,7 +10539,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta21.equals("T")){
-                if (letra21.getText().toString().equals("___")){
+                if (letra21.getText().toString().equals("__")){
                     letra21.setText(letracerta21);
                     acertos = acertos + 1;
                     cont ++;
@@ -10548,7 +10548,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta22.equals("T")){
-                if (letra22.getText().toString().equals("___")){
+                if (letra22.getText().toString().equals("__")){
                     letra22.setText(letracerta22);
                     acertos = acertos + 1;
                     cont ++;
@@ -10557,7 +10557,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta23.equals("T")){
-                if (letra23.getText().toString().equals("___")){
+                if (letra23.getText().toString().equals("__")){
                     letra23.setText(letracerta23);
                     acertos = acertos + 1;
                     cont ++;
@@ -10566,7 +10566,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta24.equals("T")){
-                if (letra24.getText().toString().equals("___")){
+                if (letra24.getText().toString().equals("__")){
                     letra24.setText(letracerta24);
                     acertos = acertos + 1;
                     cont ++;
@@ -10575,7 +10575,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta25.equals("T")){
-                if (letra25.getText().toString().equals("___")){
+                if (letra25.getText().toString().equals("__")){
                     letra25.setText(letracerta25);
                     acertos = acertos + 1;
                     cont ++;
@@ -10594,14 +10594,14 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
         if (num == 21){
             if (letracerta1.equals("U") || letracerta1.equals("Ũ") || letracerta1.equals("Ú") || letracerta1.equals("Û")){
-                if (letra1.getText().toString().equals("___")){                    letra1.setText(letracerta1);
+                if (letra1.getText().toString().equals("__")){                    letra1.setText(letracerta1);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta2.equals("U") || letracerta2.equals("Ũ") || letracerta2.equals("Ú") || letracerta2.equals("Û")){
-                if (letra2.getText().toString().equals("___")){                    letra2.setText(letracerta2);
+                if (letra2.getText().toString().equals("__")){                    letra2.setText(letracerta2);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -10609,21 +10609,21 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta3.equals("U") || letracerta3.equals("Ũ") || letracerta3.equals("Ú") || letracerta3.equals("Û")){
-                if (letra3.getText().toString().equals("___")){                    letra3.setText(letracerta3);
+                if (letra3.getText().toString().equals("__")){                    letra3.setText(letracerta3);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta4.equals("U") || letracerta4.equals("Ũ") || letracerta4.equals("Ú") || letracerta4.equals("Û")){
-                if (letra4.getText().toString().equals("___")){                    letra4.setText(letracerta4);
+                if (letra4.getText().toString().equals("__")){                    letra4.setText(letracerta4);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta5.equals("U") || letracerta5.equals("Ũ") || letracerta5.equals("Ú") || letracerta5.equals("Û")){
-                if (letra5.getText().toString().equals("___")){                    letra5.setText(letracerta5);
+                if (letra5.getText().toString().equals("__")){                    letra5.setText(letracerta5);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -10631,7 +10631,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta6.equals("U") || letracerta6.equals("Ũ") || letracerta6.equals("Ú") || letracerta6.equals("Û")){
-                if (letra6.getText().toString().equals("___")){
+                if (letra6.getText().toString().equals("__")){
                     letra6.setText(letracerta6);
                     acertos = acertos + 1;
                     cont ++;
@@ -10640,7 +10640,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta7.equals("U") || letracerta7.equals("Ũ") || letracerta7.equals("Ú") || letracerta7.equals("Û")){
-                if (letra7.getText().toString().equals("___")){
+                if (letra7.getText().toString().equals("__")){
                     letra7.setText(letracerta7);
                     acertos = acertos + 1;
                     cont ++;
@@ -10649,7 +10649,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta8.equals("U") || letracerta8.equals("Ũ") || letracerta8.equals("Ú") || letracerta8.equals("Û")){
-                if (letra8.getText().toString().equals("___")){
+                if (letra8.getText().toString().equals("__")){
                     letra8.setText(letracerta8);
                     acertos = acertos + 1;
                     cont ++;
@@ -10658,7 +10658,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta9.equals("U") || letracerta9.equals("Ũ") || letracerta9.equals("Ú") || letracerta9.equals("Û")){
-                if (letra9.getText().toString().equals("___")){
+                if (letra9.getText().toString().equals("__")){
                     letra9.setText(letracerta9);
                     acertos = acertos + 1;
                     cont ++;
@@ -10667,7 +10667,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta10.equals("U") || letracerta10.equals("Ũ") || letracerta10.equals("Ú") || letracerta10.equals("Û")){
-                if (letra10.getText().toString().equals("___")){
+                if (letra10.getText().toString().equals("__")){
                     letra10.setText(letracerta10);
                     acertos = acertos + 1;
                     cont ++;
@@ -10676,7 +10676,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta11.equals("U") || letracerta11.equals("Ũ") || letracerta11.equals("Ú") || letracerta11.equals("Û")){
-                if (letra11.getText().toString().equals("___")){
+                if (letra11.getText().toString().equals("__")){
                     letra11.setText(letracerta11);
                     acertos = acertos + 1;
                     cont ++;
@@ -10685,7 +10685,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta12.equals("U") || letracerta12.equals("Ũ") || letracerta12.equals("Ú") || letracerta12.equals("Û")){
-                if (letra12.getText().toString().equals("___")){
+                if (letra12.getText().toString().equals("__")){
                     letra12.setText(letracerta12);
                     acertos = acertos + 1;
                     cont ++;
@@ -10694,7 +10694,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta13.equals("U") || letracerta13.equals("Ũ") || letracerta13.equals("Ú") || letracerta13.equals("Û")){
-                if (letra13.getText().toString().equals("___")){
+                if (letra13.getText().toString().equals("__")){
                     letra13.setText(letracerta13);
                     acertos = acertos + 1;
                     cont ++;
@@ -10703,7 +10703,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta14.equals("U") || letracerta14.equals("Ũ") || letracerta14.equals("Ú") || letracerta14.equals("Û")){
-                if (letra14.getText().toString().equals("___")){
+                if (letra14.getText().toString().equals("__")){
                     letra14.setText(letracerta14);
                     acertos = acertos + 1;
                     cont ++;
@@ -10712,7 +10712,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta15.equals("U") || letracerta15.equals("Ũ") || letracerta15.equals("Ú") || letracerta15.equals("Û")){
-                if (letra15.getText().toString().equals("___")){
+                if (letra15.getText().toString().equals("__")){
                     letra15.setText(letracerta15);
                     acertos = acertos + 1;
                     cont ++;
@@ -10721,7 +10721,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta16.equals("U") || letracerta16.equals("Ũ") || letracerta16.equals("Ú") || letracerta16.equals("Û")){
-                if (letra16.getText().toString().equals("___")){
+                if (letra16.getText().toString().equals("__")){
                     letra16.setText(letracerta16);
                     acertos = acertos + 1;
                     cont ++;
@@ -10730,7 +10730,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta17.equals("U") || letracerta17.equals("Ũ") || letracerta17.equals("Ú") || letracerta17.equals("Û")){
-                if (letra17.getText().toString().equals("___")){
+                if (letra17.getText().toString().equals("__")){
                     letra17.setText(letracerta17);
                     acertos = acertos + 1;
                     cont ++;
@@ -10739,7 +10739,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta18.equals("U") || letracerta18.equals("Ũ") || letracerta18.equals("Ú") || letracerta18.equals("Û")){
-                if (letra18.getText().toString().equals("___")){
+                if (letra18.getText().toString().equals("__")){
                     letra18.setText(letracerta18);
                     acertos = acertos + 1;
                     cont ++;
@@ -10748,7 +10748,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta19.equals("U") || letracerta19.equals("Ũ") || letracerta19.equals("Ú") || letracerta19.equals("Û")){
-                if (letra19.getText().toString().equals("___")){
+                if (letra19.getText().toString().equals("__")){
                     letra19.setText(letracerta19);
                     acertos = acertos + 1;
                     cont ++;
@@ -10757,7 +10757,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta20.equals("U") || letracerta20.equals("Ũ") || letracerta20.equals("Ú") || letracerta20.equals("Û")){
-                if (letra20.getText().toString().equals("___")){
+                if (letra20.getText().toString().equals("__")){
                     letra20.setText(letracerta20);
                     acertos = acertos + 1;
                     cont ++;
@@ -10766,7 +10766,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta21.equals("U") || letracerta21.equals("Ũ") || letracerta21.equals("Ú") || letracerta21.equals("Û")){
-                if (letra21.getText().toString().equals("___")){
+                if (letra21.getText().toString().equals("__")){
                     letra21.setText(letracerta21);
                     acertos = acertos + 1;
                     cont ++;
@@ -10775,7 +10775,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta22.equals("U") || letracerta22.equals("Ũ") || letracerta22.equals("Ú") || letracerta22.equals("Û")){
-                if (letra22.getText().toString().equals("___")){
+                if (letra22.getText().toString().equals("__")){
                     letra22.setText(letracerta22);
                     acertos = acertos + 1;
                     cont ++;
@@ -10784,7 +10784,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta23.equals("U") || letracerta23.equals("Ũ") || letracerta23.equals("Ú") || letracerta23.equals("Û")){
-                if (letra23.getText().toString().equals("___")){
+                if (letra23.getText().toString().equals("__")){
                     letra23.setText(letracerta23);
                     acertos = acertos + 1;
                     cont ++;
@@ -10793,7 +10793,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta24.equals("U") || letracerta24.equals("Ũ") || letracerta24.equals("Ú") || letracerta24.equals("Û")){
-                if (letra24.getText().toString().equals("___")){
+                if (letra24.getText().toString().equals("__")){
                     letra24.setText(letracerta24);
                     acertos = acertos + 1;
                     cont ++;
@@ -10802,7 +10802,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta25.equals("U") || letracerta25.equals("Ũ") || letracerta25.equals("Ú") || letracerta25.equals("Û")){
-                if (letra25.getText().toString().equals("___")){
+                if (letra25.getText().toString().equals("__")){
                     letra25.setText(letracerta25);
                     acertos = acertos + 1;
                     cont ++;
@@ -10821,14 +10821,14 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
         if (num == 22){
             if (letracerta1.equals("V")){
-                if (letra1.getText().toString().equals("___")){                    letra1.setText(letracerta1);
+                if (letra1.getText().toString().equals("__")){                    letra1.setText(letracerta1);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta2.equals("V")){
-                if (letra2.getText().toString().equals("___")){                    letra2.setText(letracerta2);
+                if (letra2.getText().toString().equals("__")){                    letra2.setText(letracerta2);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -10836,21 +10836,21 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta3.equals("V")){
-                if (letra3.getText().toString().equals("___")){                    letra3.setText(letracerta3);
+                if (letra3.getText().toString().equals("__")){                    letra3.setText(letracerta3);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta4.equals("V")){
-                if (letra4.getText().toString().equals("___")){                    letra4.setText(letracerta4);
+                if (letra4.getText().toString().equals("__")){                    letra4.setText(letracerta4);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta5.equals("V")){
-                if (letra5.getText().toString().equals("___")){                    letra5.setText(letracerta5);
+                if (letra5.getText().toString().equals("__")){                    letra5.setText(letracerta5);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -10858,7 +10858,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta6.equals("V")){
-                if (letra6.getText().toString().equals("___")){
+                if (letra6.getText().toString().equals("__")){
                     letra6.setText(letracerta6);
                     acertos = acertos + 1;
                     cont ++;
@@ -10867,7 +10867,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta7.equals("V")){
-                if (letra7.getText().toString().equals("___")){
+                if (letra7.getText().toString().equals("__")){
                     letra7.setText(letracerta7);
                     acertos = acertos + 1;
                     cont ++;
@@ -10876,7 +10876,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta8.equals("V")){
-                if (letra8.getText().toString().equals("___")){
+                if (letra8.getText().toString().equals("__")){
                     letra8.setText(letracerta8);
                     acertos = acertos + 1;
                     cont ++;
@@ -10885,7 +10885,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta9.equals("V")){
-                if (letra9.getText().toString().equals("___")){
+                if (letra9.getText().toString().equals("__")){
                     letra9.setText(letracerta9);
                     acertos = acertos + 1;
                     cont ++;
@@ -10894,7 +10894,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta10.equals("V")){
-                if (letra10.getText().toString().equals("___")){
+                if (letra10.getText().toString().equals("__")){
                     letra10.setText(letracerta10);
                     acertos = acertos + 1;
                     cont ++;
@@ -10903,7 +10903,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta11.equals("V")){
-                if (letra11.getText().toString().equals("___")){
+                if (letra11.getText().toString().equals("__")){
                     letra11.setText(letracerta11);
                     acertos = acertos + 1;
                     cont ++;
@@ -10912,7 +10912,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta12.equals("V")){
-                if (letra12.getText().toString().equals("___")){
+                if (letra12.getText().toString().equals("__")){
                     letra12.setText(letracerta12);
                     acertos = acertos + 1;
                     cont ++;
@@ -10921,7 +10921,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta13.equals("V")){
-                if (letra13.getText().toString().equals("___")){
+                if (letra13.getText().toString().equals("__")){
                     letra13.setText(letracerta13);
                     acertos = acertos + 1;
                     cont ++;
@@ -10930,7 +10930,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta14.equals("V")){
-                if (letra14.getText().toString().equals("___")){
+                if (letra14.getText().toString().equals("__")){
                     letra14.setText(letracerta14);
                     acertos = acertos + 1;
                     cont ++;
@@ -10939,7 +10939,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta15.equals("V")){
-                if (letra15.getText().toString().equals("___")){
+                if (letra15.getText().toString().equals("__")){
                     letra15.setText(letracerta15);
                     acertos = acertos + 1;
                     cont ++;
@@ -10948,7 +10948,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta16.equals("V")){
-                if (letra16.getText().toString().equals("___")){
+                if (letra16.getText().toString().equals("__")){
                     letra16.setText(letracerta16);
                     acertos = acertos + 1;
                     cont ++;
@@ -10957,7 +10957,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta17.equals("V")){
-                if (letra17.getText().toString().equals("___")){
+                if (letra17.getText().toString().equals("__")){
                     letra17.setText(letracerta17);
                     acertos = acertos + 1;
                     cont ++;
@@ -10966,7 +10966,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta18.equals("V")){
-                if (letra18.getText().toString().equals("___")){
+                if (letra18.getText().toString().equals("__")){
                     letra18.setText(letracerta18);
                     acertos = acertos + 1;
                     cont ++;
@@ -10975,7 +10975,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta19.equals("V")){
-                if (letra19.getText().toString().equals("___")){
+                if (letra19.getText().toString().equals("__")){
                     letra19.setText(letracerta19);
                     acertos = acertos + 1;
                     cont ++;
@@ -10984,7 +10984,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta20.equals("V")){
-                if (letra20.getText().toString().equals("___")){
+                if (letra20.getText().toString().equals("__")){
                     letra20.setText(letracerta20);
                     acertos = acertos + 1;
                     cont ++;
@@ -10993,7 +10993,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta21.equals("V")){
-                if (letra21.getText().toString().equals("___")){
+                if (letra21.getText().toString().equals("__")){
                     letra21.setText(letracerta21);
                     acertos = acertos + 1;
                     cont ++;
@@ -11002,7 +11002,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta22.equals("V")){
-                if (letra22.getText().toString().equals("___")){
+                if (letra22.getText().toString().equals("__")){
                     letra22.setText(letracerta22);
                     acertos = acertos + 1;
                     cont ++;
@@ -11011,7 +11011,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta23.equals("V")){
-                if (letra23.getText().toString().equals("___")){
+                if (letra23.getText().toString().equals("__")){
                     letra23.setText(letracerta23);
                     acertos = acertos + 1;
                     cont ++;
@@ -11020,7 +11020,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta24.equals("V")){
-                if (letra24.getText().toString().equals("___")){
+                if (letra24.getText().toString().equals("__")){
                     letra24.setText(letracerta24);
                     acertos = acertos + 1;
                     cont ++;
@@ -11029,7 +11029,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta25.equals("V")){
-                if (letra25.getText().toString().equals("___")){
+                if (letra25.getText().toString().equals("__")){
                     letra25.setText(letracerta25);
                     acertos = acertos + 1;
                     cont ++;
@@ -11047,14 +11047,14 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
         }
         if (num == 23){
             if (letracerta1.equals("X")){
-                if (letra1.getText().toString().equals("___")){                    letra1.setText(letracerta1);
+                if (letra1.getText().toString().equals("__")){                    letra1.setText(letracerta1);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta2.equals("X")){
-                if (letra2.getText().toString().equals("___")){                    letra2.setText(letracerta2);
+                if (letra2.getText().toString().equals("__")){                    letra2.setText(letracerta2);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -11062,21 +11062,21 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta3.equals("X")){
-                if (letra3.getText().toString().equals("___")){                    letra3.setText(letracerta3);
+                if (letra3.getText().toString().equals("__")){                    letra3.setText(letracerta3);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta4.equals("X")){
-                if (letra4.getText().toString().equals("___")){                    letra4.setText(letracerta4);
+                if (letra4.getText().toString().equals("__")){                    letra4.setText(letracerta4);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta5.equals("X")){
-                if (letra5.getText().toString().equals("___")){                    letra5.setText(letracerta5);
+                if (letra5.getText().toString().equals("__")){                    letra5.setText(letracerta5);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -11084,7 +11084,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta6.equals("X")){
-                if (letra6.getText().toString().equals("___")){
+                if (letra6.getText().toString().equals("__")){
                     letra6.setText(letracerta6);
                     acertos = acertos + 1;
                     cont ++;
@@ -11093,7 +11093,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta7.equals("X")){
-                if (letra7.getText().toString().equals("___")){
+                if (letra7.getText().toString().equals("__")){
                     letra7.setText(letracerta7);
                     acertos = acertos + 1;
                     cont ++;
@@ -11102,7 +11102,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta8.equals("X")){
-                if (letra8.getText().toString().equals("___")){
+                if (letra8.getText().toString().equals("__")){
                     letra8.setText(letracerta8);
                     acertos = acertos + 1;
                     cont ++;
@@ -11111,7 +11111,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta9.equals("X")){
-                if (letra9.getText().toString().equals("___")){
+                if (letra9.getText().toString().equals("__")){
                     letra9.setText(letracerta9);
                     acertos = acertos + 1;
                     cont ++;
@@ -11120,7 +11120,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta10.equals("X")){
-                if (letra10.getText().toString().equals("___")){
+                if (letra10.getText().toString().equals("__")){
                     letra10.setText(letracerta10);
                     acertos = acertos + 1;
                     cont ++;
@@ -11129,7 +11129,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta11.equals("X")){
-                if (letra11.getText().toString().equals("___")){
+                if (letra11.getText().toString().equals("__")){
                     letra11.setText(letracerta11);
                     acertos = acertos + 1;
                     cont ++;
@@ -11138,7 +11138,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta12.equals("X")){
-                if (letra12.getText().toString().equals("___")){
+                if (letra12.getText().toString().equals("__")){
                     letra12.setText(letracerta12);
                     acertos = acertos + 1;
                     cont ++;
@@ -11147,7 +11147,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta13.equals("X")){
-                if (letra13.getText().toString().equals("___")){
+                if (letra13.getText().toString().equals("__")){
                     letra13.setText(letracerta13);
                     acertos = acertos + 1;
                     cont ++;
@@ -11156,7 +11156,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta14.equals("X")){
-                if (letra14.getText().toString().equals("___")){
+                if (letra14.getText().toString().equals("__")){
                     letra14.setText(letracerta14);
                     acertos = acertos + 1;
                     cont ++;
@@ -11165,7 +11165,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta15.equals("X")){
-                if (letra15.getText().toString().equals("___")){
+                if (letra15.getText().toString().equals("__")){
                     letra15.setText(letracerta15);
                     acertos = acertos + 1;
                     cont ++;
@@ -11174,7 +11174,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta16.equals("X")){
-                if (letra16.getText().toString().equals("___")){
+                if (letra16.getText().toString().equals("__")){
                     letra16.setText(letracerta16);
                     acertos = acertos + 1;
                     cont ++;
@@ -11183,7 +11183,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta17.equals("X")){
-                if (letra17.getText().toString().equals("___")){
+                if (letra17.getText().toString().equals("__")){
                     letra17.setText(letracerta17);
                     acertos = acertos + 1;
                     cont ++;
@@ -11192,7 +11192,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta18.equals("X")){
-                if (letra18.getText().toString().equals("___")){
+                if (letra18.getText().toString().equals("__")){
                     letra18.setText(letracerta18);
                     acertos = acertos + 1;
                     cont ++;
@@ -11201,7 +11201,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta19.equals("X")){
-                if (letra19.getText().toString().equals("___")){
+                if (letra19.getText().toString().equals("__")){
                     letra19.setText(letracerta19);
                     acertos = acertos + 1;
                     cont ++;
@@ -11210,7 +11210,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta20.equals("X")){
-                if (letra20.getText().toString().equals("___")){
+                if (letra20.getText().toString().equals("__")){
                     letra20.setText(letracerta20);
                     acertos = acertos + 1;
                     cont ++;
@@ -11219,7 +11219,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta21.equals("X")){
-                if (letra21.getText().toString().equals("___")){
+                if (letra21.getText().toString().equals("__")){
                     letra21.setText(letracerta21);
                     acertos = acertos + 1;
                     cont ++;
@@ -11228,7 +11228,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta22.equals("X")){
-                if (letra22.getText().toString().equals("___")){
+                if (letra22.getText().toString().equals("__")){
                     letra22.setText(letracerta22);
                     acertos = acertos + 1;
                     cont ++;
@@ -11237,7 +11237,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta23.equals("X")){
-                if (letra23.getText().toString().equals("___")){
+                if (letra23.getText().toString().equals("__")){
                     letra23.setText(letracerta23);
                     acertos = acertos + 1;
                     cont ++;
@@ -11246,7 +11246,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta24.equals("X")){
-                if (letra24.getText().toString().equals("___")){
+                if (letra24.getText().toString().equals("__")){
                     letra24.setText(letracerta24);
                     acertos = acertos + 1;
                     cont ++;
@@ -11255,7 +11255,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta25.equals("X")){
-                if (letra25.getText().toString().equals("___")){
+                if (letra25.getText().toString().equals("__")){
                     letra25.setText(letracerta25);
                     acertos = acertos + 1;
                     cont ++;
@@ -11273,14 +11273,14 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
         }
         if (num == 24){
             if (letracerta1.equals("Y")){
-                if (letra1.getText().toString().equals("___")){                    letra1.setText(letracerta1);
+                if (letra1.getText().toString().equals("__")){                    letra1.setText(letracerta1);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta2.equals("Y")){
-                if (letra2.getText().toString().equals("___")){                    letra2.setText(letracerta2);
+                if (letra2.getText().toString().equals("__")){                    letra2.setText(letracerta2);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -11288,21 +11288,21 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta3.equals("Y")){
-                if (letra3.getText().toString().equals("___")){                    letra3.setText(letracerta3);
+                if (letra3.getText().toString().equals("__")){                    letra3.setText(letracerta3);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta4.equals("Y")){
-                if (letra4.getText().toString().equals("___")){                    letra4.setText(letracerta4);
+                if (letra4.getText().toString().equals("__")){                    letra4.setText(letracerta4);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta5.equals("Y")){
-                if (letra5.getText().toString().equals("___")){                    letra5.setText(letracerta5);
+                if (letra5.getText().toString().equals("__")){                    letra5.setText(letracerta5);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -11310,7 +11310,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta6.equals("Y")){
-                if (letra6.getText().toString().equals("___")){
+                if (letra6.getText().toString().equals("__")){
                     letra6.setText(letracerta6);
                     acertos = acertos + 1;
                     cont ++;
@@ -11319,7 +11319,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta7.equals("Y")){
-                if (letra7.getText().toString().equals("___")){
+                if (letra7.getText().toString().equals("__")){
                     letra7.setText(letracerta7);
                     acertos = acertos + 1;
                     cont ++;
@@ -11328,7 +11328,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta8.equals("Y")){
-                if (letra8.getText().toString().equals("___")){
+                if (letra8.getText().toString().equals("__")){
                     letra8.setText(letracerta8);
                     acertos = acertos + 1;
                     cont ++;
@@ -11337,7 +11337,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta9.equals("Y")){
-                if (letra9.getText().toString().equals("___")){
+                if (letra9.getText().toString().equals("__")){
                     letra9.setText(letracerta9);
                     acertos = acertos + 1;
                     cont ++;
@@ -11346,7 +11346,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta10.equals("Y")){
-                if (letra10.getText().toString().equals("___")){
+                if (letra10.getText().toString().equals("__")){
                     letra10.setText(letracerta10);
                     acertos = acertos + 1;
                     cont ++;
@@ -11355,7 +11355,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta11.equals("Y")){
-                if (letra11.getText().toString().equals("___")){
+                if (letra11.getText().toString().equals("__")){
                     letra11.setText(letracerta11);
                     acertos = acertos + 1;
                     cont ++;
@@ -11364,7 +11364,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta12.equals("Y")){
-                if (letra12.getText().toString().equals("___")){
+                if (letra12.getText().toString().equals("__")){
                     letra12.setText(letracerta12);
                     acertos = acertos + 1;
                     cont ++;
@@ -11373,7 +11373,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta13.equals("Y")){
-                if (letra13.getText().toString().equals("___")){
+                if (letra13.getText().toString().equals("__")){
                     letra13.setText(letracerta13);
                     acertos = acertos + 1;
                     cont ++;
@@ -11382,7 +11382,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta14.equals("Y")){
-                if (letra14.getText().toString().equals("___")){
+                if (letra14.getText().toString().equals("__")){
                     letra14.setText(letracerta14);
                     acertos = acertos + 1;
                     cont ++;
@@ -11391,7 +11391,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta15.equals("Y")){
-                if (letra15.getText().toString().equals("___")){
+                if (letra15.getText().toString().equals("__")){
                     letra15.setText(letracerta15);
                     acertos = acertos + 1;
                     cont ++;
@@ -11400,7 +11400,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta16.equals("Y")){
-                if (letra16.getText().toString().equals("___")){
+                if (letra16.getText().toString().equals("__")){
                     letra16.setText(letracerta16);
                     acertos = acertos + 1;
                     cont ++;
@@ -11409,7 +11409,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta17.equals("Y")){
-                if (letra17.getText().toString().equals("___")){
+                if (letra17.getText().toString().equals("__")){
                     letra17.setText(letracerta17);
                     acertos = acertos + 1;
                     cont ++;
@@ -11418,7 +11418,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta18.equals("Y")){
-                if (letra18.getText().toString().equals("___")){
+                if (letra18.getText().toString().equals("__")){
                     letra18.setText(letracerta18);
                     acertos = acertos + 1;
                     cont ++;
@@ -11427,7 +11427,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta19.equals("Y")){
-                if (letra19.getText().toString().equals("___")){
+                if (letra19.getText().toString().equals("__")){
                     letra19.setText(letracerta19);
                     acertos = acertos + 1;
                     cont ++;
@@ -11436,7 +11436,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta20.equals("Y")){
-                if (letra20.getText().toString().equals("___")){
+                if (letra20.getText().toString().equals("__")){
                     letra20.setText(letracerta20);
                     acertos = acertos + 1;
                     cont ++;
@@ -11445,7 +11445,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta21.equals("Y")){
-                if (letra21.getText().toString().equals("___")){
+                if (letra21.getText().toString().equals("__")){
                     letra21.setText(letracerta21);
                     acertos = acertos + 1;
                     cont ++;
@@ -11454,7 +11454,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta22.equals("Y")){
-                if (letra22.getText().toString().equals("___")){
+                if (letra22.getText().toString().equals("__")){
                     letra22.setText(letracerta22);
                     acertos = acertos + 1;
                     cont ++;
@@ -11463,7 +11463,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta23.equals("Y")){
-                if (letra23.getText().toString().equals("___")){
+                if (letra23.getText().toString().equals("__")){
                     letra23.setText(letracerta23);
                     acertos = acertos + 1;
                     cont ++;
@@ -11472,7 +11472,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta24.equals("Y")){
-                if (letra24.getText().toString().equals("___")){
+                if (letra24.getText().toString().equals("__")){
                     letra24.setText(letracerta24);
                     acertos = acertos + 1;
                     cont ++;
@@ -11481,7 +11481,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta25.equals("Y")){
-                if (letra25.getText().toString().equals("___")){
+                if (letra25.getText().toString().equals("__")){
                     letra25.setText(letracerta25);
                     acertos = acertos + 1;
                     cont ++;
@@ -11499,14 +11499,14 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
         }
         if (num == 25){
             if (letracerta1.equals("W")){
-                if (letra1.getText().toString().equals("___")){                    letra1.setText(letracerta1);
+                if (letra1.getText().toString().equals("__")){                    letra1.setText(letracerta1);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta2.equals("W")){
-                if (letra2.getText().toString().equals("___")){                    letra2.setText(letracerta2);
+                if (letra2.getText().toString().equals("__")){                    letra2.setText(letracerta2);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -11514,21 +11514,21 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta3.equals("W")){
-                if (letra3.getText().toString().equals("___")){                    letra3.setText(letracerta3);
+                if (letra3.getText().toString().equals("__")){                    letra3.setText(letracerta3);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta4.equals("W")){
-                if (letra4.getText().toString().equals("___")){                    letra4.setText(letracerta4);
+                if (letra4.getText().toString().equals("__")){                    letra4.setText(letracerta4);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta5.equals("W")){
-                if (letra5.getText().toString().equals("___")){                    letra5.setText(letracerta5);
+                if (letra5.getText().toString().equals("__")){                    letra5.setText(letracerta5);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -11536,7 +11536,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta6.equals("W")){
-                if (letra6.getText().toString().equals("___")){
+                if (letra6.getText().toString().equals("__")){
                     letra6.setText(letracerta6);
                     acertos = acertos + 1;
                     cont ++;
@@ -11545,7 +11545,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta7.equals("W")){
-                if (letra7.getText().toString().equals("___")){
+                if (letra7.getText().toString().equals("__")){
                     letra7.setText(letracerta7);
                     acertos = acertos + 1;
                     cont ++;
@@ -11554,7 +11554,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta8.equals("W")){
-                if (letra8.getText().toString().equals("___")){
+                if (letra8.getText().toString().equals("__")){
                     letra8.setText(letracerta8);
                     acertos = acertos + 1;
                     cont ++;
@@ -11563,7 +11563,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta9.equals("W")){
-                if (letra9.getText().toString().equals("___")){
+                if (letra9.getText().toString().equals("__")){
                     letra9.setText(letracerta9);
                     acertos = acertos + 1;
                     cont ++;
@@ -11572,7 +11572,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta10.equals("W")){
-                if (letra10.getText().toString().equals("___")){
+                if (letra10.getText().toString().equals("__")){
                     letra10.setText(letracerta10);
                     acertos = acertos + 1;
                     cont ++;
@@ -11581,7 +11581,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta11.equals("W")){
-                if (letra11.getText().toString().equals("___")){
+                if (letra11.getText().toString().equals("__")){
                     letra11.setText(letracerta11);
                     acertos = acertos + 1;
                     cont ++;
@@ -11590,7 +11590,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta12.equals("W")){
-                if (letra12.getText().toString().equals("___")){
+                if (letra12.getText().toString().equals("__")){
                     letra12.setText(letracerta12);
                     acertos = acertos + 1;
                     cont ++;
@@ -11599,7 +11599,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta13.equals("W")){
-                if (letra13.getText().toString().equals("___")){
+                if (letra13.getText().toString().equals("__")){
                     letra13.setText(letracerta13);
                     acertos = acertos + 1;
                     cont ++;
@@ -11608,7 +11608,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta14.equals("W")){
-                if (letra14.getText().toString().equals("___")){
+                if (letra14.getText().toString().equals("__")){
                     letra14.setText(letracerta14);
                     acertos = acertos + 1;
                     cont ++;
@@ -11617,7 +11617,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta15.equals("W")){
-                if (letra15.getText().toString().equals("___")){
+                if (letra15.getText().toString().equals("__")){
                     letra15.setText(letracerta15);
                     acertos = acertos + 1;
                     cont ++;
@@ -11626,7 +11626,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta16.equals("W")){
-                if (letra16.getText().toString().equals("___")){
+                if (letra16.getText().toString().equals("__")){
                     letra16.setText(letracerta16);
                     acertos = acertos + 1;
                     cont ++;
@@ -11635,7 +11635,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta17.equals("W")){
-                if (letra17.getText().toString().equals("___")){
+                if (letra17.getText().toString().equals("__")){
                     letra17.setText(letracerta17);
                     acertos = acertos + 1;
                     cont ++;
@@ -11644,7 +11644,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta18.equals("W")){
-                if (letra18.getText().toString().equals("___")){
+                if (letra18.getText().toString().equals("__")){
                     letra18.setText(letracerta18);
                     acertos = acertos + 1;
                     cont ++;
@@ -11653,7 +11653,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta19.equals("W")){
-                if (letra19.getText().toString().equals("___")){
+                if (letra19.getText().toString().equals("__")){
                     letra19.setText(letracerta19);
                     acertos = acertos + 1;
                     cont ++;
@@ -11662,7 +11662,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta20.equals("W")){
-                if (letra20.getText().toString().equals("___")){
+                if (letra20.getText().toString().equals("__")){
                     letra20.setText(letracerta20);
                     acertos = acertos + 1;
                     cont ++;
@@ -11671,7 +11671,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta21.equals("W")){
-                if (letra21.getText().toString().equals("___")){
+                if (letra21.getText().toString().equals("__")){
                     letra21.setText(letracerta21);
                     acertos = acertos + 1;
                     cont ++;
@@ -11680,7 +11680,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta22.equals("W")){
-                if (letra22.getText().toString().equals("___")){
+                if (letra22.getText().toString().equals("__")){
                     letra22.setText(letracerta22);
                     acertos = acertos + 1;
                     cont ++;
@@ -11689,7 +11689,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta23.equals("W")){
-                if (letra23.getText().toString().equals("___")){
+                if (letra23.getText().toString().equals("__")){
                     letra23.setText(letracerta23);
                     acertos = acertos + 1;
                     cont ++;
@@ -11698,7 +11698,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta24.equals("W")){
-                if (letra24.getText().toString().equals("___")){
+                if (letra24.getText().toString().equals("__")){
                     letra24.setText(letracerta24);
                     acertos = acertos + 1;
                     cont ++;
@@ -11707,7 +11707,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta25.equals("W")){
-                if (letra25.getText().toString().equals("___")){
+                if (letra25.getText().toString().equals("__")){
                     letra25.setText(letracerta25);
                     acertos = acertos + 1;
                     cont ++;
@@ -11725,14 +11725,14 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
         }
         if (num == 26){
             if (letracerta1.equals("Z")){
-                if (letra1.getText().toString().equals("___")){                    letra1.setText(letracerta1);
+                if (letra1.getText().toString().equals("__")){                    letra1.setText(letracerta1);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta2.equals("Z")){
-                if (letra2.getText().toString().equals("___")){                    letra2.setText(letracerta2);
+                if (letra2.getText().toString().equals("__")){                    letra2.setText(letracerta2);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -11740,21 +11740,21 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta3.equals("Z")){
-                if (letra3.getText().toString().equals("___")){                    letra3.setText(letracerta3);
+                if (letra3.getText().toString().equals("__")){                    letra3.setText(letracerta3);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta4.equals("Z")){
-                if (letra4.getText().toString().equals("___")){                    letra4.setText(letracerta4);
+                if (letra4.getText().toString().equals("__")){                    letra4.setText(letracerta4);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
             }
             if (letracerta5.equals("Z")){
-                if (letra5.getText().toString().equals("___")){                    letra5.setText(letracerta5);
+                if (letra5.getText().toString().equals("__")){                    letra5.setText(letracerta5);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
@@ -11762,7 +11762,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta6.equals("Z")){
-                if (letra6.getText().toString().equals("___")){
+                if (letra6.getText().toString().equals("__")){
                     letra6.setText(letracerta6);
                     acertos = acertos + 1;
                     cont ++;
@@ -11771,7 +11771,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta7.equals("Z")){
-                if (letra7.getText().toString().equals("___")){
+                if (letra7.getText().toString().equals("__")){
                     letra7.setText(letracerta7);
                     acertos = acertos + 1;
                     cont ++;
@@ -11780,7 +11780,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta8.equals("Z")){
-                if (letra8.getText().toString().equals("___")){
+                if (letra8.getText().toString().equals("__")){
                     letra8.setText(letracerta8);
                     acertos = acertos + 1;
                     cont ++;
@@ -11789,7 +11789,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta9.equals("Z")){
-                if (letra9.getText().toString().equals("___")){
+                if (letra9.getText().toString().equals("__")){
                     letra9.setText(letracerta9);
                     acertos = acertos + 1;
                     cont ++;
@@ -11798,7 +11798,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta10.equals("Z")){
-                if (letra10.getText().toString().equals("___")){
+                if (letra10.getText().toString().equals("__")){
                     letra10.setText(letracerta10);
                     acertos = acertos + 1;
                     cont ++;
@@ -11807,7 +11807,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta11.equals("Z")){
-                if (letra11.getText().toString().equals("___")){
+                if (letra11.getText().toString().equals("__")){
                     letra11.setText(letracerta11);
                     acertos = acertos + 1;
                     cont ++;
@@ -11816,7 +11816,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta12.equals("Z")){
-                if (letra12.getText().toString().equals("___")){
+                if (letra12.getText().toString().equals("__")){
                     letra12.setText(letracerta12);
                     acertos = acertos + 1;
                     cont ++;
@@ -11825,7 +11825,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta13.equals("Z")){
-                if (letra13.getText().toString().equals("___")){
+                if (letra13.getText().toString().equals("__")){
                     letra13.setText(letracerta13);
                     acertos = acertos + 1;
                     cont ++;
@@ -11834,7 +11834,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta14.equals("Z")){
-                if (letra14.getText().toString().equals("___")){
+                if (letra14.getText().toString().equals("__")){
                     letra14.setText(letracerta14);
                     acertos = acertos + 1;
                     cont ++;
@@ -11843,7 +11843,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta15.equals("Z")){
-                if (letra15.getText().toString().equals("___")){
+                if (letra15.getText().toString().equals("__")){
                     letra15.setText(letracerta15);
                     acertos = acertos + 1;
                     cont ++;
@@ -11852,7 +11852,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta16.equals("Z")){
-                if (letra16.getText().toString().equals("___")){
+                if (letra16.getText().toString().equals("__")){
                     letra16.setText(letracerta16);
                     acertos = acertos + 1;
                     cont ++;
@@ -11861,7 +11861,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta17.equals("Z")){
-                if (letra17.getText().toString().equals("___")){
+                if (letra17.getText().toString().equals("__")){
                     letra17.setText(letracerta17);
                     acertos = acertos + 1;
                     cont ++;
@@ -11870,7 +11870,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta18.equals("Z")){
-                if (letra18.getText().toString().equals("___")){
+                if (letra18.getText().toString().equals("__")){
                     letra18.setText(letracerta18);
                     acertos = acertos + 1;
                     cont ++;
@@ -11879,16 +11879,15 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta19.equals("Z")){
-                if (letra19.getText().toString().equals("___")){
+                if (letra19.getText().toString().equals("__")){
                     letra19.setText(letracerta19);
                     acertos = acertos + 1;
                     cont ++;
                     cont_revelar++;
                 }
-
             }
             if (letracerta20.equals("Z")){
-                if (letra20.getText().toString().equals("___")){
+                if (letra20.getText().toString().equals("__")){
                     letra20.setText(letracerta20);
                     acertos = acertos + 1;
                     cont ++;
@@ -11897,7 +11896,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta21.equals("Z")){
-                if (letra21.getText().toString().equals("___")){
+                if (letra21.getText().toString().equals("__")){
                     letra21.setText(letracerta21);
                     acertos = acertos + 1;
                     cont ++;
@@ -11906,7 +11905,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta22.equals("Z")){
-                if (letra22.getText().toString().equals("___")){
+                if (letra22.getText().toString().equals("__")){
                     letra22.setText(letracerta22);
                     acertos = acertos + 1;
                     cont ++;
@@ -11915,7 +11914,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta23.equals("Z")){
-                if (letra23.getText().toString().equals("___")){
+                if (letra23.getText().toString().equals("__")){
                     letra23.setText(letracerta23);
                     acertos = acertos + 1;
                     cont ++;
@@ -11924,7 +11923,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta24.equals("Z")){
-                if (letra24.getText().toString().equals("___")){
+                if (letra24.getText().toString().equals("__")){
                     letra24.setText(letracerta24);
                     acertos = acertos + 1;
                     cont ++;
@@ -11933,7 +11932,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
 
             }
             if (letracerta25.equals("Z")){
-                if (letra25.getText().toString().equals("___")){
+                if (letra25.getText().toString().equals("__")){
                     letra25.setText(letracerta25);
                     acertos = acertos + 1;
                     cont ++;
@@ -11947,12 +11946,11 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
                 verificarAcertos();
                 button_z.setText("");
             }
-
         }
     }
 
     public void finish(){
-        AlertDialog.Builder alerta = new AlertDialog.Builder(   TelaJogoForcaAprendizagem.this);
+        AlertDialog.Builder alerta = new AlertDialog.Builder(  TelaJogoForcaManutencao.this);
         alerta.setMessage("Tem certeza que gostaria de abandonar o jogo?");
         alerta.setCancelable(false);
         alerta.setNegativeButton("Não", new DialogInterface.OnClickListener() {
@@ -11964,7 +11962,7 @@ public class   TelaJogoForcaAprendizagem extends AppCompatActivity {
         alerta.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(   TelaJogoForcaAprendizagem.this, TelaMenu.class);
+                Intent intent = new Intent(  TelaJogoForcaManutencao.this, TelaMenu.class);
                 startActivity(intent);
             }
         });

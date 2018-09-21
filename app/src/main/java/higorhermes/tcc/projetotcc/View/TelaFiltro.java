@@ -49,16 +49,16 @@ public class TelaFiltro extends AppCompatActivity implements Serializable {
                                 bundle.putInt("filtro", 1);
                                 bundle.putInt("partidas_atuais", 1);
                                 bundle.putInt("contador_partidas", 1);
-                                Intent intent = new Intent(TelaFiltro.this, TelaJogoForcaDisponibilidade.class);
+                                Intent intent = new Intent(TelaFiltro.this, TelaJogoForcaIntegridade.class);
                                 intent.putExtra("partidas", partidas);
                                 intent.putExtras(bundle);
                                 startActivity(intent);
                             }
                             if (rb_nãoRespondidas.isChecked()==true){
-                                Realm realm = Realm.getDefaultInstance();
+                               /* Realm realm = Realm.getDefaultInstance();
                                 jForca = realm.where(JogoForca.class)
                                         .equalTo("id", 201).findFirst();
-                                if ((jForca.getAcerto() == 0)&&(jForca.getErro() == 0)){
+                                if ((jForca.getAcerto() == 0)&&(jForca.getErro() == 0)){*/
                                     partidas[0] = new JogoForca(201);
                                     Bundle bundle = new Bundle();
                                     bundle.putInt("pont", 100);
@@ -66,24 +66,24 @@ public class TelaFiltro extends AppCompatActivity implements Serializable {
                                     bundle.putInt("filtro", 2);
                                     bundle.putInt("partidas_atuais", 1);
                                     bundle.putInt("contador_partidas", 1);
-                                    Intent intent = new Intent(TelaFiltro.this, TelaJogoForca.class);
+                                    Intent intent = new Intent(TelaFiltro.this, TelaJogoForcaTestabilidade.class);
                                     intent.putExtra("partidas", partidas);
                                     intent.putExtras(bundle);
                                     startActivity(intent);
-                                }
+                                /*}
                                 else{
                                     String msg = "Você já respondeu todos os desafios!";
                                     AlertDialog.Builder dlg = new AlertDialog.Builder(TelaFiltro.this);
                                     dlg.setMessage(msg);
                                     dlg.setNeutralButton("OK", null);
                                     dlg.show();
-                                }
+                                }*/
                             }
                             if (rb_Respondidas.isChecked()==true){
-                                Realm realm = Realm.getDefaultInstance();
+                               /* Realm realm = Realm.getDefaultInstance();
                                 jForca = realm.where(JogoForca.class)
                                         .equalTo("id", 201).findFirst();
-                                if ((jForca.getAcerto() == 1)||(jForca.getErro() == 1)){
+                                if ((jForca.getAcerto() == 1)||(jForca.getErro() == 1)){*/
                                     partidas[0] = new JogoForca(201);
                                     Bundle bundle = new Bundle();
                                     bundle.putInt("pont", 100);
@@ -91,25 +91,25 @@ public class TelaFiltro extends AppCompatActivity implements Serializable {
                                     bundle.putInt("filtro", 3);
                                     bundle.putInt("partidas_atuais", 1);
                                     bundle.putInt("contador_partidas", 1);
-                                    Intent intent = new Intent(TelaFiltro.this, TelaJogoForca.class);
+                                    Intent intent = new Intent(TelaFiltro.this, TelaJogoForcaModificabilidade.class);
                                     intent.putExtra("partidas", partidas);
                                     intent.putExtras(bundle);
                                     startActivity(intent);
-                                }
+                               /* }
                                 else{
                                     String msg = "Você ainda não respondeu nenhum desafio!";
                                     AlertDialog.Builder dlg = new AlertDialog.Builder(TelaFiltro.this);
                                     dlg.setMessage(msg);
                                     dlg.setNeutralButton("OK", null);
                                     dlg.show();
-                                }
+                                }*/
                             }
                             if (rb_Certas.isChecked()==true){
-                                Realm realm = Realm.getDefaultInstance();
+                               /* Realm realm = Realm.getDefaultInstance();
                                 jForca = realm.where(JogoForca.class)
                                         .equalTo("id", 201).findFirst();
                                 realm.close();
-                                if (jForca.getAcerto() == 1){
+                                if (jForca.getAcerto() == 1){*/
                                     partidas[0] = new JogoForca(201);
                                     Bundle bundle = new Bundle();
                                     bundle.putInt("pont", 100);
@@ -117,25 +117,25 @@ public class TelaFiltro extends AppCompatActivity implements Serializable {
                                     bundle.putInt("filtro", 4);
                                     bundle.putInt("partidas_atuais", 1);
                                     bundle.putInt("contador_partidas", 1);
-                                    Intent intent = new Intent(TelaFiltro.this, TelaJogoForca.class);
+                                    Intent intent = new Intent(TelaFiltro.this, TelaJogoForcaAnalisabilidade.class);
                                     intent.putExtra("partidas", partidas);
                                     intent.putExtras(bundle);
                                     startActivity(intent);
-                                }
+                                /*}
                                 else{
                                     String msg = "Você ainda não respondeu ou não acertou nenhum desafio!";
                                     AlertDialog.Builder dlg = new AlertDialog.Builder(TelaFiltro.this);
                                     dlg.setMessage(msg);
                                     dlg.setNeutralButton("OK", null);
                                     dlg.show();
-                                }
+                                }*/
                             }
                             if (rb_Erradas.isChecked()==true){
-                                Realm realm = Realm.getDefaultInstance();
+                                /*Realm realm = Realm.getDefaultInstance();
                                 jForca = realm.where(JogoForca.class)
                                         .equalTo("id", 201).findFirst();
                                 realm.close();
-                                if (jForca.getErro() == 1){
+                                if (jForca.getErro() == 1){*/
                                     partidas[0] = new JogoForca(201);
                                     Bundle bundle = new Bundle();
                                     bundle.putInt("pont", 100);
@@ -143,18 +143,18 @@ public class TelaFiltro extends AppCompatActivity implements Serializable {
                                     bundle.putInt("filtro", 5);
                                     bundle.putInt("partidas_atuais", 1);
                                     bundle.putInt("contador_partidas", 1);
-                                    Intent intent = new Intent(TelaFiltro.this, TelaJogoForca.class);
+                                    Intent intent = new Intent(TelaFiltro.this, TelaJogoForcaReutilizacao.class);
                                     intent.putExtra("partidas", partidas);
                                     intent.putExtras(bundle);
                                     startActivity(intent);
-                                }
+                                /*}
                                 else{
                                     String msg = "Você não errou nenhum desafio!";
                                     AlertDialog.Builder dlg = new AlertDialog.Builder(TelaFiltro.this);
                                     dlg.setMessage(msg);
                                     dlg.setNeutralButton("OK", null);
                                     dlg.show();
-                                }
+                                }*/
                             }
                     }
                 }

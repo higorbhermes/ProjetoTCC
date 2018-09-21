@@ -54,7 +54,16 @@
         <activity android:name=".View.TelaJogoForcaOperabilidade" />
         <activity android:name=".View.TelaJogoForcaConfiabilidade" />
         <activity android:name=".View.TelaJogoForcaMaturidade" />
-        <activity android:name=".View.TelaJogoForcaDisponibilidade"></activity>
+        <activity android:name=".View.TelaJogoForcaDisponibilidade" />
+        <activity android:name=".View.TelaJogoForcaIntegridade" />
+        <activity android:name=".View.TelaJogoForcaNaoRepudio" />
+        <activity android:name=".View.TelaJogoForcaAutenticidade" />
+        <activity android:name=".View.TelaJogoForcaManutencao" />
+        <activity android:name=".View.TelaJogoForcaModularidade" />
+        <activity android:name=".View.TelaJogoForcaReutilizacao" />
+        <activity android:name=".View.TelaJogoForcaAnalisabilidade" />
+        <activity android:name=".View.TelaJogoForcaModificabilidade" />
+        <activity android:name=".View.TelaJogoForcaTestabilidade"></activity>
     </application>
 
 </manifest>
