@@ -18,11 +18,11 @@ import higorhermes.tcc.projetotcc.Model.JogoForca;
 import higorhermes.tcc.projetotcc.R;
 import io.realm.Realm;
 
-public class TelaJogoForcaModificabilidade extends AppCompatActivity {
+public class TelaJogoForcaEsteticaDaInterface extends AppCompatActivity {
     int pontos;
     int erro = 0;
     int acertos = 0;
-    int numero_letras = 14;
+    int numero_letras = 19;
     int eliminar_letra = 0;
     int revelar_letra = 0;
     int menu = 1;
@@ -31,38 +31,38 @@ public class TelaJogoForcaModificabilidade extends AppCompatActivity {
     int partida_atual;
     int contador_partidas;
     int id;
-    String letracerta1 = "M";
-    String letracerta2 = "O";
-    String letracerta3 = "D";
-    String letracerta4 = "I";
-    String letracerta5 = "F";
+    String letracerta1 = "E";
+    String letracerta2 = "S";
+    String letracerta3 = "T";
+    String letracerta4 = "É";
+    String letracerta5 = "T";
     String letracerta6 = "I";
-    String letracerta7 = "B";
-    String letracerta8 = "I";
-    String letracerta9 = "L";
-    String letracerta10 = "I";
-    String letracerta11 = "D";
-    String letracerta12 = "A";
-    String letracerta13 = "D";
+    String letracerta7 = "C";
+    String letracerta8 = "A";
+    String letracerta9 = "D";
+    String letracerta10 = "A";
+    String letracerta11 = "I";
+    String letracerta12 = "N";
+    String letracerta13 = "T";
     String letracerta14 = "E";
-    String letracerta15 = "";
-    String letracerta16 = "";
-    String letracerta17 = "";
-    String letracerta18 = "";
-    String letracerta19 = "";
+    String letracerta15 = "R";
+    String letracerta16 = "F";
+    String letracerta17 = "A";
+    String letracerta18 = "C";
+    String letracerta19 = "E";
     String letracerta20 = "";
     String letracerta21 = "";
     String letracerta22 = "";
     String letracerta23 = "";
     String letracerta24 = "";
     String letracerta25 = "";
-    String dica = "Grau para o qual um produto ou sistema pode ser efetivamente e eficientemente modificado sem introduzir defeitos ou degradar a qualidade do produto existente.";
+    String dica = "Grau para o qual uma interface de usuário permite uma interação agradável e satisfatória para o usuário.";
     JogoForca[] partidas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_jogo_forca_modificabilidade);
+        setContentView(R.layout.activity_tela_jogo_forca_estetica_da_interface);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         pontos = bundle.getInt("pont");
@@ -121,11 +121,11 @@ public class TelaJogoForcaModificabilidade extends AppCompatActivity {
         final TextView letra12 = (TextView) findViewById(R.id.letra12);
         final TextView letra13 = (TextView) findViewById(R.id.letra13);
         final TextView letra14 = (TextView) findViewById(R.id.letra14);
-        final TextView letra15 = null;
-        final TextView letra16 = null;
-        final TextView letra17 = null;
-        final TextView letra18 = null;
-        final TextView letra19 = null;
+        final TextView letra15 = (TextView) findViewById(R.id.letra15);
+        final TextView letra16 = (TextView) findViewById(R.id.letra16);
+        final TextView letra17 = (TextView) findViewById(R.id.letra17);
+        final TextView letra18 = (TextView) findViewById(R.id.letra18);
+        final TextView letra19 = (TextView) findViewById(R.id.letra19);
         final TextView letra20 = null;
         final TextView letra21 = null;
         final TextView letra22 = null;
@@ -164,19 +164,19 @@ public class TelaJogoForcaModificabilidade extends AppCompatActivity {
             public void onClick(View view) {
                 if (pontos < 60) {
                     String msg = "É necessário possuir 60 pontos para utilizar esta ajuda!";
-                    AlertDialog.Builder dlg = new AlertDialog.Builder(    TelaJogoForcaModificabilidade.this);
+                    AlertDialog.Builder dlg = new AlertDialog.Builder(    TelaJogoForcaEsteticaDaInterface.this);
                     dlg.setMessage(msg);
                     dlg.setNeutralButton("OK", null);
                     dlg.show();
                 } else {
-                    if (revelar_letra >= 3) {
+                    if (revelar_letra >= 300) {
                         String msg = "Essa ajuda só pode ser utilizada três vezes em cada desafio!";
-                        AlertDialog.Builder dlg = new AlertDialog.Builder(  TelaJogoForcaModificabilidade.this);
+                        AlertDialog.Builder dlg = new AlertDialog.Builder(  TelaJogoForcaEsteticaDaInterface.this);
                         dlg.setMessage(msg);
                         dlg.setNeutralButton("OK", null);
                         dlg.show();
                     } else {
-                        pontos = pontos - 60;
+                        //pontos = pontos - 60;
                         calcularPontuação();
                         verSentimento(1);
                         Random gerador = new Random();
@@ -272,7 +272,7 @@ public class TelaJogoForcaModificabilidade extends AppCompatActivity {
             public void onClick(View view) {
                 if (pontos < 20) {
                     String msg = "É necessário possuir 20 pontos para utilizar esta ajuda!";
-                    AlertDialog.Builder dlg = new AlertDialog.Builder(  TelaJogoForcaModificabilidade.this);
+                    AlertDialog.Builder dlg = new AlertDialog.Builder(  TelaJogoForcaEsteticaDaInterface.this);
                     dlg.setMessage(msg);
                     dlg.setNeutralButton("OK", null);
                     dlg.show();
@@ -281,7 +281,7 @@ public class TelaJogoForcaModificabilidade extends AppCompatActivity {
                     calcularPontuação();
                     verSentimento(1);
                     String msg = "DICA: "+dica;
-                    AlertDialog.Builder dlg = new AlertDialog.Builder(  TelaJogoForcaModificabilidade.this);
+                    AlertDialog.Builder dlg = new AlertDialog.Builder(  TelaJogoForcaEsteticaDaInterface.this);
                     dlg.setMessage(msg);
                     dlg.setNeutralButton("OK", null);
                     dlg.show();
@@ -294,14 +294,14 @@ public class TelaJogoForcaModificabilidade extends AppCompatActivity {
             public void onClick(View view) {
                 if (pontos < 40) {
                     String msg = "É necessário possuir 40 pontos para utilizar esta ajuda!";
-                    AlertDialog.Builder dlg = new AlertDialog.Builder(  TelaJogoForcaModificabilidade.this);
+                    AlertDialog.Builder dlg = new AlertDialog.Builder(  TelaJogoForcaEsteticaDaInterface.this);
                     dlg.setMessage(msg);
                     dlg.setNeutralButton("OK", null);
                     dlg.show();
                 } else {
                     if (eliminar_letra >= 3) {
                         String msg = "Essa ajuda só pode ser utilizada três vezes em cada desafio!";
-                        AlertDialog.Builder dlg = new AlertDialog.Builder(  TelaJogoForcaModificabilidade.this);
+                        AlertDialog.Builder dlg = new AlertDialog.Builder(  TelaJogoForcaEsteticaDaInterface.this);
                         dlg.setMessage(msg);
                         dlg.setNeutralButton("OK", null);
                         dlg.show();
@@ -318,10 +318,10 @@ public class TelaJogoForcaModificabilidade extends AppCompatActivity {
                             button_z.setEnabled(false);
                         }
                         if (eliminar_letra == 1) {
-                            button_n.setText("");
+                            button_y.setText("");
                             button_v.setText("");
                             button_j.setText("");
-                            button_n.setEnabled(false);
+                            button_y.setEnabled(false);
                             button_j.setEnabled(false);
                             button_v.setEnabled(false);
 
@@ -329,10 +329,10 @@ public class TelaJogoForcaModificabilidade extends AppCompatActivity {
                         if (eliminar_letra == 2) {
                             button_h.setText("");
                             button_k.setText("");
-                            button_r.setText("");
+                            button_s.setText("");
                             button_h.setEnabled(false);
                             button_k.setEnabled(false);
-                            button_r.setEnabled(false);
+                            button_s.setEnabled(false);
                         }
                         eliminar_letra = eliminar_letra + 1;
                     }
@@ -690,26 +690,26 @@ public class TelaJogoForcaModificabilidade extends AppCompatActivity {
         button_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PopupMenu popupMenu = new PopupMenu(  TelaJogoForcaModificabilidade.this, button_menu);
+                PopupMenu popupMenu = new PopupMenu(  TelaJogoForcaEsteticaDaInterface.this, button_menu);
                 popupMenu.getMenuInflater().inflate(R.menu.popup_menu, popupMenu.getMenu());
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
                         String s = item.getTitle().toString();
                         if (s.equals("Caderno")) {
-                            Intent intent = new Intent(  TelaJogoForcaModificabilidade.this, TelaCadernoCaracteristicasQualidade.class);
+                            Intent intent = new Intent(  TelaJogoForcaEsteticaDaInterface.this, TelaCadernoCaracteristicasQualidade.class);
                             startActivity(intent);
                         }
                         if (s.equals("Desempenho")) {
-                            Intent intent = new Intent(  TelaJogoForcaModificabilidade.this, TelaDesempenho.class);
+                            Intent intent = new Intent(  TelaJogoForcaEsteticaDaInterface.this, TelaDesempenho.class);
                             startActivity(intent);
                         }
                         if (s.equals("Ajustes")) {
-                            Intent intent = new Intent(  TelaJogoForcaModificabilidade.this, TelaAjustes.class);
+                            Intent intent = new Intent(  TelaJogoForcaEsteticaDaInterface.this, TelaAjustes.class);
                             startActivity(intent);
                         }
                         if (s.equals("Avaliar")) {
-                            Intent intent = new Intent(  TelaJogoForcaModificabilidade.this, TelaAvaliacao.class);
+                            Intent intent = new Intent(  TelaJogoForcaEsteticaDaInterface.this, TelaAvaliacao.class);
                             startActivity(intent);
                         }
                         return true;
@@ -1164,11 +1164,11 @@ public class TelaJogoForcaModificabilidade extends AppCompatActivity {
         final TextView letra12 = (TextView) findViewById(R.id.letra12);
         final TextView letra13 = (TextView) findViewById(R.id.letra13);
         final TextView letra14 = (TextView) findViewById(R.id.letra14);
-        final TextView letra15 = null;
-        final TextView letra16 = null;
-        final TextView letra17 = null;
-        final TextView letra18 = null;
-        final TextView letra19 = null;
+        final TextView letra15 = (TextView) findViewById(R.id.letra15);
+        final TextView letra16 = (TextView) findViewById(R.id.letra16);
+        final TextView letra17 = (TextView) findViewById(R.id.letra17);
+        final TextView letra18 = (TextView) findViewById(R.id.letra18);
+        final TextView letra19 = (TextView) findViewById(R.id.letra19);
         final TextView letra20 = null;
         final TextView letra21 = null;
         final TextView letra22 = null;
@@ -6032,11 +6032,11 @@ public class TelaJogoForcaModificabilidade extends AppCompatActivity {
         final TextView letra12 = (TextView) findViewById(R.id.letra12);
         final TextView letra13 = (TextView) findViewById(R.id.letra13);
         final TextView letra14 = (TextView) findViewById(R.id.letra14);
-        final TextView letra15 = null;
-        final TextView letra16 = null;
-        final TextView letra17 = null;
-        final TextView letra18 = null;
-        final TextView letra19 = null;
+        final TextView letra15 = (TextView) findViewById(R.id.letra15);
+        final TextView letra16 = (TextView) findViewById(R.id.letra16);
+        final TextView letra17 = (TextView) findViewById(R.id.letra17);
+        final TextView letra18 = (TextView) findViewById(R.id.letra18);
+        final TextView letra19 = (TextView) findViewById(R.id.letra19);
         final TextView letra20 = null;
         final TextView letra21 = null;
         final TextView letra22 = null;
@@ -11951,7 +11951,7 @@ public class TelaJogoForcaModificabilidade extends AppCompatActivity {
     }
 
     public void finish(){
-        AlertDialog.Builder alerta = new AlertDialog.Builder(  TelaJogoForcaModificabilidade.this);
+        AlertDialog.Builder alerta = new AlertDialog.Builder(  TelaJogoForcaEsteticaDaInterface.this);
         alerta.setMessage("Tem certeza que gostaria de abandonar o jogo?");
         alerta.setCancelable(false);
         alerta.setNegativeButton("Não", new DialogInterface.OnClickListener() {
@@ -11963,7 +11963,7 @@ public class TelaJogoForcaModificabilidade extends AppCompatActivity {
         alerta.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(  TelaJogoForcaModificabilidade.this, TelaMenu.class);
+                Intent intent = new Intent(  TelaJogoForcaEsteticaDaInterface.this, TelaMenu.class);
                 startActivity(intent);
             }
         });

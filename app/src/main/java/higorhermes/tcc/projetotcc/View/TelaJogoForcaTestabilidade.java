@@ -169,14 +169,14 @@ public class TelaJogoForcaTestabilidade extends AppCompatActivity {
                     dlg.setNeutralButton("OK", null);
                     dlg.show();
                 } else {
-                    if (revelar_letra >= 300) {
+                    if (revelar_letra >= 3) {
                         String msg = "Essa ajuda só pode ser utilizada três vezes em cada desafio!";
                         AlertDialog.Builder dlg = new AlertDialog.Builder(  TelaJogoForcaTestabilidade.this);
                         dlg.setMessage(msg);
                         dlg.setNeutralButton("OK", null);
                         dlg.show();
                     } else {
-                        //pontos = pontos - 60;
+                        pontos = pontos - 60;
                         calcularPontuação();
                         verSentimento(1);
                         Random gerador = new Random();

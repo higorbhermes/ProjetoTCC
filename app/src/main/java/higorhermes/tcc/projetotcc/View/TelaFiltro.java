@@ -32,11 +32,23 @@ public class TelaFiltro extends AppCompatActivity implements Serializable {
                 final RadioButton rb_Erradas = (RadioButton) findViewById(R.id.rb_Erradas);
                 final RadioButton rb_Certas = (RadioButton) findViewById(R.id.rb_Certas);
                 if((rb_semFiltro.isChecked()==false)&&(rb_nãoRespondidas.isChecked()==false)&&(rb_Respondidas.isChecked()==false)&&(rb_Erradas.isChecked()==false)&&(rb_Certas.isChecked()==false)){
-                    String msg = "Selecione um filtro";
+                    /*String msg = "Selecione um filtro";
                     AlertDialog.Builder dlg = new AlertDialog.Builder(TelaFiltro.this);
                     dlg.setMessage(msg);
                     dlg.setNeutralButton("OK", null);
-                    dlg.show();
+                    dlg.show();*/
+                    JogoForca[] partidas = new JogoForca[50];
+                    partidas[0] = new JogoForca(201);
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", 100);
+                    bundle.putInt("id", 205);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", 1);
+                    Intent intent = new Intent(TelaFiltro.this, TelaJogoForcaPrestacaoDeContas.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
                 }
                 else{
                     if (tipo_jogo == 1){
@@ -49,7 +61,7 @@ public class TelaFiltro extends AppCompatActivity implements Serializable {
                                 bundle.putInt("filtro", 1);
                                 bundle.putInt("partidas_atuais", 1);
                                 bundle.putInt("contador_partidas", 1);
-                                Intent intent = new Intent(TelaFiltro.this, TelaJogoForcaIntegridade.class);
+                                Intent intent = new Intent(TelaFiltro.this, TelaJogoForcaEficienciaDeDesempenho.class);
                                 intent.putExtra("partidas", partidas);
                                 intent.putExtras(bundle);
                                 startActivity(intent);
@@ -66,7 +78,7 @@ public class TelaFiltro extends AppCompatActivity implements Serializable {
                                     bundle.putInt("filtro", 2);
                                     bundle.putInt("partidas_atuais", 1);
                                     bundle.putInt("contador_partidas", 1);
-                                    Intent intent = new Intent(TelaFiltro.this, TelaJogoForcaTestabilidade.class);
+                                    Intent intent = new Intent(TelaFiltro.this, TelaJogoForcaUtilizacaoDeRecursos.class);
                                     intent.putExtra("partidas", partidas);
                                     intent.putExtras(bundle);
                                     startActivity(intent);
@@ -91,7 +103,7 @@ public class TelaFiltro extends AppCompatActivity implements Serializable {
                                     bundle.putInt("filtro", 3);
                                     bundle.putInt("partidas_atuais", 1);
                                     bundle.putInt("contador_partidas", 1);
-                                    Intent intent = new Intent(TelaFiltro.this, TelaJogoForcaModificabilidade.class);
+                                    Intent intent = new Intent(TelaFiltro.this, TelaJogoForcaProtecaoContraErros.class);
                                     intent.putExtra("partidas", partidas);
                                     intent.putExtras(bundle);
                                     startActivity(intent);
@@ -117,7 +129,7 @@ public class TelaFiltro extends AppCompatActivity implements Serializable {
                                     bundle.putInt("filtro", 4);
                                     bundle.putInt("partidas_atuais", 1);
                                     bundle.putInt("contador_partidas", 1);
-                                    Intent intent = new Intent(TelaFiltro.this, TelaJogoForcaAnalisabilidade.class);
+                                    Intent intent = new Intent(TelaFiltro.this, TelaJogoForcaEsteticaDaInterface.class);
                                     intent.putExtra("partidas", partidas);
                                     intent.putExtras(bundle);
                                     startActivity(intent);
@@ -143,7 +155,7 @@ public class TelaFiltro extends AppCompatActivity implements Serializable {
                                     bundle.putInt("filtro", 5);
                                     bundle.putInt("partidas_atuais", 1);
                                     bundle.putInt("contador_partidas", 1);
-                                    Intent intent = new Intent(TelaFiltro.this, TelaJogoForcaReutilizacao.class);
+                                    Intent intent = new Intent(TelaFiltro.this, TelaJogoForcaComportamentoNoTempo.class);
                                     intent.putExtra("partidas", partidas);
                                     intent.putExtras(bundle);
                                     startActivity(intent);

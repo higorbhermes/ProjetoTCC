@@ -63,7 +63,17 @@
         <activity android:name=".View.TelaJogoForcaReutilizacao" />
         <activity android:name=".View.TelaJogoForcaAnalisabilidade" />
         <activity android:name=".View.TelaJogoForcaModificabilidade" />
-        <activity android:name=".View.TelaJogoForcaTestabilidade"></activity>
+        <activity android:name=".View.TelaJogoForcaTestabilidade" />
+        <activity android:name=".View.TelaJogoForcaPortabilidade" />
+        <activity android:name=".View.TelaJogoForcaAdaptabilidade" />
+        <activity android:name=".View.TelaJogoForcaInstalabilidade" />
+        <activity android:name=".View.TelaJogoForcaReplacibilidade" />
+        <activity android:name=".View.TelaJogoForcaComportamentoNoTempo" />
+        <activity android:name=".View.TelaJogoForcaUtilizacaoDeRecursos" />
+        <activity android:name=".View.TelaJogoForcaEficienciaDeDesempenho" />
+        <activity android:name=".View.TelaJogoForcaProtecaoContraErros" />
+        <activity android:name=".View.TelaJogoForcaEsteticaDaInterface" />
+        <activity android:name=".View.TelaJogoForcaPrestacaoDeContas"></activity>
     </application>
 
 </manifest>
