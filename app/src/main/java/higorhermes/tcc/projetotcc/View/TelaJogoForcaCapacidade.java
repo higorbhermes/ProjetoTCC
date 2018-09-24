@@ -59,7 +59,7 @@ public class TelaJogoForcaCapacidade extends AppCompatActivity {
     String letracerta24 = "";
     String letracerta25 = "";
     String dica = "Grau para o qual os limites máximos de um produto ou parâmetro do sistema atendem aos requisitos.";
-    JogoForca[] partidas;
+    int[] partidas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +72,7 @@ public class TelaJogoForcaCapacidade extends AppCompatActivity {
         filtro = bundle.getInt("filtro");
         contador_partidas = bundle.getInt("contador_partidas");
         id = bundle.getInt("id");
-        partidas = ( JogoForca[]) intent.getSerializableExtra("partidas");
+        partidas = ( int[]) intent.getSerializableExtra("partidas");
         Button button_revelar = (Button) findViewById(R.id.button_revelar);
         Button button_eliminar = (Button) findViewById(R.id.button_eliminar);
         Button button_dica = (Button) findViewById(R.id.button_dica);

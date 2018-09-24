@@ -73,7 +73,8 @@
         <activity android:name=".View.TelaJogoForcaEficienciaDeDesempenho" />
         <activity android:name=".View.TelaJogoForcaProtecaoContraErros" />
         <activity android:name=".View.TelaJogoForcaEsteticaDaInterface" />
-        <activity android:name=".View.TelaJogoForcaPrestacaoDeContas"></activity>
+        <activity android:name=".View.TelaJogoForcaPrestacaoDeContas" />
+        <activity android:name=".View.TelaFimDeJogo"></activity>
     </application>
 
 </manifest>
