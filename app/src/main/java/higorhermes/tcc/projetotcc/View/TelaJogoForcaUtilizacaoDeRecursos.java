@@ -169,14 +169,14 @@ public class TelaJogoForcaUtilizacaoDeRecursos extends AppCompatActivity {
                     dlg.setNeutralButton("OK", null);
                     dlg.show();
                 } else {
-                    if (revelar_letra >= 300) {
+                    if (revelar_letra >= 3) {
                         String msg = "Essa ajuda só pode ser utilizada três vezes em cada desafio!";
                         AlertDialog.Builder dlg = new AlertDialog.Builder(  TelaJogoForcaUtilizacaoDeRecursos.this);
                         dlg.setMessage(msg);
                         dlg.setNeutralButton("OK", null);
                         dlg.show();
                     } else {
-                        //pontos = pontos - 60;
+                        pontos = pontos - 60;
                         calcularPontuação();
                         verSentimento(1);
                         Random gerador = new Random();
@@ -1122,7 +1122,452 @@ public class TelaJogoForcaUtilizacaoDeRecursos extends AppCompatActivity {
     }
 
     public void NovaTela(){
+        if (partidas[contador_partidas+1] == null){
+            Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaFimDeJogo.class);
+            startActivity(intent);
+        }
+        else{
+            if (filtro == 1 ||  filtro == 2){
+                if (partidas[contador_partidas+1].getId() == 201){
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 201);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForca.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 202){
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 202);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaAcessibilidade.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 203){
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 203);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaAdaptabilidade.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 204){
 
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 204);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaAdequabilidade.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 205){
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 205);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaAdequacaoFuncional.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 206){
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 206);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaAnalisabilidade.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 207){
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 207);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaAprendizagem.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 208){
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 208);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaAutenticidade.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 209){
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 209);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaCapacidade.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 210){
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 210);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaCoexistencia.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 211){
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 211);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaCompatibilidade.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 212){
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 212);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaCompletudeFuncional.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 213){
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 213);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaComportamentoNoTempo.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 214){
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 214);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaConfiabilidade.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 215){
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 215);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaCorrecaoFuncional.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 216){
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 216);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaDisponibilidade.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 217){
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 217);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaEficienciaDeDesempenho.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 218){
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 218);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaEsteticaDaInterface.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 219){
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 219);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaInstalabilidade.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 220){
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 220);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaIntegridade.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 221){
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 221);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaManutencao.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 222){
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 222);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaMaturidade.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 223){
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 223);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaModificabilidade.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 224){
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 224);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaModularidade.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 225){
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 225);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaNaoRepudio.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 226){
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 226);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaOperabilidade.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 227){
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 227);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaPortabilidade.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 228){
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 228);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaPrestacaoDeContas.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 229){
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 229);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaProtecaoContraErros.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 30){
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 230);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaReplacibilidade.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 31){
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 231);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaReutilizacao.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 32){
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 232);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaTestabilidade.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 33){
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 233);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaUsabilidade.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                if (partidas[contador_partidas+1].getId() == 34){
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pont", pontos);
+                    bundle.putInt("id", 234);
+                    bundle.putInt("filtro", 1);
+                    bundle.putInt("partidas_atuais", 1);
+                    bundle.putInt("contador_partidas", contador_partidas+1);
+                    Intent intent = new Intent(TelaJogoForcaUtilizacaoDeRecursos.this, TelaJogoForcaUtilizacaoDeRecursos.class);
+                    intent.putExtra("partidas", partidas);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+            }
+        }
     }
 
     public void playSound(int num){
